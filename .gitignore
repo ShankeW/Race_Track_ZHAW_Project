@@ -1,24 +1,72 @@
-# Compiled class file
+challenge_points.txt
+
+# Compiled files
 *.class
+*.com
+*.dll
+*.exe
+*.o
+*.so
 
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
+# Packages
 *.rar
+*.jar
+*.zip
+*.gz
+*.bzip
+*.xz
+*.lzma
+*.7z
+*~$*
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Gradle
+.gradle
+build/
+!gradle-wrapper.jar
+
+# Maven
+target/
+
+# InelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.ids
+*.iws
+
+# Visual Studio Code
+.vscode/
+
+# Eclipse files
+.project
+.metadata
+.classpath
+.settings/
+.loadpath
+bin/
+
+# Netbeans
+nbactions.xml
+
+# Logfiles
+*.log*
+
+# Databases
+*.sqlite
+
+# OS dependant files
+.DS_Store
+.Spotlight-V100
+.Trashes
+Thumbs.db
+Desktop.ini
+*~
+# Thumbnails
+._*
+
+
+# Ignore Gradle build output directory
+build
+
+# Ignore Kotlin plugin data
+.kotlin
