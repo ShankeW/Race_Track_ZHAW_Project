@@ -23,6 +23,9 @@ dependencies {
 
     // This dependency is used by the application.
     implementation(libs.guava)
+
+    // Adding Beryx Text-IO for better console input handling.
+    implementation("org.beryx:text-io:3.4.1")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
