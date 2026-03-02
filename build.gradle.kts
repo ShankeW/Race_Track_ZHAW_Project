@@ -26,6 +26,9 @@ dependencies {
 
     // Adding Beryx Text-IO for better console input handling.
     implementation("org.beryx:text-io:3.4.1")
+
+    // Including Beryx Text-IO intern SLF4J logging-Framework
+    implementation("org.slf4j:slf4j-nop:2.+")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -37,7 +40,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.App"
+    mainClass = "ch.zhaw.it.pm2.racetrack.RaceTrack"
 }
 
 tasks.named<Test>("test") {
