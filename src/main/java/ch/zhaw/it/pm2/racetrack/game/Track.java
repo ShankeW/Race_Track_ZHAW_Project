@@ -5,6 +5,10 @@ import ch.zhaw.it.pm2.racetrack.given.TrackSpecification;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.SplittableRandom;
 
 /**
  * This class represents the racetrack board.
@@ -55,6 +59,10 @@ import java.io.IOException;
  * (including car positions and status)</p>
  */
 public class Track implements TrackSpecification {
+    final public int height;
+    final public int width;
+    private int carCount;
+    final public File trackFile;
 
     /**
      * Initialize a Track from the given track file.<br/>
@@ -67,7 +75,38 @@ public class Track implements TrackSpecification {
      */
     public Track(File trackFile) throws IOException, InvalidFileFormatException {
         // TODO: implementation
-        throw new UnsupportedOperationException();
+        this.trackFile = trackFile;
+
+        List<String> lines = Files.readAllLines(trackFile.toPath()); //reads file line by line
+
+        if(lines.isEmpty()) {
+            throw new InvalidFileFormatException();
+        }
+
+        this.height = lines.size();
+        this.width = lines.get(0).length();
+        this.carCount = 0;
+        int spaceCount = 0;
+
+        List<Character> trackSymbols = List.of(' ', '#', '<', '>', '^', 'v');
+
+        for (String line : lines) {
+            if (line.length() != width) {
+                throw new InvalidFileFormatException();
+            }
+
+            for (char c : line.toCharArray()) {
+                if (!trackSymbols.contains(c)) {
+                    carCount ++;
+                }
+                else if (c == ' ') {
+                    spaceCount ++;
+                }
+            }
+        }
+        if (spaceCount == 0 || carCount == 0) {
+            throw new InvalidFileFormatException();
+        }
     }
 
     /**
