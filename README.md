@@ -1,9 +1,9 @@
 Tasks für nächste Woche (04.03):
 
-Ahalya: Anleitung und Code durchlesen / verstehen
+Ahalya: -
 
-Hunter: Anleitung und Code durchlesen / verstehen
+Hunter: -
 
-Shanke: Anleitung und Code durchlesen / verstehen
+Shanke: -
 
-Fabian: Anleitung und Code durchlesen / verstehen, Issues überarbeiten
+Fabian: -
