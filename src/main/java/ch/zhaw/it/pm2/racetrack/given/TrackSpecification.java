@@ -1,7 +1,7 @@
 package ch.zhaw.it.pm2.racetrack.given;
 
-import ch.zhaw.it.pm2.racetrack.PositionVector;
-import ch.zhaw.it.pm2.racetrack.SpaceType;
+import ch.zhaw.it.pm2.racetrack.game.PositionVector;
+import ch.zhaw.it.pm2.racetrack.game.SpaceType;
 
 /**
  * Interface representing the mandatory functions of the racetrack board.<br/>

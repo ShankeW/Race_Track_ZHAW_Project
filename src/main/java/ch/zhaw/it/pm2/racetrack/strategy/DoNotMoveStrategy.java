@@ -1,6 +1,6 @@
 package ch.zhaw.it.pm2.racetrack.strategy;
 
-import ch.zhaw.it.pm2.racetrack.Direction;
+import ch.zhaw.it.pm2.racetrack.game.Direction;
 
 import java.util.Optional;
 

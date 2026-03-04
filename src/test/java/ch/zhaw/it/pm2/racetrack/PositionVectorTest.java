@@ -1,5 +1,6 @@
 package ch.zhaw.it.pm2.racetrack;
 
+import ch.zhaw.it.pm2.racetrack.game.PositionVector;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

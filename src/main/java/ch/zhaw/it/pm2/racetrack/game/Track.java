@@ -1,5 +1,6 @@
-package ch.zhaw.it.pm2.racetrack;
+package ch.zhaw.it.pm2.racetrack.game;
 
+import ch.zhaw.it.pm2.racetrack.InvalidFileFormatException;
 import ch.zhaw.it.pm2.racetrack.given.TrackSpecification;
 
 import java.io.File;

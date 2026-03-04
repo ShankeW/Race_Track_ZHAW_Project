@@ -1,4 +1,4 @@
-package ch.zhaw.it.pm2.racetrack;
+package ch.zhaw.it.pm2.racetrack.game;
 
 import ch.zhaw.it.pm2.racetrack.given.GameSpecification;
 import ch.zhaw.it.pm2.racetrack.strategy.MoveStrategy;
