@@ -115,8 +115,7 @@ public class Track implements TrackSpecification {
      * @return the height of the track grid
      */
     public int getHeight() {
-        // TODO: implementation
-        return 0;
+        return this.height;
     }
 
     /**
@@ -125,8 +124,7 @@ public class Track implements TrackSpecification {
      * @return the width of the track grid
      */
     public int getWidth() {
-        // TODO: implementation
-        return 0;
+        return this.width;
     }
 
     /**
@@ -136,8 +134,7 @@ public class Track implements TrackSpecification {
      */
     @Override
     public int getCarCount() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return this.carCount;
     }
 
     /**
