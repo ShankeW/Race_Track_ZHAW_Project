@@ -26,7 +26,7 @@ import java.util.SplittableRandom;
  *  <li>FINISH_LEFT, FINISH_RIGHT, FINISH_UP, FINISH_DOWN :  finish line spaces which have to be crossed
  *      in the indicated direction to winn the race.</li>
  * </ul>
- * <p>Beside the board the track contains the list of cars, with their current state (position, velocity,...)</p>
+ * <p>Beside the board the track contains the list of cars, with their currentent state (position, velocity,...)</p>
  *
  * <p>At initialization the track grid data is read from the given track file. The track data must be a
  * rectangular block of text. Empty lines at the start are ignored. Processing stops at the first empty line
@@ -55,7 +55,7 @@ import java.util.SplittableRandom;
  *   <li>the file contains more than {@link TrackSpecification#MAX_CARS} cars</li>
  * </ul>
  *
- * <p>The Tracks {@link #toString()} method returns a String representing the current state of the race
+ * <p>The Tracks {@link #toString()} method returns a String representing the currentent state of the race
  * (including car positions and status)</p>
  */
 public class Track implements TrackSpecification {
@@ -63,6 +63,7 @@ public class Track implements TrackSpecification {
     final public int width;
     private int carCount;
     final public File trackFile;
+    List<Car> cars = new ArrayList<>();
 
     /**
      * Initialize a Track from the given track file.<br/>
@@ -146,7 +147,12 @@ public class Track implements TrackSpecification {
     @Override
     public Car getCar(int carIndex) {
         // TODO: implementation
-        throw new UnsupportedOperationException();
+        for (Car currentCar : cars){
+            if(currentCar.getId() == carIndex){
+                return currentCar;
+            }
+        }
+        return null;
     }
 
     /**
