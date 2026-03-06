@@ -26,6 +26,13 @@ public enum Direction {
     /** Up and right direction (1,-1). */
     UP_RIGHT(new PositionVector(1, -1));
 
+    @Override
+    public String toString() {
+        String rawString = super.toString();
+        rawString = rawString.replace("_", " ");
+        return rawString;
+    }
+
     private final PositionVector vector;
 
     Direction(final PositionVector vector) {
