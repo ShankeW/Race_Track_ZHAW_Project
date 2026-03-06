@@ -35,6 +35,16 @@ public class ConsoleUI implements UserInterface{
         return options.indexOf(selection);
     }
 
+    /**
+     * Prints the given trackString onto the Screen
+     * @param trackString The Track stored as a String
+     */
+    @Override
+    public void displayTrack(String trackString) {
+        //Needs check for proper display
+        terminal.print(trackString);
+    }
+
     @Override
     public void disposeUserInterface() {
         textIO.dispose();
