@@ -64,7 +64,7 @@ public class Track implements TrackSpecification {
     private int carCount;
     final public File trackFile;
     final public List<String> fileLines;
-    List<Car> cars = new ArrayList<>();
+    final public List<Car> cars = new ArrayList<>();
 
     /**
      * Initialize a Track from the given track file.<br/>
@@ -77,9 +77,18 @@ public class Track implements TrackSpecification {
      */
     public Track(File trackFile) throws IOException, InvalidFileFormatException {
         // TODO: implementation
+        // Check I/O exceptions
+        if (!trackFile.exists()){
+            throw new IOException("File does not exist.");
+        }
+        if (!trackFile.canRead()){
+            throw new IOException("File can not be read.");
+        }
+
         this.trackFile = trackFile;
         this.fileLines = Files.readAllLines(trackFile.toPath()); //reads file line by line
 
+        // Check if file format is valid
         if(fileLines.isEmpty()) {
             throw new InvalidFileFormatException();
         }
@@ -167,7 +176,7 @@ public class Track implements TrackSpecification {
         // TODO: implementation
         char typeChar = fileLines.get(position.getY()).charAt(position.getX());
         // Every space in the track including cars are considered as TRACK.
-        // Car is neither a WALL nor a SpaceType.
+        // Car is neither a WALL nor any other SpaceTypes.
         if (!(SpaceType.ofChar(typeChar).isPresent()) && typeChar != '#') {
             return SpaceType.TRACK;
         } else {
@@ -190,7 +199,6 @@ public class Track implements TrackSpecification {
     @Override
     public char getCharRepresentationAtPosition(int row, int col) {
         // TODO: implementation
-        char result = ' ';
         PositionVector position = new PositionVector(col, row);
 
         for (Car currentCar : cars){
@@ -201,11 +209,9 @@ public class Track implements TrackSpecification {
                 } else {
                     return currentCar.getId();
                 }
-            } else {
-                result = getSpaceTypeAtPosition(position).toString().charAt(0);
             }
         }
-        return result;
+        return getSpaceTypeAtPosition(position).getSpaceChar();
     }
 
     /**
