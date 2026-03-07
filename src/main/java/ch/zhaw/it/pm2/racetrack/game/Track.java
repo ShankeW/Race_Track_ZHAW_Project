@@ -63,6 +63,7 @@ public class Track implements TrackSpecification {
     final public int width;
     private int carCount;
     final public File trackFile;
+    final public List<String> fileLines;
     List<Car> cars = new ArrayList<>();
 
     /**
@@ -77,21 +78,20 @@ public class Track implements TrackSpecification {
     public Track(File trackFile) throws IOException, InvalidFileFormatException {
         // TODO: implementation
         this.trackFile = trackFile;
+        this.fileLines = Files.readAllLines(trackFile.toPath()); //reads file line by line
 
-        List<String> lines = Files.readAllLines(trackFile.toPath()); //reads file line by line
-
-        if(lines.isEmpty()) {
+        if(fileLines.isEmpty()) {
             throw new InvalidFileFormatException();
         }
 
-        this.height = lines.size();
-        this.width = lines.get(0).length();
+        this.height = fileLines.size();
+        this.width = fileLines.get(0).length();
         this.carCount = 0;
         int spaceCount = 0;
 
         List<Character> trackSymbols = List.of(' ', '#', '<', '>', '^', 'v');
 
-        for (String line : lines) {
+        for (String line : fileLines) {
             if (line.length() != width) {
                 throw new InvalidFileFormatException();
             }
@@ -165,7 +165,14 @@ public class Track implements TrackSpecification {
     @Override
     public SpaceType getSpaceTypeAtPosition(PositionVector position) {
         // TODO: implementation
-        throw new UnsupportedOperationException();
+        char typeChar = fileLines.get(position.getY()).charAt(position.getX());
+        // Every space in the track including cars are considered as TRACK.
+        // Car is neither a WALL nor a SpaceType.
+        if (!(SpaceType.ofChar(typeChar).isPresent()) && typeChar != '#') {
+            return SpaceType.TRACK;
+        } else {
+            return SpaceType.ofChar(typeChar).orElse(SpaceType.WALL);
+        }
     }
 
     /**
@@ -183,7 +190,22 @@ public class Track implements TrackSpecification {
     @Override
     public char getCharRepresentationAtPosition(int row, int col) {
         // TODO: implementation
-        throw new UnsupportedOperationException();
+        char result = ' ';
+        PositionVector position = new PositionVector(col, row);
+
+        for (Car currentCar : cars){
+            PositionVector carPosition = currentCar.getPosition();
+            if(carPosition.getX() == col && carPosition.getY() == row){
+                if(currentCar.isCrashed()){
+                    return CRASH_INDICATOR;
+                } else {
+                    return currentCar.getId();
+                }
+            } else {
+                result = getSpaceTypeAtPosition(position).toString().charAt(0);
+            }
+        }
+        return result;
     }
 
     /**
@@ -194,6 +216,13 @@ public class Track implements TrackSpecification {
     @Override
     public String toString() {
         // TODO: implementation
-        throw new UnsupportedOperationException();
+        StringBuilder trackOutput = new StringBuilder();
+        for (int i = 0; i < getHeight(); i++){
+            for (int j = 0; j < getWidth(); j++){
+                trackOutput.append(getCharRepresentationAtPosition(i, j));
+            }
+            trackOutput.append('\n');
+        }
+        return trackOutput.toString();
     }
 }
