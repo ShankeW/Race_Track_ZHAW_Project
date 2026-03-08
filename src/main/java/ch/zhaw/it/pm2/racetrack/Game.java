@@ -14,12 +14,16 @@ import java.util.Optional;
  */
 public class Game implements GameSpecification {
 
+    private Track track;
+
+    private int currentCarIndex;
+
     /**
      * Constructor for the Game class.
      * @param track the track to be used for this game
      */
     public Game(final Track track) {
-
+        this.track = track;
     }
 
     /**
@@ -28,8 +32,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public int getCarCount() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return track.getCarCount();
     }
 
     /**
@@ -39,8 +42,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public int getCurrentCarIndex() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return currentCarIndex;
     }
 
     /**
@@ -50,8 +52,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public char getCarId(int carIndex) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return track.getCar(carIndex).getId();
     }
 
     /**
@@ -61,8 +62,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public PositionVector getCarPosition(int carIndex) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return track.getCar(carIndex).getPosition();
     }
 
     /**
@@ -72,8 +72,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public PositionVector getCarVelocity(int carIndex) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return track.getCar(carIndex).getVelocity();
     }
 
     /**
