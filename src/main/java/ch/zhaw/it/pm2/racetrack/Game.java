@@ -84,6 +84,8 @@ public class Game implements GameSpecification {
     @Override
     public void setCarMoveStrategy(int carIndex, MoveStrategy moveStrategy) {
         // TODO: implementation
+        Car car = track.getCar(carIndex);
+        // car.setMoveStrategy(moveStrategy);
         throw new UnsupportedOperationException();
     }
 
@@ -96,6 +98,8 @@ public class Game implements GameSpecification {
     @Override
     public Optional<Direction> nextCarMove(int carIndex) {
         // TODO: implementation
+        Car car = track.getCar(carIndex);
+        //return car.getMove();
         throw new UnsupportedOperationException();
     }
 
@@ -148,8 +152,27 @@ public class Game implements GameSpecification {
      */
     @Override
     public void switchToNextActiveCar() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+
+        if (allCarsCrashed()){
+            return;
+        }
+
+        do{
+            currentCarIndex++;
+            if(currentCarIndex == track.getCarCount()){
+                currentCarIndex = 0;
+            }
+        } while(track.getCar(currentCarIndex).isCrashed());
+    }
+
+    private boolean allCarsCrashed() {
+        boolean allCrashed = true;
+        for (int i = 0; i < track.getCarCount(); i++) {
+            if (!track.getCar(i).isCrashed()){
+                allCrashed = false;
+            }
+        }
+        return allCrashed;
     }
 
     /**
