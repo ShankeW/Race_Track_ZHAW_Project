@@ -69,6 +69,10 @@ class TrackTest {
         assertEquals(SpaceType.FINISH_RIGHT, spaceType3);
     }
 
+
+    // Following are the Tests that works only after Car class is implemented, because the CRASH_INDICATOR
+    // must be used for the test.
+
     /**
      * Test for getCharRepresentationAtPosition method checks if this method returns 
      * the correct character on corresponding position. Especially, the CRASH_INDICATOR 
@@ -83,4 +87,29 @@ class TrackTest {
         // case for cars when crashed and not crashed
         //assertEquals('a', track1.getCharRepresentationAtPosition(9, 22));
     }
+
+    /**
+     * Test for toString method checks if the Track class can correctly output the desired
+     * track based on the File input.
+     */
+    // @Test
+    // void toStringTest() {
+    //     String expected =
+    //                     "##################################################\r\n" + //
+    //                     "##################################################\r\n" + //
+    //                     "##############                       #############\r\n" + //
+    //                     "##########                              ##########\r\n" + //
+    //                     "#######                                    #######\r\n" + //
+    //                     "######  a   b   #################           ######\r\n" + //
+    //                     "#####^^^^^^^^^^###################           #####\r\n" + //
+    //                     "#####          ###################           #####\r\n" + //
+    //                     "######          #################           ######\r\n" + //
+    //                     "#######                                    #######\r\n" + //
+    //                     "##########                              ##########\r\n" + //
+    //                     "##############                      ##############\r\n" + //
+    //                     "##################################################\r\n" + //
+    //                     "##################################################\r\n" + //
+    //                     "";
+    //     assertEquals(expected, track2.toString());
+    // }
 }
