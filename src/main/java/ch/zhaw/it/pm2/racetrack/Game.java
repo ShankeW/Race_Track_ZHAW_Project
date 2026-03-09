@@ -3,6 +3,7 @@ package ch.zhaw.it.pm2.racetrack;
 import ch.zhaw.it.pm2.racetrack.given.GameSpecification;
 import ch.zhaw.it.pm2.racetrack.strategy.MoveStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -167,7 +168,60 @@ public class Game implements GameSpecification {
      */
     @Override
     public List<PositionVector> calculatePath(PositionVector startPosition, PositionVector endPosition) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        List<PositionVector> path = new ArrayList<>();
+
+        // Use Bresenham's algorithm to determine positions.
+        // Relative Distance (x & y-axis) between end- and starting position
+        int diffX = endPosition.getX() - startPosition.getX();
+        int diffY = endPosition.getY() - startPosition.getY();
+        // Absolute distance (x & y-axis) between end- and starting position
+        int distX = Math.abs(diffX);
+        int distY = Math.abs(diffY);
+        // Direction of vector on x & y-axis (-1: to left/down, 0: none, +1 : to right/up)
+        int dirX = Integer.signum(diffX);
+        int dirY = Integer.signum(diffY);
+        // Determine which axis is the fast direction and set parallel/diagonal step values
+        int parallelStepX, parallelStepY;
+        int diagonalStepX, diagonalStepY;
+        int distanceSlowAxis, distanceFastAxis;
+        if (distX > distY) {
+            // x-axis is the 'fast' direction
+            parallelStepX = dirX; parallelStepY = 0; // parallel step only moves in x direction
+            diagonalStepX = dirX; diagonalStepY = dirY; // diagonal step moves in both directions
+            distanceSlowAxis = distY;
+            distanceFastAxis = distX;
+        } else {
+            // y-axis is the 'fast' direction
+            parallelStepX = 0; parallelStepY = dirY; // parallel step only moves in y direction
+            diagonalStepX = dirX; diagonalStepY = dirY; // diagonal step moves in both directions
+            distanceSlowAxis = distX;
+            distanceFastAxis = distY;
+        }
+        // initialize path loop
+        int x = startPosition.getX();
+        int y = startPosition.getY();
+        int error = distanceFastAxis/2; // set to half distance to get a good starting value
+        // add to the list
+        path.add(new PositionVector(x,y));
+        // path loop:
+        // by default step parallel to the fast axis.
+        // if error value gets negative take a diagonal step
+        // this happens approximately every (distanceFastAxis / distanceSlowAxis) steps
+        for (int step = 0; step < distanceFastAxis; step++) {
+            error -= distanceSlowAxis; // update error value
+            if (error < 0) {
+                error += distanceFastAxis; // correct error value to be positive again
+                // step into slow direction; diagonal step
+                x += diagonalStepX;
+                y += diagonalStepY;
+            } else {
+                // step into fast direction; parallel step
+                x += parallelStepX;
+                y += parallelStepY;
+            }
+            // Print position (add to the list)
+            path.add(new PositionVector(x,y));
+        }
+        return path;
     }
 }
