@@ -14,17 +14,30 @@ import java.util.ArrayList;
 public class RaceTrack {
     UserInterface UI;
     Config config;
+
+    /**
+     * Runs the Racetrack Game.
+     * Requires Picking a Track and Picking the move strategies for the cars present on the track.
+     */
     public static void main(String[] args){
         RaceTrack racetrack = new RaceTrack();
         //System.out.print(racetrack.selectTrack());
         System.out.print(racetrack.selectStrategyForCar());
     }
 
+    /**
+     * Creates a Racetrack Object
+     * Creates a UI, defaults to ConsoleUI
+     * Creates a Config file with Paths to the required directories
+     */
     public RaceTrack(){
         this.UI = new ConsoleUI();
         this.config = new Config();
     }
 
+    /**
+     * Selects a Track from the Track Directory using the chosen UI
+     */
     public Track selectTrack(){
         File[] tracks = config.getTrackDirectory().listFiles();
         ArrayList<String> trackNames = new ArrayList<>();
@@ -39,6 +52,10 @@ public class RaceTrack {
         }
     }
 
+    /**
+     * Selects a Strategy from the List of StrategyType Enums in MoveStrategy
+     * If the Chosen MoveStrategy does not exist, defaults to Do Not Move Strategy
+     */
     public MoveStrategy selectStrategyForCar(){
         MoveStrategy.StrategyType[] strategyTypes= MoveStrategy.StrategyType.values();
         ArrayList<String> typeNames = new ArrayList<>();
@@ -49,7 +66,7 @@ public class RaceTrack {
 
         //Potential Implicit Coupling?
         return switch (chosenType) {
-            case MoveStrategy.StrategyType.USER -> new UserMoveStrategy();
+            case MoveStrategy.StrategyType.USER -> new UserMoveStrategy(UI);
             case MoveStrategy.StrategyType.MOVE_LIST -> new MoveListStrategy();
             default -> new DoNotMoveStrategy();
         };
