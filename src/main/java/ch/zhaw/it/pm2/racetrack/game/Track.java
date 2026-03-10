@@ -26,7 +26,7 @@ import java.util.SplittableRandom;
  *  <li>FINISH_LEFT, FINISH_RIGHT, FINISH_UP, FINISH_DOWN :  finish line spaces which have to be crossed
  *      in the indicated direction to winn the race.</li>
  * </ul>
- * <p>Beside the board the track contains the list of cars, with their currentent state (position, velocity,...)</p>
+ * <p>Beside the board the track contains the list of cars, with their current state (position, velocity,...)</p>
  *
  * <p>At initialization the track grid data is read from the given track file. The track data must be a
  * rectangular block of text. Empty lines at the start are ignored. Processing stops at the first empty line
@@ -55,7 +55,7 @@ import java.util.SplittableRandom;
  *   <li>the file contains more than {@link TrackSpecification#MAX_CARS} cars</li>
  * </ul>
  *
- * <p>The Tracks {@link #toString()} method returns a String representing the currentent state of the race
+ * <p>The Tracks {@link #toString()} method returns a String representing the current state of the race
  * (including car positions and status)</p>
  */
 public class Track implements TrackSpecification {
@@ -63,8 +63,6 @@ public class Track implements TrackSpecification {
     final public int width;
     private int carCount;
     final public File trackFile;
-    final public List<String> fileLines;
-    final public List<Car> cars = new ArrayList<>();
 
     /**
      * Initialize a Track from the given track file.<br/>
@@ -77,30 +75,22 @@ public class Track implements TrackSpecification {
      */
     public Track(File trackFile) throws IOException, InvalidFileFormatException {
         // TODO: implementation
-        // Check I/O exceptions
-        if (!trackFile.exists()){
-            throw new IOException("File does not exist.");
-        }
-        if (!trackFile.canRead()){
-            throw new IOException("File can not be read.");
-        }
-
         this.trackFile = trackFile;
-        this.fileLines = Files.readAllLines(trackFile.toPath()); //reads file line by line
 
-        // Check if file format is valid
-        if(fileLines.isEmpty()) {
+        List<String> lines = Files.readAllLines(trackFile.toPath()); //reads file line by line
+
+        if(lines.isEmpty()) {
             throw new InvalidFileFormatException();
         }
 
-        this.height = fileLines.size();
-        this.width = fileLines.get(0).length();
+        this.height = lines.size();
+        this.width = lines.get(0).length();
         this.carCount = 0;
         int spaceCount = 0;
 
         List<Character> trackSymbols = List.of(' ', '#', '<', '>', '^', 'v');
 
-        for (String line : fileLines) {
+        for (String line : lines) {
             if (line.length() != width) {
                 throw new InvalidFileFormatException();
             }
@@ -156,12 +146,7 @@ public class Track implements TrackSpecification {
     @Override
     public Car getCar(int carIndex) {
         // TODO: implementation
-        for (Car currentCar : cars){
-            if(currentCar.getId() == carIndex){
-                return currentCar;
-            }
-        }
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -174,14 +159,7 @@ public class Track implements TrackSpecification {
     @Override
     public SpaceType getSpaceTypeAtPosition(PositionVector position) {
         // TODO: implementation
-        char typeChar = fileLines.get(position.getY()).charAt(position.getX());
-        // Every space in the track including cars are considered as TRACK.
-        // Car is neither a WALL nor any other SpaceTypes.
-        if (!(SpaceType.ofChar(typeChar).isPresent()) && typeChar != '#') {
-            return SpaceType.TRACK;
-        } else {
-            return SpaceType.ofChar(typeChar).orElse(SpaceType.WALL);
-        }
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -199,19 +177,7 @@ public class Track implements TrackSpecification {
     @Override
     public char getCharRepresentationAtPosition(int row, int col) {
         // TODO: implementation
-        PositionVector position = new PositionVector(col, row);
-
-        for (Car currentCar : cars){
-            PositionVector carPosition = currentCar.getPosition();
-            if(carPosition.getX() == col && carPosition.getY() == row){
-                if(currentCar.isCrashed()){
-                    return CRASH_INDICATOR;
-                } else {
-                    return currentCar.getId();
-                }
-            }
-        }
-        return getSpaceTypeAtPosition(position).getSpaceChar();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -222,13 +188,6 @@ public class Track implements TrackSpecification {
     @Override
     public String toString() {
         // TODO: implementation
-        StringBuilder trackOutput = new StringBuilder();
-        for (int i = 0; i < getHeight(); i++){
-            for (int j = 0; j < getWidth(); j++){
-                trackOutput.append(getCharRepresentationAtPosition(i, j));
-            }
-            trackOutput.append('\n');
-        }
-        return trackOutput.toString();
+        throw new UnsupportedOperationException();
     }
 }
