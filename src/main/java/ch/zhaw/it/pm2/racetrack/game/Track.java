@@ -7,8 +7,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import java.util.SplittableRandom;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * This class represents the racetrack board.
@@ -59,10 +61,11 @@ import java.util.SplittableRandom;
  * (including car positions and status)</p>
  */
 public class Track implements TrackSpecification {
-    final public int height;
-    final public int width;
-    private int carCount;
-    final public File trackFile;
+    public final int height;
+    public final int width;
+    public final File trackFile;
+    private final SpaceType[][] grid;
+    private final List<Car> cars;
 
     /**
      * Initialize a Track from the given track file.<br/>
@@ -74,37 +77,44 @@ public class Track implements TrackSpecification {
      *         (no track lines, inconsistent length, no cars)
      */
     public Track(File trackFile) throws IOException, InvalidFileFormatException {
-        // TODO: implementation
-        this.trackFile = trackFile;
+        this.trackFile = Objects.requireNonNull(trackFile, "trackFile must not be null");
 
-        List<String> lines = Files.readAllLines(trackFile.toPath()); //reads file line by line
-
-        if(lines.isEmpty()) {
+        List<String> trackLines = extractTrackLines(Files.readAllLines(this.trackFile.toPath()));
+        if (trackLines.isEmpty()) {
             throw new InvalidFileFormatException();
         }
 
-        this.height = lines.size();
-        this.width = lines.get(0).length();
-        this.carCount = 0;
-        int spaceCount = 0;
+        this.height = trackLines.size();
+        this.width = trackLines.getFirst().length();
+        this.grid = new SpaceType[this.height][this.width];
+        this.cars = new ArrayList<>();
 
-        List<Character> trackSymbols = List.of(' ', '#', '<', '>', '^', 'v');
-
-        for (String line : lines) {
-            if (line.length() != width) {
+        Set<Character> usedCarIds = new HashSet<>();
+        for (int row = 0; row < this.height; row++) {
+            String line = trackLines.get(row);
+            if (line.length() != this.width) {
                 throw new InvalidFileFormatException();
             }
 
-            for (char c : line.toCharArray()) {
-                if (!trackSymbols.contains(c)) {
-                    carCount ++;
+            for (int col = 0; col < this.width; col++) {
+                char trackChar = line.charAt(col);
+                SpaceType spaceType = SpaceType.ofChar(trackChar).orElse(null);
+                if (spaceType != null) {
+                    this.grid[row][col] = spaceType;
+                    continue;
                 }
-                else if (c == ' ') {
-                    spaceCount ++;
+
+                if (!usedCarIds.add(trackChar) || this.cars.size() >= MAX_CARS) {
+                    throw new InvalidFileFormatException();
                 }
+
+                this.grid[row][col] = SpaceType.TRACK;
+                // TODO: Depends on Car storing the passed start position correctly.
+                this.cars.add(new Car(trackChar, new PositionVector(col, row)));
             }
         }
-        if (spaceCount == 0 || carCount == 0) {
+
+        if (this.cars.isEmpty()) {
             throw new InvalidFileFormatException();
         }
     }
@@ -134,7 +144,7 @@ public class Track implements TrackSpecification {
      */
     @Override
     public int getCarCount() {
-        return this.carCount;
+        return this.cars.size();
     }
 
     /**
@@ -145,8 +155,7 @@ public class Track implements TrackSpecification {
      */
     @Override
     public Car getCar(int carIndex) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return this.cars.get(carIndex);
     }
 
     /**
@@ -158,8 +167,11 @@ public class Track implements TrackSpecification {
      */
     @Override
     public SpaceType getSpaceTypeAtPosition(PositionVector position) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(position, "position must not be null");
+        if (!isWithinBounds(position)) {
+            return SpaceType.WALL;
+        }
+        return this.grid[position.getY()][position.getX()];
     }
 
     /**
@@ -176,8 +188,25 @@ public class Track implements TrackSpecification {
      */
     @Override
     public char getCharRepresentationAtPosition(int row, int col) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        PositionVector position = new PositionVector(col, row);
+        boolean crashedCarAtPosition = false;
+
+        // TODO: Works once Car#getPosition() and Car#isCrashed() are implemented.
+        for (Car car : this.cars) {
+            if (!position.equals(car.getPosition())) {
+                continue;
+            }
+            if (car.isCrashed()) {
+                crashedCarAtPosition = true;
+            } else {
+                return car.getId();
+            }
+        }
+
+        if (crashedCarAtPosition) {
+            return CRASH_INDICATOR;
+        }
+        return getSpaceTypeAtPosition(position).getSpaceChar();
     }
 
     /**
@@ -187,7 +216,53 @@ public class Track implements TrackSpecification {
      */
     @Override
     public String toString() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        StringBuilder trackString = new StringBuilder((this.width + 1) * this.height);
+        for (int row = 0; row < this.height; row++) {
+            for (int col = 0; col < this.width; col++) {
+                trackString.append(getCharRepresentationAtPosition(row, col));
+            }
+            if (row < this.height - 1) {
+                trackString.append(System.lineSeparator());
+            }
+        }
+        return trackString.toString();
+    }
+
+    /**
+     * Extracts the actual rectangular track block from the file contents.
+     * Leading empty lines are ignored, and parsing stops at the first empty line after the track starts.
+     *
+     * @param fileLines all lines read from the file
+     * @return the lines belonging to the track definition
+     */
+    private static List<String> extractTrackLines(List<String> fileLines) {
+        List<String> trackLines = new ArrayList<>();
+        boolean trackStarted = false;
+
+        for (String line : fileLines) {
+            if (!trackStarted && line.isEmpty()) {
+                continue;
+            }
+            if (trackStarted && line.isEmpty()) {
+                break;
+            }
+            trackStarted = true;
+            trackLines.add(line);
+        }
+
+        return trackLines;
+    }
+
+    /**
+     * Checks whether the given position lies within the track grid.
+     *
+     * @param position position to validate
+     * @return {@code true} if the position is inside the track bounds
+     */
+    private boolean isWithinBounds(PositionVector position) {
+        return position.getX() >= 0
+            && position.getX() < this.width
+            && position.getY() >= 0
+            && position.getY() < this.height;
     }
 }
