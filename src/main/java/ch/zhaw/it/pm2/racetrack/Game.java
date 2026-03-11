@@ -15,7 +15,7 @@ import java.util.Optional;
  */
 public class Game implements GameSpecification {
 
-    private Track track;
+    private final Track track;
 
     private int currentCarIndex;
 
@@ -83,10 +83,8 @@ public class Game implements GameSpecification {
      */
     @Override
     public void setCarMoveStrategy(int carIndex, MoveStrategy moveStrategy) {
-        // TODO: implementation
         Car car = track.getCar(carIndex);
-        // car.setMoveStrategy(moveStrategy);
-        throw new UnsupportedOperationException();
+        car.setMoveStrategy(moveStrategy);
     }
 
     /**
@@ -97,10 +95,8 @@ public class Game implements GameSpecification {
      */
     @Override
     public Optional<Direction> nextCarMove(int carIndex) {
-        // TODO: implementation
         Car car = track.getCar(carIndex);
-        //return car.getMove();
-        throw new UnsupportedOperationException();
+        return car.getMove();
     }
 
     /**
