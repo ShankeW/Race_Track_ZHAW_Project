@@ -83,9 +83,7 @@ class TrackTest {
         assertEquals(' ', track1.getCharRepresentationAtPosition(6, 5));    // TRACK
         assertEquals('#', track1.getCharRepresentationAtPosition(6, 1));    // WALL
         assertEquals('>', track1.getCharRepresentationAtPosition(11, 20));  // FINISH_RIGHT
-        // TODO after Car class is implemented
-        // case for cars when crashed and not crashed
-        //assertEquals('a', track1.getCharRepresentationAtPosition(9, 22));
+        assertEquals('a', track1.getCharRepresentationAtPosition(9, 22));   // Car 'a'
     }
 
     /**
