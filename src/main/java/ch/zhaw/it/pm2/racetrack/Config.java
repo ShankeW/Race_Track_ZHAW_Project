@@ -1,4 +1,4 @@
-package ch.zhaw.it.pm2.racetrack.game;
+package ch.zhaw.it.pm2.racetrack;
 
 import ch.zhaw.it.pm2.racetrack.given.ConfigSpecification;
 
