@@ -1,7 +1,7 @@
 package ch.zhaw.it.pm2.racetrack.given;
 
-import ch.zhaw.it.pm2.racetrack.Direction;
-import ch.zhaw.it.pm2.racetrack.PositionVector;
+import ch.zhaw.it.pm2.racetrack.game.Direction;
+import ch.zhaw.it.pm2.racetrack.game.PositionVector;
 
 /**
  * Interface representing the mandatory functions of a car on the racetrack.<br/>

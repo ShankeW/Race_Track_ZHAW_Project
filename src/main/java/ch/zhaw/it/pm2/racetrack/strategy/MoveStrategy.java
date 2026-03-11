@@ -1,6 +1,6 @@
 package ch.zhaw.it.pm2.racetrack.strategy;
 
-import ch.zhaw.it.pm2.racetrack.Direction;
+import ch.zhaw.it.pm2.racetrack.game.Direction;
 
 import java.util.Optional;
 
@@ -28,13 +28,6 @@ public interface MoveStrategy {
         /** the car follows a path of points. */
         PATH_FOLLOWER,
         /** the car finds a path to the finish line. */
-        PATH_FINDER;
-
-        @Override
-        public String toString() {
-            String rawString = super.toString();
-            rawString = rawString.replace("_", " ");
-            return rawString;
-        }
+        PATH_FINDER
     }
 }

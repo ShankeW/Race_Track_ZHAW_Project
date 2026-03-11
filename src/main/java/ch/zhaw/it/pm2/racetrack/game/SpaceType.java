@@ -1,4 +1,4 @@
-package ch.zhaw.it.pm2.racetrack;
+package ch.zhaw.it.pm2.racetrack.game;
 
 import java.util.Optional;
 

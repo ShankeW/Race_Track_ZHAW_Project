@@ -1,4 +1,4 @@
-package ch.zhaw.it.pm2.racetrack;
+package ch.zhaw.it.pm2.racetrack.game;
 
 import ch.zhaw.it.pm2.racetrack.given.CarSpecification;
 
@@ -13,27 +13,16 @@ import ch.zhaw.it.pm2.racetrack.given.CarSpecification;
  */
 public class Car implements CarSpecification {
 
-    /**
-     * Car identifier used to represent the car on the track.
-     */
+    /** Car identifier used to represent the car on the track. */
     private final char id;
-    private PositionVector position;
-    private PositionVector velocity;
-    private boolean crashed = false;
 
     /**
      * Constructor for class Car.
-     *
-     * @param id            unique Car identification
+     * @param id unique Car identification
      * @param startPosition initial position of the Car
      */
     public Car(char id, PositionVector startPosition) {
-        if (startPosition == null) {
-            throw new IllegalArgumentException("startPosition must not be null");
-        }
         this.id = id;
-        this.position = startPosition;
-        this.velocity = new PositionVector(0, 0);
     }
 
     /**
@@ -48,36 +37,34 @@ public class Car implements CarSpecification {
 
     /**
      * Returns the current immutable position of the car on the track as a {@link PositionVector}.
-     *
      * @return the car's current position
      */
     @Override
     public PositionVector getPosition() {
-        return new PositionVector(this.position);
+        // TODO: implementation
+        throw new UnsupportedOperationException();
     }
 
     /**
      * Returns the current immutable velocity vector of the car as a {@link PositionVector}.
-     *
      * @return the car's current velocity vector
      */
     @Override
     public PositionVector getVelocity() {
-        return new PositionVector(this.velocity);
+        // TODO: implementation
+        throw new UnsupportedOperationException();
     }
 
     /**
      * Return the position that will apply after the next move at the current velocity.
      * Does not complete the move, so the current position remains unchanged.
      *
-     * @return expected position after the next move, or current position if crashed
+     * @return expected position after the next move
      */
     @Override
     public PositionVector nextPosition() {
-        if (crashed) {
-            return new PositionVector(this.position);
-        }
-        return position.add(velocity);
+        // TODO: implementation
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -90,11 +77,8 @@ public class Car implements CarSpecification {
      */
     @Override
     public void accelerate(Direction acceleration) {
-        if (acceleration == null) {
-            throw new IllegalArgumentException("acceleration must not be null");
-        }
-        if (crashed) return;
-        velocity = velocity.add(acceleration.getVector());
+        // TODO: implementation
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -102,10 +86,8 @@ public class Car implements CarSpecification {
      */
     @Override
     public void move() {
-        if (crashed) {
-            return;
-        }
-        position = nextPosition();
+        // TODO: implementation
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -115,13 +97,8 @@ public class Car implements CarSpecification {
      */
     @Override
     public void crash(PositionVector crashPosition) {
-        if (crashPosition == null) {
-            throw new IllegalArgumentException("crashPosition must not be null");
-        }
-        if (crashed) return;
-
-        position = crashPosition;
-        crashed = true;
+        // TODO: implementation
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -131,6 +108,7 @@ public class Car implements CarSpecification {
      */
     @Override
     public boolean isCrashed() {
-        return crashed;
+        // TODO: implementation
+        throw new UnsupportedOperationException();
     }
 }
