@@ -125,6 +125,18 @@ public class Car implements CarSpecification {
     }
 
     /**
+     * Update this Car's position directly to the Given Position
+     * Used when crashing into a Wall or crossing the finish line the wrong way.
+     * @param position The Position the Car will move to.
+     */
+    public void updatePosition(PositionVector position){
+        if (crashed) {
+            return;
+        }
+        this.position = position;
+    }
+
+    /**
      * Mark this Car as being crashed at the given position.
      *
      * @param crashPosition position the car crashed.

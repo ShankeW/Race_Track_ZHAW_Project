@@ -19,6 +19,8 @@ public class Game implements GameSpecification {
 
     private int currentCarIndex;
 
+    private int winner = NO_WINNER;
+
     /**
      * Constructor for the Game class.
      * @param track the track to be used for this game
@@ -107,8 +109,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public int getWinner() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return winner;
     }
 
     /**
@@ -139,8 +140,71 @@ public class Game implements GameSpecification {
      */
     @Override
     public void doCarTurn(Direction acceleration) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        Car currentCar = track.getCar(currentCarIndex);
+        if (currentCar.isCrashed()){
+            return;
+        }
+        currentCar.accelerate(acceleration);
+        List<PositionVector> carPath = calculatePath(currentCar.getPosition(), currentCar.nextPosition());
+        PositionVector previousStep = currentCar.getPosition();
+        for (PositionVector step : carPath){
+            switch (track.getSpaceTypeAtPosition(step)){
+                case WALL -> {
+                    currentCar.crash(step);
+                        //TODO Check if there is only 1 uncrashed Car left, set that to winner.
+                    return;
+                }
+                case TRACK -> {
+                    if (track.getSpaceTypeAtPosition(step).getSpaceChar() != track.getCharRepresentationAtPosition(step.getX(),step.getY())){
+                        currentCar.crash(step);
+                        return;
+                    }
+                }
+                case FINISH_RIGHT,FINISH_LEFT,FINISH_DOWN,FINISH_UP -> {
+                    if (crossedFinishCorrectly(currentCar.getPosition(),step,track.getSpaceTypeAtPosition(step))){
+                        winner = currentCarIndex;
+                        currentCar.updatePosition(step);
+                        return;
+                    } else {
+                        currentCar.updatePosition(previousStep);
+                        return;
+                    }
+                }
+            }
+            previousStep = step;
+        }
+        currentCar.move();
+    }
+
+    /**
+     * Checks if, at the given Positions, the Car would pass the finish in the correct direction
+     *
+     * @param startPosition Holds the start Position of the Car.
+     * @param endPosition Holds the end Position of the finish line space.
+     * @param finishDirection Spacetype that holds a Finishdirection, giving a non-Finishdirection spacetype will result in false
+     * @return true if the given positions are in the correct orientation for the given finishDirection.
+     * Returns false if it's not correct, or a proper spacetype hasn't been given.
+     */
+    private boolean crossedFinishCorrectly(PositionVector startPosition, PositionVector endPosition, SpaceType finishDirection){
+        //X goes from left to right.
+        //Y goes from up to down.
+        switch (finishDirection){
+            case FINISH_UP -> {
+                return startPosition.getY() < endPosition.getY();
+            }
+            case FINISH_DOWN -> {
+                return startPosition.getY() > endPosition.getY();
+            }
+            case FINISH_RIGHT -> {
+                return startPosition.getX() < endPosition.getX();
+            }
+            case FINISH_LEFT -> {
+                return startPosition.getX() > endPosition.getX();
+            }
+            default -> {
+                return false;
+            }
+        }
     }
 
     /**
