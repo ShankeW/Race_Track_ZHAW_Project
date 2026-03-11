@@ -16,26 +16,12 @@ import java.util.Optional;
  */
 public class Car implements CarSpecification {
 
-    /**
-     * Car identifier used to represent the car on the track.
-     */
+    /** Car identifier used to represent the car on the track. */
     private final char id;
     private PositionVector position;
     private PositionVector velocity;
     private boolean crashed = false;
     private MoveStrategy moveStrategy;
-
-    /**
-     * Constructor for class Car. Optional MoveStrategy
-     *
-     * @param id            unique Car identification
-     * @param startPosition initial position of the Car
-     * @param moveStrategy strategy for determining next move
-     */
-    public Car(char id, PositionVector startPosition, MoveStrategy moveStrategy) {
-        this(id,startPosition);
-        this.moveStrategy = moveStrategy;
-    }
 
     /**
      * Constructor for class Car.
