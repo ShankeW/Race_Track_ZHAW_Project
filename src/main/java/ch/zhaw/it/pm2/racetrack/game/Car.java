@@ -1,4 +1,4 @@
-package ch.zhaw.it.pm2.racetrack;
+package ch.zhaw.it.pm2.racetrack.game;
 
 import ch.zhaw.it.pm2.racetrack.given.CarSpecification;
 import ch.zhaw.it.pm2.racetrack.strategy.MoveStrategy;
@@ -16,7 +16,9 @@ import java.util.Optional;
  */
 public class Car implements CarSpecification {
 
-    /** Car identifier used to represent the car on the track. */
+    /**
+     * Car identifier used to represent the car on the track.
+     */
     private final char id;
     private PositionVector position;
     private PositionVector velocity;

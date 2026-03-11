@@ -1,4 +1,4 @@
-package ch.zhaw.it.pm2.racetrack;
+package ch.zhaw.it.pm2.racetrack.game;
 
 import java.util.Objects;
 
@@ -25,13 +25,6 @@ public enum Direction {
     UP(new PositionVector(0, -1)),
     /** Up and right direction (1,-1). */
     UP_RIGHT(new PositionVector(1, -1));
-
-    @Override
-    public String toString() {
-        String rawString = super.toString();
-        rawString = rawString.replace("_", " ");
-        return rawString;
-    }
 
     private final PositionVector vector;
 
