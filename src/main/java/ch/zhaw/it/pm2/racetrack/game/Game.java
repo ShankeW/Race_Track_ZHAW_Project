@@ -3,6 +3,7 @@ package ch.zhaw.it.pm2.racetrack.game;
 import ch.zhaw.it.pm2.racetrack.given.GameSpecification;
 import ch.zhaw.it.pm2.racetrack.strategy.MoveStrategy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,12 +15,18 @@ import java.util.Optional;
  */
 public class Game implements GameSpecification {
 
+    private final Track track;
+
+    private int currentCarIndex;
+
+    private int winner = NO_WINNER;
+
     /**
      * Constructor for the Game class.
      * @param track the track to be used for this game
      */
     public Game(final Track track) {
-
+        this.track = track;
     }
 
     /**
@@ -28,8 +35,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public int getCarCount() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return track.getCarCount();
     }
 
     /**
@@ -39,8 +45,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public int getCurrentCarIndex() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return currentCarIndex;
     }
 
     /**
@@ -50,8 +55,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public char getCarId(int carIndex) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return track.getCar(carIndex).getId();
     }
 
     /**
@@ -61,8 +65,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public PositionVector getCarPosition(int carIndex) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return track.getCar(carIndex).getPosition();
     }
 
     /**
@@ -72,8 +75,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public PositionVector getCarVelocity(int carIndex) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return track.getCar(carIndex).getVelocity();
     }
 
     /**
@@ -83,8 +85,8 @@ public class Game implements GameSpecification {
      */
     @Override
     public void setCarMoveStrategy(int carIndex, MoveStrategy moveStrategy) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        Car car = track.getCar(carIndex);
+        car.setMoveStrategy(moveStrategy);
     }
 
     /**
@@ -95,8 +97,8 @@ public class Game implements GameSpecification {
      */
     @Override
     public Optional<Direction> nextCarMove(int carIndex) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        Car car = track.getCar(carIndex);
+        return car.getMove();
     }
 
     /**
@@ -107,8 +109,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public int getWinner() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return winner;
     }
 
     /**
@@ -139,8 +140,71 @@ public class Game implements GameSpecification {
      */
     @Override
     public void doCarTurn(Direction acceleration) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        Car currentCar = track.getCar(currentCarIndex);
+        if (currentCar.isCrashed()){
+            return;
+        }
+        currentCar.accelerate(acceleration);
+        List<PositionVector> carPath = calculatePath(currentCar.getPosition(), currentCar.nextPosition());
+        PositionVector previousStep = currentCar.getPosition();
+        for (PositionVector step : carPath){
+            switch (track.getSpaceTypeAtPosition(step)){
+                case WALL -> {
+                    currentCar.crash(step);
+                        //TODO Check if there is only 1 uncrashed Car left, set that to winner.
+                    return;
+                }
+                case TRACK -> {
+                    if (track.getSpaceTypeAtPosition(step).getSpaceChar() != track.getCharRepresentationAtPosition(step.getX(),step.getY())){
+                        currentCar.crash(step);
+                        return;
+                    }
+                }
+                case FINISH_RIGHT,FINISH_LEFT,FINISH_DOWN,FINISH_UP -> {
+                    if (crossedFinishCorrectly(currentCar.getPosition(),step,track.getSpaceTypeAtPosition(step))){
+                        winner = currentCarIndex;
+                        currentCar.updatePosition(step);
+                        return;
+                    } else {
+                        currentCar.updatePosition(previousStep);
+                        return;
+                    }
+                }
+            }
+            previousStep = step;
+        }
+        currentCar.move();
+    }
+
+    /**
+     * Checks if, at the given Positions, the Car would pass the finish in the correct direction
+     *
+     * @param startPosition Holds the start Position of the Car.
+     * @param endPosition Holds the end Position of the finish line space.
+     * @param finishDirection Spacetype that holds a Finishdirection, giving a non-Finishdirection spacetype will result in false
+     * @return true if the given positions are in the correct orientation for the given finishDirection.
+     * Returns false if it's not correct, or a proper spacetype hasn't been given.
+     */
+    private boolean crossedFinishCorrectly(PositionVector startPosition, PositionVector endPosition, SpaceType finishDirection){
+        //X goes from left to right.
+        //Y goes from up to down.
+        switch (finishDirection){
+            case FINISH_UP -> {
+                return startPosition.getY() < endPosition.getY();
+            }
+            case FINISH_DOWN -> {
+                return startPosition.getY() > endPosition.getY();
+            }
+            case FINISH_RIGHT -> {
+                return startPosition.getX() < endPosition.getX();
+            }
+            case FINISH_LEFT -> {
+                return startPosition.getX() > endPosition.getX();
+            }
+            default -> {
+                return false;
+            }
+        }
     }
 
     /**
@@ -148,8 +212,27 @@ public class Game implements GameSpecification {
      */
     @Override
     public void switchToNextActiveCar() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+
+        if (allCarsCrashed()){
+            return;
+        }
+
+        do{
+            currentCarIndex++;
+            if(currentCarIndex == track.getCarCount()){
+                currentCarIndex = 0;
+            }
+        } while(track.getCar(currentCarIndex).isCrashed());
+    }
+
+    private boolean allCarsCrashed() {
+        boolean allCrashed = true;
+        for (int i = 0; i < track.getCarCount(); i++) {
+            if (!track.getCar(i).isCrashed()){
+                allCrashed = false;
+            }
+        }
+        return allCrashed;
     }
 
     /**
@@ -168,7 +251,60 @@ public class Game implements GameSpecification {
      */
     @Override
     public List<PositionVector> calculatePath(PositionVector startPosition, PositionVector endPosition) {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        List<PositionVector> path = new ArrayList<>();
+
+        // Use Bresenham's algorithm to determine positions.
+        // Relative Distance (x & y-axis) between end- and starting position
+        int diffX = endPosition.getX() - startPosition.getX();
+        int diffY = endPosition.getY() - startPosition.getY();
+        // Absolute distance (x & y-axis) between end- and starting position
+        int distX = Math.abs(diffX);
+        int distY = Math.abs(diffY);
+        // Direction of vector on x & y-axis (-1: to left/down, 0: none, +1 : to right/up)
+        int dirX = Integer.signum(diffX);
+        int dirY = Integer.signum(diffY);
+        // Determine which axis is the fast direction and set parallel/diagonal step values
+        int parallelStepX, parallelStepY;
+        int diagonalStepX, diagonalStepY;
+        int distanceSlowAxis, distanceFastAxis;
+        if (distX > distY) {
+            // x-axis is the 'fast' direction
+            parallelStepX = dirX; parallelStepY = 0; // parallel step only moves in x direction
+            diagonalStepX = dirX; diagonalStepY = dirY; // diagonal step moves in both directions
+            distanceSlowAxis = distY;
+            distanceFastAxis = distX;
+        } else {
+            // y-axis is the 'fast' direction
+            parallelStepX = 0; parallelStepY = dirY; // parallel step only moves in y direction
+            diagonalStepX = dirX; diagonalStepY = dirY; // diagonal step moves in both directions
+            distanceSlowAxis = distX;
+            distanceFastAxis = distY;
+        }
+        // initialize path loop
+        int x = startPosition.getX();
+        int y = startPosition.getY();
+        int error = distanceFastAxis/2; // set to half distance to get a good starting value
+        // add to the list
+        path.add(new PositionVector(x,y));
+        // path loop:
+        // by default step parallel to the fast axis.
+        // if error value gets negative take a diagonal step
+        // this happens approximately every (distanceFastAxis / distanceSlowAxis) steps
+        for (int step = 0; step < distanceFastAxis; step++) {
+            error -= distanceSlowAxis; // update error value
+            if (error < 0) {
+                error += distanceFastAxis; // correct error value to be positive again
+                // step into slow direction; diagonal step
+                x += diagonalStepX;
+                y += diagonalStepY;
+            } else {
+                // step into fast direction; parallel step
+                x += parallelStepX;
+                y += parallelStepY;
+            }
+            // Print position (add to the list)
+            path.add(new PositionVector(x,y));
+        }
+        return path;
     }
 }
