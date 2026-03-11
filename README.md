@@ -1,3 +1,13 @@
+Tasks für nächste Woche (18.03):
+
+Ahalya: "Do not Move" Strategy Implementieren
+
+Hunter: Game doCarTurn und Racetrack Prozessturn fertig programmieren
+
+Shanke: Movelist Strategy Implementieren
+
+Fabian: Äquivalenzklassen definieren, allfällige Tests schreiben
+
 ## Branching Model
 Das Branching Model welche wir für unsere Projekt verwenden sei das [Github Flow Modell](https://docs.github.com/en/get-started/using-github/github-flow)
 
