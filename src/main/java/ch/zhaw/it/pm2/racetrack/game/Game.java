@@ -16,9 +16,7 @@ import java.util.Optional;
 public class Game implements GameSpecification {
 
     private final Track track;
-
     private int currentCarIndex;
-
     private int winner = NO_WINNER;
 
     /**
@@ -76,6 +74,15 @@ public class Game implements GameSpecification {
     @Override
     public PositionVector getCarVelocity(int carIndex) {
         return track.getCar(carIndex).getVelocity();
+    }
+
+    /**
+     * Returns a string representation of the Track
+     * @return a string representation of the Track
+     */
+    @Override
+    public String toString(){
+        return track.toString();
     }
 
     /**
@@ -151,14 +158,25 @@ public class Game implements GameSpecification {
             switch (track.getSpaceTypeAtPosition(step)){
                 case WALL -> {
                     currentCar.crash(step);
-                        //TODO Check if there is only 1 uncrashed Car left, set that to winner.
+                    if (crashedCarCount() == (track.getCarCount() - 1)){
+                        for (int i = 0; i < track.getCarCount(); i++) {
+                            if (!track.getCar(i).isCrashed()){
+                                winner = i;
+                                return;
+                            }
+                        }
+                    }
                     return;
                 }
                 case TRACK -> {
+                    /*
+                     * TODO: Fix Car Collision Logic
                     if (track.getSpaceTypeAtPosition(step).getSpaceChar() != track.getCharRepresentationAtPosition(step.getX(),step.getY())){
                         currentCar.crash(step);
                         return;
                     }
+                     */
+
                 }
                 case FINISH_RIGHT,FINISH_LEFT,FINISH_DOWN,FINISH_UP -> {
                     if (crossedFinishCorrectly(currentCar.getPosition(),step,track.getSpaceTypeAtPosition(step))){
@@ -212,8 +230,7 @@ public class Game implements GameSpecification {
      */
     @Override
     public void switchToNextActiveCar() {
-
-        if (allCarsCrashed()){
+        if (crashedCarCount() == track.getCarCount()){
             return;
         }
 
@@ -225,14 +242,18 @@ public class Game implements GameSpecification {
         } while(track.getCar(currentCarIndex).isCrashed());
     }
 
-    private boolean allCarsCrashed() {
-        boolean allCrashed = true;
+    /**
+     * Returns the amount of crashed cars
+     * @return the amount of crashed cars
+     */
+    public int crashedCarCount() {
+        int crashedCount = 0;
         for (int i = 0; i < track.getCarCount(); i++) {
-            if (!track.getCar(i).isCrashed()){
-                allCrashed = false;
+            if (track.getCar(i).isCrashed()){
+                crashedCount++;
             }
         }
-        return allCrashed;
+        return crashedCount;
     }
 
     /**
