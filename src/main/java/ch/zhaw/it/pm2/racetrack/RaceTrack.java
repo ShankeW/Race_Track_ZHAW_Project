@@ -2,8 +2,10 @@ package ch.zhaw.it.pm2.racetrack;
 
 import ch.zhaw.it.pm2.racetrack.UI.ConsoleUI;
 import ch.zhaw.it.pm2.racetrack.UI.UserInterface;
+import ch.zhaw.it.pm2.racetrack.game.Direction;
 import ch.zhaw.it.pm2.racetrack.game.Game;
 import ch.zhaw.it.pm2.racetrack.game.Track;
+import ch.zhaw.it.pm2.racetrack.given.GameSpecification;
 import ch.zhaw.it.pm2.racetrack.strategy.DoNotMoveStrategy;
 import ch.zhaw.it.pm2.racetrack.strategy.MoveListStrategy;
 import ch.zhaw.it.pm2.racetrack.strategy.MoveStrategy;
@@ -12,6 +14,7 @@ import ch.zhaw.it.pm2.racetrack.strategy.UserMoveStrategy;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class RaceTrack {
     UserInterface UI;
@@ -23,18 +26,18 @@ public class RaceTrack {
      * Runs the Racetrack Game.
      * Requires Picking a Track and Picking the move strategies for the cars present on the track.
      */
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         RaceTrack racetrack = new RaceTrack();
         racetrack.game = new Game(racetrack.selectTrack());
         for (int i = 0; i < racetrack.game.getCarCount(); i++) {
             racetrack.game.setCarMoveStrategy(i, racetrack.selectStrategyForCar(racetrack.game.getCarId(i)));
         }
-        /**
         while (racetrack.gameActive){
             racetrack.processTurn();
         }
-         */
-        racetrack.processTurn();
+        racetrack.UI.displayMessage(racetrack.game.toString());
+        racetrack.UI.waitForConfirmation("Winner is: " + racetrack.game.getCarId(racetrack.game.getWinner()));
+        racetrack.quitGame();
     }
 
     /**
@@ -87,9 +90,23 @@ public class RaceTrack {
 
     /**
      * Runs a Single turn of the game
+     * Steps Taken:
+     *      Display Current Track State.
+     *      Get the Next Move of the Current Car.
+     *      Do the Cars turn with the parsed direction.
+     *      Check if there is a Winner after the Turn
      */
     public void processTurn(){
         UI.displayMessage(game.toString());
+        UI.displayMessage("Current Car: " + game.getCarId(game.getCurrentCarIndex()));
+        Optional< Direction > direction = game.nextCarMove(game.getCurrentCarIndex());
+        Direction parsedDirection;
+        parsedDirection = direction.orElse(Direction.NONE);
+        game.doCarTurn(parsedDirection);
+        game.switchToNextActiveCar();
+        if (game.getWinner() != GameSpecification.NO_WINNER){
+            gameActive = false;
+        }
     }
 
     public void quitGame(){

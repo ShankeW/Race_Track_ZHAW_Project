@@ -169,10 +169,14 @@ public class Game implements GameSpecification {
                     return;
                 }
                 case TRACK -> {
+                    /*
+                     * TODO: Fix Car Collision Logic
                     if (track.getSpaceTypeAtPosition(step).getSpaceChar() != track.getCharRepresentationAtPosition(step.getX(),step.getY())){
                         currentCar.crash(step);
                         return;
                     }
+                     */
+
                 }
                 case FINISH_RIGHT,FINISH_LEFT,FINISH_DOWN,FINISH_UP -> {
                     if (crossedFinishCorrectly(currentCar.getPosition(),step,track.getSpaceTypeAtPosition(step))){
@@ -226,7 +230,6 @@ public class Game implements GameSpecification {
      */
     @Override
     public void switchToNextActiveCar() {
-
         if (crashedCarCount() == track.getCarCount()){
             return;
         }
@@ -246,7 +249,7 @@ public class Game implements GameSpecification {
     public int crashedCarCount() {
         int crashedCount = 0;
         for (int i = 0; i < track.getCarCount(); i++) {
-            if (!track.getCar(i).isCrashed()){
+            if (track.getCar(i).isCrashed()){
                 crashedCount++;
             }
         }

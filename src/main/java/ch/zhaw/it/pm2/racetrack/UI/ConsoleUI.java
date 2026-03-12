@@ -48,7 +48,16 @@ public class ConsoleUI implements UserInterface{
     @Override
     public void displayMessage(String message) {
         //Needs check for proper display
-        terminal.print(message);
+        terminal.println(message);
+    }
+
+    /**
+     * Prints the given message onto the Screen, then waits for the user to Type something as confirmation
+     * @param message The message stored as a String
+     */
+    @Override
+    public void waitForConfirmation(String message){
+        textIO.newStringInputReader().read(message);
     }
 
     @Override
