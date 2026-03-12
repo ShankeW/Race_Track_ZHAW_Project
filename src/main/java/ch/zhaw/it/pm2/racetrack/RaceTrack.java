@@ -2,6 +2,7 @@ package ch.zhaw.it.pm2.racetrack;
 
 import ch.zhaw.it.pm2.racetrack.UI.ConsoleUI;
 import ch.zhaw.it.pm2.racetrack.UI.UserInterface;
+import ch.zhaw.it.pm2.racetrack.game.Game;
 import ch.zhaw.it.pm2.racetrack.game.Track;
 import ch.zhaw.it.pm2.racetrack.strategy.DoNotMoveStrategy;
 import ch.zhaw.it.pm2.racetrack.strategy.MoveListStrategy;
@@ -15,15 +16,25 @@ import java.util.ArrayList;
 public class RaceTrack {
     UserInterface UI;
     Config config;
+    Game game;
+    boolean gameActive = true;
 
     /**
      * Runs the Racetrack Game.
      * Requires Picking a Track and Picking the move strategies for the cars present on the track.
      */
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         RaceTrack racetrack = new RaceTrack();
-        //System.out.print(racetrack.selectTrack());
-        System.out.print(racetrack.selectStrategyForCar());
+        racetrack.game = new Game(racetrack.selectTrack());
+        for (int i = 0; i < racetrack.game.getCarCount(); i++) {
+            racetrack.game.setCarMoveStrategy(i, racetrack.selectStrategyForCar(racetrack.game.getCarId(i)));
+        }
+        /**
+        while (racetrack.gameActive){
+            racetrack.processTurn();
+        }
+         */
+        racetrack.processTurn();
     }
 
     /**
@@ -57,13 +68,14 @@ public class RaceTrack {
      * Selects a Strategy from the List of StrategyType Enums in MoveStrategy
      * If the Chosen MoveStrategy does not exist, defaults to Do Not Move Strategy
      */
-    public MoveStrategy selectStrategyForCar(){
+    public MoveStrategy selectStrategyForCar(char carID){
         MoveStrategy.StrategyType[] strategyTypes= MoveStrategy.StrategyType.values();
         ArrayList<String> typeNames = new ArrayList<>();
         for (MoveStrategy.StrategyType type : strategyTypes){
             typeNames.add(type.toString());
         }
-        MoveStrategy.StrategyType chosenType = strategyTypes[UI.getUserInput(typeNames)];
+        String message = "Select Move Strategy for: " + carID;
+        MoveStrategy.StrategyType chosenType = strategyTypes[UI.getUserInput(typeNames,message,"Move Strategies:")];
 
         //Potential Implicit Coupling?
         return switch (chosenType) {
@@ -73,7 +85,14 @@ public class RaceTrack {
         };
     }
 
+    /**
+     * Runs a Single turn of the game
+     */
     public void processTurn(){
+        UI.displayMessage(game.toString());
+    }
 
+    public void quitGame(){
+        UI.disposeUserInterface();
     }
 }
