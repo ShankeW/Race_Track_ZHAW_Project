@@ -148,38 +148,27 @@ public class Game implements GameSpecification {
     @Override
     public void doCarTurn(Direction acceleration) {
         Car currentCar = track.getCar(currentCarIndex);
-        if (currentCar.isCrashed()){
+        PositionVector startPosition = currentCar.getPosition();
+        if (winner != NO_WINNER || currentCar.isCrashed()){
             return;
         }
         currentCar.accelerate(acceleration);
-        List<PositionVector> carPath = calculatePath(currentCar.getPosition(), currentCar.nextPosition());
-        PositionVector previousStep = currentCar.getPosition();
+        List<PositionVector> carPath = calculatePath(startPosition, currentCar.nextPosition());
+        PositionVector previousStep = startPosition;
         for (PositionVector step : carPath){
             switch (track.getSpaceTypeAtPosition(step)){
                 case WALL -> {
-                    currentCar.crash(step);
-                    if (crashedCarCount() == (track.getCarCount() - 1)){
-                        for (int i = 0; i < track.getCarCount(); i++) {
-                            if (!track.getCar(i).isCrashed()){
-                                winner = i;
-                                return;
-                            }
-                        }
-                    }
+                    crashCurrentCarAndResolveWinner(currentCar, step);
                     return;
                 }
                 case TRACK -> {
-                    /*
-                     * TODO: Fix Car Collision Logic
-                    if (track.getSpaceTypeAtPosition(step).getSpaceChar() != track.getCharRepresentationAtPosition(step.getX(),step.getY())){
-                        currentCar.crash(step);
+                    if (!step.equals(startPosition) && isOccupiedByAnotherCar(step, currentCar)) {
+                        crashCurrentCarAndResolveWinner(currentCar, step);
                         return;
                     }
-                     */
-
                 }
                 case FINISH_RIGHT,FINISH_LEFT,FINISH_DOWN,FINISH_UP -> {
-                    if (crossedFinishCorrectly(currentCar.getPosition(),step,track.getSpaceTypeAtPosition(step))){
+                    if (crossedFinishCorrectly(startPosition,step,track.getSpaceTypeAtPosition(step))){
                         winner = currentCarIndex;
                         currentCar.updatePosition(step);
                         return;
@@ -192,6 +181,33 @@ public class Game implements GameSpecification {
             previousStep = step;
         }
         currentCar.move();
+    }
+
+    private void crashCurrentCarAndResolveWinner(Car currentCar, PositionVector crashPosition) {
+        currentCar.crash(crashPosition);
+        if (crashedCarCount() != (track.getCarCount() - 1)) {
+            return;
+        }
+
+        for (int i = 0; i < track.getCarCount(); i++) {
+            if (!track.getCar(i).isCrashed()){
+                winner = i;
+                return;
+            }
+        }
+    }
+
+    private boolean isOccupiedByAnotherCar(PositionVector position, Car currentCar) {
+        for (int i = 0; i < track.getCarCount(); i++) {
+            Car otherCar = track.getCar(i);
+            if (otherCar == currentCar) {
+                continue;
+            }
+            if (position.equals(otherCar.getPosition())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
