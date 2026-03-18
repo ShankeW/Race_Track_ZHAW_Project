@@ -1,26 +1,3 @@
-Tasks für nächste Woche (18.03):
-
-Ahalya: "Do not Move" Strategy Implementieren
-
-Hunter: Game doCarTurn und Racetrack Prozessturn fertig programmieren
-
-Shanke: Movelist Strategy Implementieren
-
-Fabian: Äquivalenzklassen definieren, allfällige Tests schreiben
-
-## Branching Model
-Das Branching Model welche wir für unsere Projekt verwenden sei das [Github Flow Modell](https://docs.github.com/en/get-started/using-github/github-flow)
-
-Möchte man eine Verändering beim Projekt durchführen muss man folgende Steps folgen:
-1. Eine Neue Branch erstellen.
-2. Die gewünschte Changes erstellen und committen.
-3. Eine Pull request für diese Branch erstellen.
-4. Eine Review für das Pull request sammeln.
-5. Das Pull Request Mergen.
-6. Das Branch am Schluss löschen
-
-
-
 # Testkonzept Racetrack
 
 ## 1. Ziel
@@ -113,6 +90,3 @@ Alle Teammitglieder sind dafür verantwortlich, bei ihren Änderungen passende T
 ## 7. Zusammenfassung
 
 Das Racetrack-Projekt wird primär mit automatisierten Unit-Tests getestet. Der Fokus liegt auf der Spiellogik, dem Einlesen von Strecken und den zentralen Spielregeln. Manuelle Tests ergänzen das Konzept nur für wenige vollständige Anwendungsszenarien in der Konsole. Getestet wird fortlaufend während der Entwicklung sowie nochmals gezielt vor Abgaben.
-
-# Klassendiagramm
-[Klassendiagramm](Klassendiagramm.png)

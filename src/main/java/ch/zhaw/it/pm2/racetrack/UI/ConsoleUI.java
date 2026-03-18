@@ -1,12 +1,18 @@
 package ch.zhaw.it.pm2.racetrack.UI;
 import org.beryx.textio.*;
+import org.beryx.textio.swing.SwingTextTerminal;
 
 import java.util.ArrayList;
 
 public class ConsoleUI implements UserInterface{
 
-    TextIO textIO = TextIoFactory.getTextIO();
-    TextTerminal<?> terminal = textIO.getTextTerminal();
+    TextIO textIO;
+    TextTerminal<?> terminal;
+
+    public ConsoleUI(){
+        this.terminal = new SwingTextTerminal();
+        this.textIO = new TextIO(this.terminal);
+    }
 
     @Override
     public int getUserInput(ArrayList<String> options) {
@@ -36,13 +42,22 @@ public class ConsoleUI implements UserInterface{
     }
 
     /**
-     * Prints the given trackString onto the Screen
-     * @param trackString The Track stored as a String
+     * Prints the given message onto the Screen
+     * @param message The message stored as a String
      */
     @Override
-    public void displayTrack(String trackString) {
+    public void displayMessage(String message) {
         //Needs check for proper display
-        terminal.print(trackString);
+        terminal.println(message);
+    }
+
+    /**
+     * Prints the given message onto the Screen, then waits for the user to Type something as confirmation
+     * @param message The message stored as a String
+     */
+    @Override
+    public void waitForConfirmation(String message){
+        textIO.newStringInputReader().read(message);
     }
 
     @Override

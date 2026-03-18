@@ -6,6 +6,7 @@ public interface UserInterface {
     int getUserInput(ArrayList<String> options);
     int getUserInput(ArrayList<String> options, String message);
     int getUserInput(ArrayList<String> options, String message, String optionMessage);
-    void displayTrack(String trackString);
+    void displayMessage(String message);
+    void waitForConfirmation(String message);
     void disposeUserInterface();
 }
