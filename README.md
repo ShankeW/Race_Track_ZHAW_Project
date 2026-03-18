@@ -112,5 +112,24 @@ Alle Teammitglieder sind dafür verantwortlich, bei ihren Änderungen passende T
 
 Das Racetrack-Projekt wird primär mit automatisierten Unit-Tests getestet. Der Fokus liegt auf der Spiellogik, dem Einlesen von Strecken und den zentralen Spielregeln. Manuelle Tests ergänzen das Konzept nur für wenige vollständige Anwendungsszenarien in der Konsole. Getestet wird fortlaufend während der Entwicklung sowie nochmals gezielt vor Abgaben.
 
+# Äquivalenzklassen
+
+## Car
+
+### move()
+Diese Methode enthält keine Parameter, deshalb sind alle Inputs teil der gültigen Äquivalenzklassen.
+
+### accelerate(Direction acceleration)
+Diese Methode enthälte eine Enum als Parameter
+Gültige Äquivalenzklasse: Direction Objekt
+Ungültige Äquivalenzklasse: leere / Null Objekt
+
+## Game
+
+### doCarTurn(Direction acceleration)
+Diese Methode enthälte eine Enum als Parameter
+Gültige Äquivalenzklasse: Direction Objekt
+Ungültige Äquivalenzklasse: leere / Null Objekt
+
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
