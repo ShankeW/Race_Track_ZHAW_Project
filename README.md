@@ -1,12 +1,10 @@
-Tasks für nächste Woche (18.03):
+# Racetrack Laufen Lassen
 
-Ahalya: "Do not Move" Strategy Implementieren
+Racetrack kann mit folgender Befehl laufen gelassen:
+**./gradlew run**
 
-Hunter: Game doCarTurn und Racetrack Prozessturn fertig programmieren
-
-Shanke: Movelist Strategy Implementieren
-
-Fabian: Äquivalenzklassen definieren, allfällige Tests schreiben
+Racetrack Tests können mit folgender Befehl laufen gelassen:
+**./gradlew test**
 
 ## Branching Model
 Das Branching Model welche wir für unsere Projekt verwenden sei das [Github Flow Modell](https://docs.github.com/en/get-started/using-github/github-flow)
