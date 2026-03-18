@@ -1,12 +1,10 @@
-Tasks für nächste Woche (18.03):
+# Racetrack Laufen Lassen
 
-Ahalya: "Do not Move" Strategy Implementieren
+Racetrack kann mit folgender Befehl laufen gelassen:
+**./gradlew run**
 
-Hunter: Game doCarTurn und Racetrack Prozessturn fertig programmieren
-
-Shanke: Movelist Strategy Implementieren
-
-Fabian: Äquivalenzklassen definieren, allfällige Tests schreiben
+Racetrack Tests können mit folgender Befehl laufen gelassen:
+**./gradlew test**
 
 ## Branching Model
 Das Branching Model welche wir für unsere Projekt verwenden sei das [Github Flow Modell](https://docs.github.com/en/get-started/using-github/github-flow)
@@ -113,6 +111,25 @@ Alle Teammitglieder sind dafür verantwortlich, bei ihren Änderungen passende T
 ## 7. Zusammenfassung
 
 Das Racetrack-Projekt wird primär mit automatisierten Unit-Tests getestet. Der Fokus liegt auf der Spiellogik, dem Einlesen von Strecken und den zentralen Spielregeln. Manuelle Tests ergänzen das Konzept nur für wenige vollständige Anwendungsszenarien in der Konsole. Getestet wird fortlaufend während der Entwicklung sowie nochmals gezielt vor Abgaben.
+
+# Äquivalenzklassen
+
+## Car
+
+### move()
+Diese Methode enthält keine Parameter, deshalb sind alle Inputs teil der gültigen Äquivalenzklassen.
+
+### accelerate(Direction acceleration)
+Diese Methode enthälte eine Enum als Parameter
+Gültige Äquivalenzklasse: Direction Objekt
+Ungültige Äquivalenzklasse: leere / Null Objekt
+
+## Game
+
+### doCarTurn(Direction acceleration)
+Diese Methode enthälte eine Enum als Parameter
+Gültige Äquivalenzklasse: Direction Objekt
+Ungültige Äquivalenzklasse: leere / Null Objekt
 
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
