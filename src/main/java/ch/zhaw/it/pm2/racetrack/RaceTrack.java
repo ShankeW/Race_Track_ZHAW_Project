@@ -68,6 +68,27 @@ public class RaceTrack {
     }
 
     /**
+     * Creats and delivers the actuall MoveStrategy object for a car. DO_NOT_MOVE strategy object
+     * is created and returned by default.
+     * @param strategyType the desired MoveStrategy Enum Type.
+     * @return the actuall MoveStrategy object needed.
+     */
+    public MoveStrategy selectMoveStrategy(MoveStrategy.StrategyType strategyType){
+        File[] moveStrategies = config.getMoveDirectory().listFiles();
+        switch (strategyType){
+            case MoveStrategy.StrategyType.USER -> {
+                return new UserMoveStrategy(UI);
+            }
+            case MoveStrategy.StrategyType.MOVE_LIST -> {
+                return new MoveListStrategy(UI, moveStrategies);
+            }
+            default -> {
+                return new DoNotMoveStrategy();
+            }
+        }
+    }
+
+    /**
      * Selects a Strategy from the List of StrategyType Enums in MoveStrategy
      * If the Chosen MoveStrategy does not exist, defaults to Do Not Move Strategy
      */
@@ -81,11 +102,7 @@ public class RaceTrack {
         MoveStrategy.StrategyType chosenType = strategyTypes[UI.getUserInput(typeNames,message,"Move Strategies:")];
 
         //Potential Implicit Coupling?
-        return switch (chosenType) {
-            case MoveStrategy.StrategyType.USER -> new UserMoveStrategy(UI);
-            case MoveStrategy.StrategyType.MOVE_LIST -> new MoveListStrategy();
-            default -> new DoNotMoveStrategy();
-        };
+        return selectMoveStrategy(chosenType);
     }
 
     /**
