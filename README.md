@@ -123,19 +123,31 @@ Gültige Äquivalenzklasse: Direction Objekt
 Ungültige Äquivalenzklasse: leere / Null Objekt
 
 ## Game
+### calculatePath(PositionVector startPosition, PositionVector endPosition)
+   1. `calculatePath()` mit diagonale Bewegung -> Startposition, Endposition und Positionen dazwischen werden zurück gegeben.
+   2. `calculatePath()` mit Bewegung in Achsenrichtung -> Alle zwischenzeitliche Positionen bleiben auf derselben Achse.
 ### doCarTurn(Direction acceleration)
-Diese Methode enthälte eine Enum als Parameter
-Gültige Äquivalenzklasse: Direction Objekt
-Ungültige Äquivalenzklasse: leere / Null Objekt
+   3. `doCarTurn`() auf dem eigenen Startfeld -> Keine Eigenkollision auf der Startposition.
+   4. `doCarTurn`() auf ein besetztes Streckenfeld -> Das aktuelle Auto baut einen Unfall; das letzte verbleibende Auto wird zum Gewinner.
+   5. `doCarTurn`() überquert das Ziel in korrekter Richtung -> Der Gewinner wird festgelegt und das Auto bleibt auf dem Zielfeld stehen.
+   6. `doCarTurn`() überquert das Ziel in falscher Richtung -> Kein Gewinner; das Auto verbleibt auf dem vorherigen Pfadabschnitt.
+   7. `doCarTurn`(), nachdem bereits ein Gewinner feststeht -> Der Zug wird ignoriert.
+   8. `doCarTurn`() für ein bereits verunfalltes Auto -> Der Zug wird ignoriert.
+   9. Parametern:{Null Objekt, leerer Parameter} sind ungültig und werden nicht akzeptiert.
+### switchToNextActiveCar()
+   10. `switchToNextActiveCar()` mit verunfallten Autos -> Überspringt verunfallte Autos und beginnt am Ende wieder von vorn.
+   11. `switchToNextActiveCar()`, wenn alle Autos verunfallt sind -> Der aktuelle Index bleibt unverändert.
+### nextCarMove(int carIndex)
+   12. `nextCarMove()` ohne Strategie -> `Optional.empty()`.
+   13. `nextCarMove()` mit Strategie -> Gibt den von der Strategie bereitgestellten Zug zurück.
 
 ## MoveListStrategy
-### Äquivalenzklasse für gültige Inputs:
-   1. Ausgewählte moveFile existiert und beinhaltet gültige "Directions" -> nextMove() verarbeite und gibt die erste "Direction" zurück.
-   2. Ausgewählte moveFile existiert und beinhaltet mehrere gültige "Directions" -> nextMove() verarbeiten diesen in der richtigen Reihenfolge.
-   3. Ausgew'hlte moveFile existiert ist aber leer -> nextMove() gibt ein Optional.emty() Objekt zurück.
-### Äquivalenzklasse für ungültig inputs:
-   4. moveFile beinhaltet ungültige "Direction" Objekt -> nextMove() wirft eine IllegalArgumentException.
-   5. Ausgewählte moveFile kann nicht eingelesen weden -> nextMove() wirft eine NullPointerExcetion.
+### nextMove()
+   1. Ausgewählte moveFile existiert und beinhaltet gültige "Directions" -> `nextMove()` verarbeite und gibt die erste "Direction" zurück.
+   2. Ausgewählte moveFile existiert und beinhaltet mehrere gültige "Directions" -> `nextMove()` verarbeiten diesen in der richtigen Reihenfolge.
+   3. Ausgew'hlte moveFile existiert ist aber leer -> `nextMove()` gibt ein `Optional.emty()` Objekt zurück.
+   4. moveFile beinhaltet ungültige "Direction" Objekt -> `nextMove()` wirft eine IllegalArgumentException.
+   5. Ausgewählte moveFile kann nicht eingelesen weden -> `nextMove()` wirft eine NullPointerExcetion.
 
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)

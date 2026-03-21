@@ -38,24 +38,62 @@ class GameTest {
      * EC-GAME-12: nextCarMove with strategy -> returns strategy-provided move.
      */
 
+    /**
+     * Tests for calculatePath() based on the equivalence classes 1 and 2.
+     * @throws Exception
+     */
     @Test
-    void calculatePathIncludesStartAndEndPosition() throws Exception {
+    void testCalculatePathDiagonalMovementIfContainsAllInterveningVectors() throws Exception {
+        Game game = createGame(
+            "#####",
+            "#a  #",
+            "#   #",
+            "#   #",
+            "#####"
+        );
+
+        List<PositionVector> path = game.calculatePath(new PositionVector(1, 1), new PositionVector(5, 5));
+
+        assertEquals(5, path.size());
+        assertEquals(new PositionVector(1, 1), path.getFirst());
+        assertEquals(new PositionVector(2, 2), path.get(1));
+        assertEquals(new PositionVector(3, 3), path.get(2));
+        assertEquals(new PositionVector(4, 4), path.get(3));
+        assertEquals(new PositionVector(5, 5), path.getLast());
+    }
+
+    @Test
+    void testCalculatePathAxisAlignedMovementIfContainsAllInterveningVectors() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
             "#####"
         );
 
-        List<PositionVector> path = game.calculatePath(new PositionVector(3, 3), new PositionVector(5, 5));
+        List<PositionVector> horizontalPath = game.calculatePath(new PositionVector(1, 1), new PositionVector(4, 1));
+        List<PositionVector> verticalPath = game.calculatePath(new PositionVector(2, 1), new PositionVector(2, 4));
 
-        assertEquals(3, path.size());
-        assertEquals(new PositionVector(3, 3), path.getFirst());
-        assertEquals(new PositionVector(4, 4), path.get(1));
-        assertEquals(new PositionVector(5, 5), path.getLast());
+        List<PositionVector> expectedHorizontalPath = List.of(
+            new PositionVector(1, 1),
+            new PositionVector(2, 1),
+            new PositionVector(3, 1),
+            new PositionVector(4, 1)
+        );
+        List<PositionVector> expectedVerticalPath = List.of(
+            new PositionVector(2, 1),
+            new PositionVector(2, 2),
+            new PositionVector(2, 3),
+            new PositionVector(2, 4)
+        );
+        assertEquals(expectedHorizontalPath, horizontalPath);
+        assertEquals(expectedVerticalPath, verticalPath);
     }
 
+    /**
+     * Tests for doCarTurn() based on the equivalence classes 3 - 8.
+     */
     @Test
-    void doCarTurnDoesNotTreatTheOwnStartFieldAsCollision() throws Exception {
+    void testDoCarTurnDoesNotTreatTheOwnStartFieldAsCollision() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -70,7 +108,7 @@ class GameTest {
     }
 
     @Test
-    void doCarTurnCrashesIntoOccupiedTrackFieldAndAwardsLastRemainingCar() throws Exception {
+    void testDoCarTurnCrashesIntoOccupiedTrackFieldAndAwardsLastRemainingCar() throws Exception {
         Game game = createGame(
             "#######",
             "#a b  #",
@@ -87,32 +125,7 @@ class GameTest {
     }
 
     @Test
-    void calculatePathAxisAlignedMovementContainsAllPointsOnAxis() throws Exception {
-        Game game = createGame(
-            "#####",
-            "#a  #",
-            "#####"
-        );
-
-        List<PositionVector> horizontalPath = game.calculatePath(new PositionVector(1, 1), new PositionVector(4, 1));
-        List<PositionVector> verticalPath = game.calculatePath(new PositionVector(2, 1), new PositionVector(2, 4));
-
-        assertEquals(List.of(
-            new PositionVector(1, 1),
-            new PositionVector(2, 1),
-            new PositionVector(3, 1),
-            new PositionVector(4, 1)
-        ), horizontalPath);
-        assertEquals(List.of(
-            new PositionVector(2, 1),
-            new PositionVector(2, 2),
-            new PositionVector(2, 3),
-            new PositionVector(2, 4)
-        ), verticalPath);
-    }
-
-    @Test
-    void doCarTurnAwardsWinnerWhenCrossingFinishCorrectly() throws Exception {
+    void testDoCarTurnAwardsWinnerWhenCrossingFinishLineCorrectly() throws Exception {
         Game game = createGame(
             "#####",
             "#a> #",
@@ -126,7 +139,7 @@ class GameTest {
     }
 
     @Test
-    void doCarTurnDoesNotAwardWinnerWhenCrossingFinishWrongDirection() throws Exception {
+    void testDoCarTurnDoesNotAwardWinnerWhenCrossingFinishLineWrongDirection() throws Exception {
         Game game = createGame(
             "######",
             "# >a #",
@@ -135,12 +148,12 @@ class GameTest {
 
         game.doCarTurn(Direction.LEFT);
 
-        assertEquals(GameSpecification.NO_WINNER, game.getWinner());
+        assertEquals(-1, game.getWinner());
         assertEquals(new PositionVector(3, 1), game.getCarPosition(0));
     }
 
     @Test
-    void doCarTurnReturnsImmediatelyWhenWinnerAlreadyExists() throws Exception {
+    void testDoCarTurnReturnsImmediatelyWhenWinnerAlreadyExists() throws Exception {
         Game game = createGame(
             "######",
             "#a>b #",
@@ -154,12 +167,13 @@ class GameTest {
         game.doCarTurn(Direction.LEFT);
 
         assertEquals(0, game.getWinner());
+        // Position and velocity should remain unchanged since a has won the game already.
         assertEquals(positionAfterWinningTurn, game.getCarPosition(0));
         assertEquals(velocityAfterWinningTurn, game.getCarVelocity(0));
     }
 
     @Test
-    void doCarTurnReturnsImmediatelyWhenCurrentCarAlreadyCrashed() throws Exception {
+    void testDoCarTurnReturnsImmediatelyWhenCurrentCarAlreadyCrashed() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -172,12 +186,17 @@ class GameTest {
 
         game.doCarTurn(Direction.RIGHT);
 
+        // Position and velocity should remain unchanged since the car has already crashed.
         assertEquals(crashedPosition, game.getCarPosition(0));
         assertEquals(velocityAfterCrash, game.getCarVelocity(0));
     }
 
+    /**
+     * Tests for switchToNextActiveCar() based on the equivalence classes 9 and 10.
+     * @throws Exception
+     */
     @Test
-    void switchToNextActiveCarSkipsCrashedCarsAndWrapsAround() throws Exception {
+    void testSwitchToNextActiveCarSkipsCrashedCarsAndWrapsAround() throws Exception {
         Game game = createGame(
             "#######",
             "#a b  #",
@@ -187,14 +206,16 @@ class GameTest {
         game.switchToNextActiveCar();
         assertEquals(1, game.getCurrentCarIndex());
 
-        game.doCarTurn(Direction.UP);
+        game.doCarTurn(Direction.UP); // b crashes into wall
         game.switchToNextActiveCar();
-
+        game.doCarTurn(Direction.RIGHT);
+        assertEquals(0, game.getCurrentCarIndex());
+        game.switchToNextActiveCar(); // turn for b is skipped
         assertEquals(0, game.getCurrentCarIndex());
     }
 
     @Test
-    void switchToNextActiveCarDoesNothingWhenAllCarsAreCrashed() throws Exception {
+    void testSwitchToNextActiveCarDoesNothingWhenAllCarsAreCrashed() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -207,8 +228,11 @@ class GameTest {
         assertEquals(0, game.getCurrentCarIndex());
     }
 
+    /**
+     * Tests for nextCarMove() based on the equivalence classes 11 and 12.
+     */
     @Test
-    void nextCarMoveReturnsEmptyIfNoStrategyIsSet() throws Exception {
+    void testNextCarMoveReturnsEmptyIfNoStrategyIsSet() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -230,6 +254,13 @@ class GameTest {
         assertEquals(Optional.of(Direction.DOWN_RIGHT), game.nextCarMove(0));
     }
 
+    /**
+     * Helper method to create a Game instance for testing
+     * @param lines the track file content as lines of text
+     * @return a new Game instance using given parameter as track file content 
+     * @throws IOException
+     * @throws InvalidFileFormatException
+     */
     private Game createGame(String... lines) throws IOException, InvalidFileFormatException {
         Path trackFile = Files.createTempFile(tempDir, "track", ".txt");
         Files.writeString(trackFile, String.join(System.lineSeparator(), lines));
