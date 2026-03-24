@@ -15,7 +15,6 @@ public class DoNotMoveStrategy implements MoveStrategy {
      */
     @Override
     public Optional<Direction> nextMove() {
-        // TODO: implementation
-        throw new UnsupportedOperationException();
+        return Optional.of(Direction.NONE);
     }
 }
