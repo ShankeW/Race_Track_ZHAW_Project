@@ -1,11 +1,20 @@
 package ch.zhaw.it.pm2.racetrack.strategy;
 
+import ch.zhaw.it.pm2.racetrack.game.Direction;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class DoNotMoveStrategyTest {
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class DoNotMoveStrategyTest {
 
     @Test
-    void testDoNotMoveStrategyCorrectVector(){
-        //TODO Create Test
+    @Disabled("Enable once DoNotMoveStrategy is implemented; this change intentionally does not touch point 1.")
+    void nextMoveReturnsNoneDirection() {
+        DoNotMoveStrategy strategy = new DoNotMoveStrategy();
+
+        assertEquals(Optional.of(Direction.NONE), strategy.nextMove());
     }
 }
