@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1410px" preserveAspectRatio="none" style="width:1911px;height:1410px;background:#FFFFFF;" version="1.1" viewBox="0 0 1911 1410" width="1911px" zoomAndPan="magnify"><defs/><g><!--MD5=[2b611c2d60e481aa2035053367969193]
+cluster Game--><g id="cluster_Game"><path d="M8.5,44.05 L54.5,44.05 A3.75,3.75 0 0 1 57,46.55 L64,66.3469 L1323.5,66.3469 A2.5,2.5 0 0 1 1326,68.8469 L1326,803.55 A2.5,2.5 0 0 1 1323.5,806.05 L8.5,806.05 A2.5,2.5 0 0 1 6,803.55 L6,46.55 A2.5,2.5 0 0 1 8.5,44.05 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="6" x2="64" y1="66.3469" y2="66.3469"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="45" x="10" y="59.0451">Game</text></g><!--MD5=[06dfe497cb5a6c1e1445fd838a399f1a]
+cluster strategy--><g id="cluster_strategy"><path d="M376.5,863.05 L443.5,863.05 A3.75,3.75 0 0 1 446,865.55 L453,885.3469 L1269.5,885.3469 A2.5,2.5 0 0 1 1272,887.8469 L1272,1236.55 A2.5,2.5 0 0 1 1269.5,1239.05 L376.5,1239.05 A2.5,2.5 0 0 1 374,1236.55 L374,865.55 A2.5,2.5 0 0 1 376.5,863.05 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="374" x2="453" y1="885.3469" y2="885.3469"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="66" x="378" y="878.0451">strategy</text></g><!--MD5=[9681dc6e01e10c6b4fe06895ae94f592]
+cluster UI--><g id="cluster_UI"><path d="M1306.5,1091.05 L1322.5,1091.05 A3.75,3.75 0 0 1 1325,1093.55 L1332,1113.3469 L1901.5,1113.3469 A2.5,2.5 0 0 1 1904,1115.8469 L1904,1355.55 A2.5,2.5 0 0 1 1901.5,1358.05 L1306.5,1358.05 A2.5,2.5 0 0 1 1304,1355.55 L1304,1093.55 A2.5,2.5 0 0 1 1306.5,1091.05 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="1304" x2="1332" y1="1113.3469" y2="1113.3469"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="15" x="1308" y="1106.0451">UI</text></g><!--MD5=[3f0ef310aaa84a542276992c5216544d]
+class Car--><g id="elem_Car"><rect codeLine="30" fill="#F1F1F1" height="341.3438" id="Car" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="342" x="200" y="449.05"/><ellipse cx="355.25" cy="465.05" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M358.2188,470.6906 Q357.6406,470.9875 357,471.1281 Q356.3594,471.2844 355.6563,471.2844 Q353.1563,471.2844 351.8281,469.6437 Q350.5156,467.9875 350.5156,464.8625 Q350.5156,461.7375 351.8281,460.0812 Q353.1563,458.425 355.6563,458.425 Q356.3594,458.425 357,458.5812 Q357.6563,458.7375 358.2188,459.0344 L358.2188,461.7531 Q357.5938,461.175 357,460.9094 Q356.4063,460.6281 355.7813,460.6281 Q354.4375,460.6281 353.75,461.7062 Q353.0625,462.7687 353.0625,464.8625 Q353.0625,466.9562 353.75,468.0344 Q354.4375,469.0969 355.7813,469.0969 Q356.4063,469.0969 357,468.8312 Q357.5938,468.55 358.2188,467.9719 L358.2188,470.6906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="23" x="375.75" y="469.8967">Car</text><line style="stroke:#181818;stroke-width:0.5;" x1="201" x2="541" y1="481.05" y2="481.05"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="206" y="498.0451">-id : char {final}</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="173" x="206" y="514.342">-position : PositionVector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169" x="206" y="530.6389">-velocity : PositionVector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="206" y="546.9357">-crashed : boolean</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="207" x="206" y="563.2326">-moveStrategy : MoveStrategy</text><line style="stroke:#181818;stroke-width:1.0;" x1="201" x2="541" y1="570.5344" y2="570.5344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="276" x="206" y="587.5295">+Car(id : char, position : PositionVector)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="206" y="603.8264">+getId(): char</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="209" x="206" y="620.1232">+getPosition(): PositionVector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="207" x="206" y="636.4201">+getVelocity(): PositionVector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="229" x="206" y="652.717">+accelerate(direction : Direction)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="206" y="669.0139">+move()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="220" x="206" y="685.3107">+nextPosition() : PositionVector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="228" x="206" y="701.6076">+crash(position : PositionVector)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="206" y="717.9045">+isCrashed() : boolean</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="290" x="206" y="734.2014">+updatePosition(position: PositionVector)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="262" x="206" y="750.4982">+crash(crashPosition: PositionVector)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="330" x="206" y="766.7951">+setMoveStrategy(MoveStrategy movestrategy)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="234" x="206" y="783.092">+getMove(): Optoinal&lt;Direction&gt;</text></g><!--MD5=[3b034ebaa87c9ec5e8fb5410143f628f]
+class Track--><g id="elem_Track"><rect codeLine="55" fill="#F1F1F1" height="292.4531" id="Track" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="461" x="527.5" y="87.55"/><ellipse cx="734.75" cy="103.55" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M737.7188,109.1906 Q737.1406,109.4875 736.5,109.6281 Q735.8594,109.7844 735.1563,109.7844 Q732.6563,109.7844 731.3281,108.1437 Q730.0156,106.4875 730.0156,103.3625 Q730.0156,100.2375 731.3281,98.5812 Q732.6563,96.925 735.1563,96.925 Q735.8594,96.925 736.5,97.0812 Q737.1563,97.2375 737.7188,97.5344 L737.7188,100.2531 Q737.0938,99.675 736.5,99.4094 Q735.9063,99.1281 735.2813,99.1281 Q733.9375,99.1281 733.25,100.2062 Q732.5625,101.2687 732.5625,103.3625 Q732.5625,105.4562 733.25,106.5344 Q733.9375,107.5969 735.2813,107.5969 Q735.9063,107.5969 736.5,107.3312 Q737.0938,107.05 737.7188,106.4719 L737.7188,109.1906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="755.25" y="108.3967">Track</text><line style="stroke:#181818;stroke-width:0.5;" x1="528.5" x2="987.5" y1="119.55" y2="119.55"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="246" x="533.5" y="136.5451">+TrackSpecification.MAX_CARS : int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="315" x="533.5" y="152.842">+TrackSpecification.CRASH_INDICATOR : char</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="533.5" y="169.1389">+height : int {readonly}</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="533.5" y="185.4357">+width : int {readonly}</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="533.5" y="201.7326">+trackFile : File</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="141" x="533.5" y="218.0295">-grid : SpaceType[][]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="533.5" y="234.3264">-cars : List&lt;Car&gt;</text><line style="stroke:#181818;stroke-width:1.0;" x1="528.5" x2="987.5" y1="241.6281" y2="241.6281"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="533.5" y="258.6232">+Track (trackFile : File)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106" x="533.5" y="274.9201">+getHeight: int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="533.5" y="291.217">+getWidth: int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="140" x="533.5" y="307.5139">+getCarCount() : int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="533.5" y="323.8107">+getCar(carIndex : int) : Car</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="449" x="533.5" y="340.1076">+getSpaceTypeAtPosition(position : PositionVector) : SpaceType</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="409" x="533.5" y="356.4045">+getCharRepresentationAtPosition(row : int, col : int) : char</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="129" x="533.5" y="372.7014">+toString() : String</text></g><!--MD5=[f6990927a0d4327739ab1b307c3e0248]
+class SpaceType--><g id="elem_SpaceType"><rect codeLine="75" fill="#F1F1F1" height="194.6406" id="SpaceType" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="286" x="1024" y="136.05"/><ellipse cx="1117.75" cy="156.1828" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1121.8594,162.1828 L1114.1406,162.1828 L1114.1406,149.7922 L1121.8594,149.7922 L1121.8594,151.9484 L1116.5938,151.9484 L1116.5938,154.6203 L1121.3594,154.6203 L1121.3594,156.7766 L1116.5938,156.7766 L1116.5938,160.0266 L1121.8594,160.0266 L1121.8594,162.1828 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="94" x="1136.25" y="152.1887">«enumeration»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="77" x="1144.75" y="168.0139">SpaceType</text><line style="stroke:#181818;stroke-width:0.5;" x1="1025" x2="1309" y1="176.3156" y2="176.3156"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="1030" y="193.3107">WALL '#'</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="1030" y="209.6076">TRACK ' '</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="1030" y="225.9045">FINISH_LEFT '&lt;'</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="1030" y="242.2014">FINISH_RIGHT '&gt;'</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="1030" y="258.4982">FINISH_UP '^'</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="1030" y="274.7951">FINISH_DOWN 'v'</text><line style="stroke:#181818;stroke-width:1.0;" x1="1025" x2="1309" y1="282.0969" y2="282.0969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="210" x="1030" y="299.092">+spaceChar : char {readonly}</text><line style="stroke:#181818;stroke-width:1.0;" x1="1025" x2="1309" y1="306.3937" y2="306.3937"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="274" x="1030" y="323.3889">+ofChar(spaceChar : char) : SpaceType</text></g><!--MD5=[b6dcce5e5ef3c84b0b048d11301373dd]
+class Game--><g id="elem_Game"><rect codeLine="89" fill="#F1F1F1" height="308.75" id="Game" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="471" x="21.5" y="79.05"/><ellipse cx="232.25" cy="95.05" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M235.2188,100.6906 Q234.6406,100.9875 234,101.1281 Q233.3594,101.2844 232.6563,101.2844 Q230.1563,101.2844 228.8281,99.6437 Q227.5156,97.9875 227.5156,94.8625 Q227.5156,91.7375 228.8281,90.0812 Q230.1563,88.425 232.6563,88.425 Q233.3594,88.425 234,88.5812 Q234.6563,88.7375 235.2188,89.0344 L235.2188,91.7531 Q234.5938,91.175 234,90.9094 Q233.4063,90.6281 232.7813,90.6281 Q231.4375,90.6281 230.75,91.7062 Q230.0625,92.7687 230.0625,94.8625 Q230.0625,96.9562 230.75,98.0344 Q231.4375,99.0969 232.7813,99.0969 Q233.4063,99.0969 234,98.8312 Q234.5938,98.55 235.2188,97.9719 L235.2188,100.6906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="252.75" y="99.8967">Game</text><line style="stroke:#181818;stroke-width:0.5;" x1="22.5" x2="491.5" y1="111.05" y2="111.05"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="257" x="27.5" y="128.0451">+GameSpecification.NO_WINNER : int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="90" x="27.5" y="144.342">-track : Track</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="226" x="27.5" y="160.6389">-currentCarIndex : int {readonly}</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="27.5" y="176.9357">-winner : int {readonly}</text><line style="stroke:#181818;stroke-width:1.0;" x1="22.5" x2="491.5" y1="184.2375" y2="184.2375"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="27.5" y="201.2326">+Game(track : Track)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="140" x="27.5" y="217.5295">+getCarCount() : int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="187" x="27.5" y="233.8264">+getCurrentCarIndex() : int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="211" x="27.5" y="250.1232">+getCarId(carIndex : int) : char</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="324" x="27.5" y="266.4201">+getCarPosition(carIndex : int) : PositionVector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="322" x="27.5" y="282.717">+getCarVelocity(carIndex : int) : PositionVector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="459" x="27.5" y="299.0139">+setCarMoveStrategy(carIndex : int, moveStrategy : MoveStrategy)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="356" x="27.5" y="315.3107">+nextCarMove(carIndex : int) : Optional&lt;Direction&gt;</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="119" x="27.5" y="331.6076">+getWinner(): int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="257" x="27.5" y="347.9045">+doCarTurn(accelleration : Direction)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="179" x="27.5" y="364.2014">+switchToNextActiveCar()</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="454" x="27.5" y="380.4982">+calculatePath(startPosition , endPosition) : List&lt;PositionVector&gt;</text></g><!--MD5=[d2c7b2cae7b20d73e8fbebb29efe4b6a]
+class PositionVector--><g id="elem_PositionVector"><rect codeLine="109" fill="#F1F1F1" height="210.9688" id="PositionVector" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="284" x="577" y="514.05"/><ellipse cx="664.75" cy="530.05" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M667.7188,535.6906 Q667.1406,535.9875 666.5,536.1281 Q665.8594,536.2844 665.1563,536.2844 Q662.6563,536.2844 661.3281,534.6438 Q660.0156,532.9875 660.0156,529.8625 Q660.0156,526.7375 661.3281,525.0813 Q662.6563,523.425 665.1563,523.425 Q665.8594,523.425 666.5,523.5813 Q667.1563,523.7375 667.7188,524.0344 L667.7188,526.7531 Q667.0938,526.175 666.5,525.9094 Q665.9063,525.6281 665.2813,525.6281 Q663.9375,525.6281 663.25,526.7063 Q662.5625,527.7688 662.5625,529.8625 Q662.5625,531.9563 663.25,533.0344 Q663.9375,534.0969 665.2813,534.0969 Q665.9063,534.0969 666.5,533.8313 Q667.0938,533.55 667.7188,532.9719 L667.7188,535.6906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="685.25" y="534.8967">PositionVector</text><line style="stroke:#181818;stroke-width:0.5;" x1="578" x2="860" y1="546.05" y2="546.05"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="583" y="563.0451">+x : int {readonly}</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="583" y="579.342">+y : int {readonly}</text><line style="stroke:#181818;stroke-width:1.0;" x1="578" x2="860" y1="586.6438" y2="586.6438"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="204" x="583" y="603.6389">+PositionVector(x : int, y : int)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="272" x="583" y="619.9357">+PositionVector(other : PositionVector)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="204" x="583" y="636.2326">+add(vector : PositionVector)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="235" x="583" y="652.5295">+subtract(vector : PositionVector)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="583" y="668.8264">+abs() : PositionVector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="186" x="583" y="685.1232">+signum() : PositionVector</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="146" x="583" y="701.4201">+scalarProduct() : int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="223" x="583" y="717.717">+ofString(positionString : String)</text></g><!--MD5=[02f7077ed79257124e28b791f351f1d7]
+class Direction--><g id="elem_Direction"><rect codeLine="123" fill="#F1F1F1" height="243.5313" id="Direction" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="323" x="896.5" y="497.55"/><ellipse cx="1008.75" cy="517.6828" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1012.8594,523.6828 L1005.1406,523.6828 L1005.1406,511.2922 L1012.8594,511.2922 L1012.8594,513.4484 L1007.5938,513.4484 L1007.5938,516.1203 L1012.3594,516.1203 L1012.3594,518.2766 L1007.5938,518.2766 L1007.5938,521.5266 L1012.8594,521.5266 L1012.8594,523.6828 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="94" x="1027.25" y="513.6887">«enumeration»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="62" x="1043.25" y="529.5139">Direction</text><line style="stroke:#181818;stroke-width:0.5;" x1="897.5" x2="1218.5" y1="537.8156" y2="537.8156"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="902.5" y="554.8107">DOWN_LEFT (-1,1)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="902.5" y="571.1076">DOWN (0,1)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="131" x="902.5" y="587.4045">DOWN_RIGHT (1,1)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="902.5" y="603.7014">LEFT (-1,0)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="902.5" y="619.9982">NONE (0,0)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="902.5" y="636.2951">RIGHT (1,0)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="902.5" y="652.592">UP_LEFT (-1,-1)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="902.5" y="668.8889">UP (0,-1)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="902.5" y="685.1857">UP_RIGHT (1,-1)</text><line style="stroke:#181818;stroke-width:1.0;" x1="897.5" x2="1218.5" y1="692.4875" y2="692.4875"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="249" x="902.5" y="709.4826">+vector : PositionVector {readonly}</text><line style="stroke:#181818;stroke-width:1.0;" x1="897.5" x2="1218.5" y1="716.7844" y2="716.7844"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="311" x="902.5" y="733.7795">+ofVector(vector : PositionVector) : Direction</text></g><!--MD5=[1e5871afea5940653f921e2a180b48f4]
+class MoveStrategy--><g id="elem_MoveStrategy"><rect codeLine="144" fill="#F1F1F1" height="64.2969" id="MoveStrategy" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="257" x="690.5" y="943.05"/><ellipse cx="767.75" cy="959.05" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M763.6719,954.8156 L763.6719,952.6594 L771.0625,952.6594 L771.0625,954.8156 L768.5938,954.8156 L768.5938,962.8938 L771.0625,962.8938 L771.0625,965.05 L763.6719,965.05 L763.6719,962.8938 L766.1406,962.8938 L766.1406,954.8156 L763.6719,954.8156 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="94" x="788.25" y="963.8967">MoveStrategy</text><line style="stroke:#181818;stroke-width:0.5;" x1="691.5" x2="946.5" y1="975.05" y2="975.05"/><line style="stroke:#181818;stroke-width:0.5;" x1="691.5" x2="946.5" y1="983.05" y2="983.05"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="245" x="696.5" y="1000.0451">+nextMove() : Optional&lt;Direction&gt;</text></g><!--MD5=[0418ebec9685c54656290508cfb6af62]
+class StrategyType--><g id="elem_StrategyType"><rect codeLine="148" fill="#F1F1F1" height="137.75" id="StrategyType" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="132" x="523" y="906.05"/><ellipse cx="542.05" cy="926.1828" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M546.1594,932.1828 L538.4406,932.1828 L538.4406,919.7922 L546.1594,919.7922 L546.1594,921.9484 L540.8938,921.9484 L540.8938,924.6203 L545.6594,924.6203 L545.6594,926.7766 L540.8938,926.7766 L540.8938,930.0266 L546.1594,930.0266 L546.1594,932.1828 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="94" x="555.45" y="922.1887">«enumeration»</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="556.95" y="938.0139">StrategyType</text><line style="stroke:#181818;stroke-width:0.5;" x1="524" x2="654" y1="946.3156" y2="946.3156"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="529" y="963.3107">DO_NOT_MOVE</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="529" y="979.6076">USER</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="529" y="995.9045">MOVE_LIST</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="529" y="1012.2014">PATH_FOLLOWER</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="529" y="1028.4982">PATH_FINDER</text><line style="stroke:#181818;stroke-width:0.5;" x1="524" x2="654" y1="1035.8" y2="1035.8"/></g><!--MD5=[417cbf14209f3d97ee06e3884cf3d4be]
+class DoNotMoveStrategy--><g id="elem_DoNotMoveStrategy"><rect codeLine="158" fill="#F1F1F1" height="64.2969" id="DoNotMoveStrategy" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="257" x="982.5" y="1142.55"/><ellipse cx="1037.75" cy="1158.55" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1040.7188,1164.1906 Q1040.1406,1164.4875 1039.5,1164.6281 Q1038.8594,1164.7844 1038.1563,1164.7844 Q1035.6563,1164.7844 1034.3281,1163.1438 Q1033.0156,1161.4875 1033.0156,1158.3625 Q1033.0156,1155.2375 1034.3281,1153.5813 Q1035.6563,1151.925 1038.1563,1151.925 Q1038.8594,1151.925 1039.5,1152.0813 Q1040.1563,1152.2375 1040.7188,1152.5344 L1040.7188,1155.2531 Q1040.0938,1154.675 1039.5,1154.4094 Q1038.9063,1154.1281 1038.2813,1154.1281 Q1036.9375,1154.1281 1036.25,1155.2063 Q1035.5625,1156.2688 1035.5625,1158.3625 Q1035.5625,1160.4563 1036.25,1161.5344 Q1036.9375,1162.5969 1038.2813,1162.5969 Q1038.9063,1162.5969 1039.5,1162.3313 Q1040.0938,1162.05 1040.7188,1161.4719 L1040.7188,1164.1906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="1058.25" y="1163.3967">DoNotMoveStrategy</text><line style="stroke:#181818;stroke-width:0.5;" x1="983.5" x2="1238.5" y1="1174.55" y2="1174.55"/><line style="stroke:#181818;stroke-width:0.5;" x1="983.5" x2="1238.5" y1="1182.55" y2="1182.55"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="245" x="988.5" y="1199.5451">+nextMove() : Optional&lt;Direction&gt;</text></g><!--MD5=[ef5dc4046d2d8d977e06dcc97ab47e4a]
+class MoveListStrategy--><g id="elem_MoveListStrategy"><rect codeLine="162" fill="#F1F1F1" height="64.2969" id="MoveListStrategy" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="257" x="398.5" y="1142.55"/><ellipse cx="464.25" cy="1158.55" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M467.2188,1164.1906 Q466.6406,1164.4875 466,1164.6281 Q465.3594,1164.7844 464.6563,1164.7844 Q462.1563,1164.7844 460.8281,1163.1438 Q459.5156,1161.4875 459.5156,1158.3625 Q459.5156,1155.2375 460.8281,1153.5813 Q462.1563,1151.925 464.6563,1151.925 Q465.3594,1151.925 466,1152.0813 Q466.6563,1152.2375 467.2188,1152.5344 L467.2188,1155.2531 Q466.5938,1154.675 466,1154.4094 Q465.4063,1154.1281 464.7813,1154.1281 Q463.4375,1154.1281 462.75,1155.2063 Q462.0625,1156.2688 462.0625,1158.3625 Q462.0625,1160.4563 462.75,1161.5344 Q463.4375,1162.5969 464.7813,1162.5969 Q465.4063,1162.5969 466,1162.3313 Q466.5938,1162.05 467.2188,1161.4719 L467.2188,1164.1906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="484.75" y="1163.3967">MoveListStrategy</text><line style="stroke:#181818;stroke-width:0.5;" x1="399.5" x2="654.5" y1="1174.55" y2="1174.55"/><line style="stroke:#181818;stroke-width:0.5;" x1="399.5" x2="654.5" y1="1182.55" y2="1182.55"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="245" x="404.5" y="1199.5451">+nextMove() : Optional&lt;Direction&gt;</text></g><!--MD5=[502970767efa987fae5804f5ee7d5641]
+class UserMoveStrategy--><g id="elem_UserMoveStrategy"><rect codeLine="166" fill="#F1F1F1" height="80.5938" id="UserMoveStrategy" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="257" x="690.5" y="1134.05"/><ellipse cx="751.75" cy="1150.05" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M754.7188,1155.6906 Q754.1406,1155.9875 753.5,1156.1281 Q752.8594,1156.2844 752.1563,1156.2844 Q749.6563,1156.2844 748.3281,1154.6438 Q747.0156,1152.9875 747.0156,1149.8625 Q747.0156,1146.7375 748.3281,1145.0813 Q749.6563,1143.425 752.1563,1143.425 Q752.8594,1143.425 753.5,1143.5813 Q754.1563,1143.7375 754.7188,1144.0344 L754.7188,1146.7531 Q754.0938,1146.175 753.5,1145.9094 Q752.9063,1145.6281 752.2813,1145.6281 Q750.9375,1145.6281 750.25,1146.7063 Q749.5625,1147.7688 749.5625,1149.8625 Q749.5625,1151.9563 750.25,1153.0344 Q750.9375,1154.0969 752.2813,1154.0969 Q752.9063,1154.0969 753.5,1153.8313 Q754.0938,1153.55 754.7188,1152.9719 L754.7188,1155.6906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="772.25" y="1154.8967">UserMoveStrategy</text><line style="stroke:#181818;stroke-width:0.5;" x1="691.5" x2="946.5" y1="1166.05" y2="1166.05"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="197" x="696.5" y="1183.0451">-userInterface: UserInterface</text><line style="stroke:#181818;stroke-width:1.0;" x1="691.5" x2="946.5" y1="1190.3469" y2="1190.3469"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="245" x="696.5" y="1207.342">+nextMove() : Optional&lt;Direction&gt;</text></g><!--MD5=[a7661dae5b0d701614a666888c8235ba]
+class UserInterface--><g id="elem_UserInterface"><rect codeLine="175" fill="#F1F1F1" height="96.8906" id="UserInterface" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="568" x="1320" y="1126.05"/><ellipse cx="1553.75" cy="1142.05" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1549.6719,1137.8156 L1549.6719,1135.6594 L1557.0625,1135.6594 L1557.0625,1137.8156 L1554.5938,1137.8156 L1554.5938,1145.8938 L1557.0625,1145.8938 L1557.0625,1148.05 L1549.6719,1148.05 L1549.6719,1145.8938 L1552.1406,1145.8938 L1552.1406,1137.8156 L1549.6719,1137.8156 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="92" x="1574.25" y="1146.8967">UserInterface</text><line style="stroke:#181818;stroke-width:0.5;" x1="1321" x2="1887" y1="1158.05" y2="1158.05"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="196" x="1326" y="1175.0451">+disposeUserInterface: void</text><line style="stroke:#181818;stroke-width:0.5;" x1="1321" x2="1887" y1="1182.3469" y2="1182.3469"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="556" x="1326" y="1199.342">+getUserInput(options: Arraylist&lt;String&gt;, message : String, optionMessage): int</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144" x="1326" y="1215.6389">+displayTrack(): void</text></g><!--MD5=[9d29d1e9646501ff3c89597d63b2755d]
+class ConsoleUI--><g id="elem_ConsoleUI"><rect codeLine="181" fill="#F1F1F1" height="48" id="ConsoleUI" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="102" x="1553" y="1294.05"/><ellipse cx="1568" cy="1310.05" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1570.9688,1315.6906 Q1570.3906,1315.9875 1569.75,1316.1281 Q1569.1094,1316.2844 1568.4063,1316.2844 Q1565.9063,1316.2844 1564.5781,1314.6438 Q1563.2656,1312.9875 1563.2656,1309.8625 Q1563.2656,1306.7375 1564.5781,1305.0813 Q1565.9063,1303.425 1568.4063,1303.425 Q1569.1094,1303.425 1569.75,1303.5813 Q1570.4063,1303.7375 1570.9688,1304.0344 L1570.9688,1306.7531 Q1570.3438,1306.175 1569.75,1305.9094 Q1569.1563,1305.6281 1568.5313,1305.6281 Q1567.1875,1305.6281 1566.5,1306.7063 Q1565.8125,1307.7688 1565.8125,1309.8625 Q1565.8125,1311.9563 1566.5,1313.0344 Q1567.1875,1314.0969 1568.5313,1314.0969 Q1569.1563,1314.0969 1569.75,1313.8313 Q1570.3438,1313.55 1570.9688,1312.9719 L1570.9688,1315.6906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="1582" y="1314.8967">ConsoleUI</text><line style="stroke:#181818;stroke-width:0.5;" x1="1554" x2="1654" y1="1326.05" y2="1326.05"/><line style="stroke:#181818;stroke-width:0.5;" x1="1554" x2="1654" y1="1334.05" y2="1334.05"/></g><!--MD5=[04c2c2350d0cf10e83e63c8fea4768e8]
+class Racetrack--><g id="elem_Racetrack"><rect codeLine="8" fill="#F1F1F1" height="210.9688" id="Racetrack" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="281" x="1345.5" y="128.05"/><ellipse cx="1447.25" cy="144.05" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1450.2188,149.6906 Q1449.6406,149.9875 1449,150.1281 Q1448.3594,150.2844 1447.6563,150.2844 Q1445.1563,150.2844 1443.8281,148.6437 Q1442.5156,146.9875 1442.5156,143.8625 Q1442.5156,140.7375 1443.8281,139.0812 Q1445.1563,137.425 1447.6563,137.425 Q1448.3594,137.425 1449,137.5812 Q1449.6563,137.7375 1450.2188,138.0344 L1450.2188,140.7531 Q1449.5938,140.175 1449,139.9094 Q1448.4063,139.6281 1447.7813,139.6281 Q1446.4375,139.6281 1445.75,140.7062 Q1445.0625,141.7687 1445.0625,143.8625 Q1445.0625,145.9562 1445.75,147.0344 Q1446.4375,148.0969 1447.7813,148.0969 Q1448.4063,148.0969 1449,147.8312 Q1449.5938,147.55 1450.2188,146.9719 L1450.2188,149.6906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="1467.75" y="148.8967">Racetrack</text><line style="stroke:#181818;stroke-width:0.5;" x1="1346.5" x2="1625.5" y1="160.05" y2="160.05"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="1351.5" y="177.0451">-UI : UserInterface</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="1351.5" y="193.342">-config : Config</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="1351.5" y="209.6389">-game : Game</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155" x="1351.5" y="225.9357">-gameActive : Boolean</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="201" x="1351.5" y="242.2326">-userInterface : UserInterface</text><line style="stroke:#181818;stroke-width:1.0;" x1="1346.5" x2="1625.5" y1="249.5344" y2="249.5344"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="176" x="1351.5" y="266.5295">+main(String[] args): void</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="1351.5" y="282.8264">#selectTrack(): Track</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="269" x="1351.5" y="299.1232">#selectStrategyForCar(): MoveStrategy</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="147" x="1351.5" y="315.4201">#processTurn(): void</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="1351.5" y="331.717">#quitGame(): void</text></g><!--MD5=[4bf8aff396996fef456cd268939daa24]
+class Config--><g id="elem_Config"><rect codeLine="22" fill="#F1F1F1" height="96.8906" id="Config" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="175" x="1661.5" y="185.05"/><ellipse cx="1722.75" cy="201.05" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/><path d="M1725.7188,206.6906 Q1725.1406,206.9875 1724.5,207.1281 Q1723.8594,207.2844 1723.1563,207.2844 Q1720.6563,207.2844 1719.3281,205.6437 Q1718.0156,203.9875 1718.0156,200.8625 Q1718.0156,197.7375 1719.3281,196.0812 Q1720.6563,194.425 1723.1563,194.425 Q1723.8594,194.425 1724.5,194.5812 Q1725.1563,194.7375 1725.7188,195.0344 L1725.7188,197.7531 Q1725.0938,197.175 1724.5,196.9094 Q1723.9063,196.6281 1723.2813,196.6281 Q1721.9375,196.6281 1721.25,197.7062 Q1720.5625,198.7687 1720.5625,200.8625 Q1720.5625,202.9562 1721.25,204.0344 Q1721.9375,205.0969 1723.2813,205.0969 Q1723.9063,205.0969 1724.5,204.8312 Q1725.0938,204.55 1725.7188,203.9719 L1725.7188,206.6906 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="1743.25" y="205.8967">Config</text><line style="stroke:#181818;stroke-width:0.5;" x1="1662.5" x2="1835.5" y1="217.05" y2="217.05"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144" x="1667.5" y="234.0451">+trackDirectory : File</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="1667.5" y="250.342">+moveDirectory : File</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="163" x="1667.5" y="266.6389">+followerDirectory : File</text><line style="stroke:#181818;stroke-width:0.5;" x1="1662.5" x2="1835.5" y1="273.9406" y2="273.9406"/></g><!--MD5=[1fd77bb4d08f4a5f009597788ad61f12]
+reverse link PositionVector to Direction--><g id="link_PositionVector_Direction"><path codeLine="139" d="M866.28,619.55 C876.32,619.55 886.37,619.55 896.42,619.55 " fill="none" id="PositionVector-backto-Direction" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="861.02,619.55,870.02,623.55,866.02,619.55,870.02,615.55,861.02,619.55" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[755645743374bf8edb1618eff4cd4788]
+link StrategyType to MoveStrategy--><g id="link_StrategyType_MoveStrategy"><path codeLine="156" d="M668.25,975.05 C671.23,975.05 678.26,975.05 678.26,975.05 " fill="none" id="StrategyType-MoveStrategy" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="690.26,975.05,684.26,971.05,678.26,975.05,684.26,979.05,690.26,975.05" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="655.04,975.05,664.04,979.05,660.04,975.05,664.04,971.05,655.04,975.05" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="660.04" x2="668.04" y1="975.05" y2="975.05"/></g><!--MD5=[bf797ff5e22909fe6a410aa73cd0b3a5]
+reverse link MoveStrategy to DoNotMoveStrategy--><g id="link_MoveStrategy_DoNotMoveStrategy"><path d="M881.55,1018.36 C936.56,1055.57 1015.37,1108.87 1064.84,1142.33 " fill="none" id="MoveStrategy-backto-DoNotMoveStrategy" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="877.59,1024.13,864.95,1007.13,885.43,1012.53,877.59,1024.13" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[f12446f9fdeea650f94bcd5d1e98e100]
+reverse link MoveStrategy to MoveListStrategy--><g id="link_MoveStrategy_MoveListStrategy"><path d="M756.45,1018.36 C701.44,1055.57 622.63,1108.87 573.16,1142.33 " fill="none" id="MoveStrategy-backto-MoveListStrategy" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="752.57,1012.53,773.05,1007.13,760.41,1024.13,752.57,1012.53" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[290b29e2d4f988455d9ce1be80eee7aa]
+reverse link MoveStrategy to UserMoveStrategy--><g id="link_MoveStrategy_UserMoveStrategy"><path d="M819,1027.6 C819,1060.8 819,1103.32 819,1133.88 " fill="none" id="MoveStrategy-backto-UserMoveStrategy" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="812,1027.34,819,1007.34,826,1027.34,812,1027.34" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[5c57006b3e3c7331fbe4cb6677961ae4]
+reverse link UserInterface to ConsoleUI--><g id="link_UserInterface_ConsoleUI"><path d="M1604,1243.18 C1604,1261.34 1604,1279.76 1604,1293.67 " fill="none" id="UserInterface-backto-ConsoleUI" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="none" points="1597,1243.06,1604,1223.06,1611,1243.06,1597,1243.06" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[0fcd5ab82f26e1fb392efeaa08804840]
+link Config to strategy--><!--MD5=[1e286f27fb6e007469ffcf1f372dc4db]
+link Racetrack to Game--><g id="link_Racetrack_Game"><path codeLine="195" d="M1423.479,117.9529 C1423.479,117.9529 1355.78,38.54 1308.5,21.05 C1267.81,6 568.51,6.87 527.5,21.05 C493.42,32.84 460.37,50.88 429.76,71.58 " fill="none" id="Racetrack-Game" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="419.03,79.01,428.7063,77.1745,423.1406,76.1634,424.1517,70.5976,419.03,79.01" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="423.1406" x2="429.72" y1="76.1634" y2="71.61"/><polygon fill="none" points="1430.38,127.77,1430.2019,120.5611,1423.479,117.9529,1423.6571,125.1618,1430.38,127.77" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[9012fca7a769f31bc41ee3d20d53c2e2]
+link Racetrack to UserInterface--><g id="link_Racetrack_UserInterface"><path codeLine="196" d="M1500.643,350.9855 C1500.643,350.9855 1577.09,959.41 1596.37,1112.84 " fill="none" id="Racetrack-UserInterface" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1598.03,1126.03,1600.8815,1116.603,1597.4092,1121.0687,1592.9434,1117.5963,1598.03,1126.03" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1597.4092" x2="1596.405" y1="1121.0687" y2="1113.135"/><polygon fill="none" points="1499.14,339.08,1495.923,345.5338,1500.643,350.9855,1503.86,344.5317,1499.14,339.08" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[deb3a5bad7c4865097995fcdc89f61c1]
+link Game to Track--><g id="link_Game_Track"><path codeLine="197" d="M504.82,233.55 C504.82,233.55 511.32,233.55 513.98,233.55 " fill="none" id="Game-Track" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="527.26,233.55,518.26,229.55,522.26,233.55,518.26,237.55,527.26,233.55" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="522.26" x2="514.26" y1="233.55" y2="233.55"/><polygon fill="none" points="492.82,233.55,498.82,237.55,504.82,233.55,498.82,229.55,492.82,233.55" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[e363ab17b4c2e25c76698444216e43f0]
+link Racetrack to Config--><g id="link_Racetrack_Config"><path codeLine="198" d="M1638.75,233.55 C1638.75,233.55 1645.21,233.55 1647.87,233.55 " fill="none" id="Racetrack-Config" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1661.13,233.55,1652.13,229.55,1656.13,233.55,1652.13,237.55,1661.13,233.55" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1656.13" x2="1648.13" y1="233.55" y2="233.55"/><polygon fill="none" points="1626.75,233.55,1632.75,237.55,1638.75,233.55,1632.75,229.55,1626.75,233.55" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[d6ab2fac7f1668ee328b83371f2dc6a2]
+link Game to Car--><g id="link_Game_Car"><path codeLine="199" d="M302.63,388.25 C308.04,406.47 313.59,425.18 319.08,443.67 " fill="none" id="Game-to-Car" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="320.63,448.88,321.9153,439.1154,319.213,444.085,314.2433,441.3826,320.63,448.88" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[a6e200cc3e0bec81f2df08698d35ab57]
+link Game to PositionVector--><g id="link_Game_PositionVector"><path codeLine="200" d="M483.81,388.22 C509.75,407.96 535.35,428.47 559,449.05 C580.65,467.88 602.58,489.28 622.97,510.38 " fill="none" id="Game-to-PositionVector" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="626.49,514.04,623.1596,504.7713,623.0339,510.4268,617.3784,510.3011,626.49,514.04" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[a6525eed872d33bac2cf2db0b2edecdb]
+reverse link Direction to MoveStrategy--><g id="link_Direction_MoveStrategy"><path codeLine="201" d="M973.25,745.91 C925.61,816.36 869.91,898.75 840.21,942.68 " fill="none" id="Direction-backto-MoveStrategy" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#181818" points="976.08,741.71,967.7263,746.9268,973.2802,745.8526,974.3544,751.4065,976.08,741.71" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41" x="919" y="835.1169">create</text></g><!--MD5=[930135583affb7d6c1629572c7aaf0b5]
+reverse link Track to SpaceType--><g id="link_Track_SpaceType"><path codeLine="202" d="M1001.91,233.55 C1009.16,233.55 1016.41,233.55 1023.65,233.55 " fill="none" id="Track-backto-SpaceType" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="988.86,233.55,994.86,237.55,1000.86,233.55,994.86,229.55,988.86,233.55" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[24656c623bd7458770da6dfc6fd2c709]
+reverse link Track to Car--><g id="link_Track_Car"><path codeLine="203" d="M602.29,389.05 C582.42,408.77 561.99,429.04 541.89,448.99 " fill="none" id="Track-backto-Car" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="611.69,379.72,604.6135,381.1067,603.1718,388.1723,610.2483,386.7855,611.69,379.72" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1560b7788f47c727c35b25d0a5eb289b]
+link Car to MoveStrategy--><g id="link_Car_MoveStrategy"><path codeLine="204" d="M533.9184,797.362 C533.9184,797.362 550.86,809.15 559,814.05 C603.82,841.04 626.04,822.04 672,847.05 C713.47,869.62 753.55,905.48 781.35,933.35 " fill="none" id="Car-MoveStrategy" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="790.65,942.84,787.2075,933.6124,787.1504,939.2689,781.4938,939.2118,790.65,942.84" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="787.1504" x2="781.55" y1="939.2689" y2="933.555"/><polygon fill="none" points="524.29,790.2,526.7169,796.9905,533.9184,797.362,531.4915,790.5715,524.29,790.2" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[22540cd6ca87c553b394351c31b98317]
+link UserMoveStrategy to UserInterface--><g id="link_UserMoveStrategy_UserInterface"><path codeLine="206" d="M872.3362,1126.2864 C872.3362,1126.2864 942.31,1075.9 982.5,1063.55 C1091.26,1030.12 1125.96,1046.84 1238.5,1063.55 C1314.92,1074.9 1397.48,1098.91 1464.76,1121.7 " fill="none" id="UserMoveStrategy-UserInterface" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="1477.14,1125.94,1469.9224,1119.2388,1472.4099,1124.3194,1467.3294,1126.8069,1477.14,1125.94" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="1472.4099" x2="1464.845" y1="1124.3194" y2="1121.725"/><polygon fill="none" points="863.02,1133.85,870.1993,1133.1736,872.3362,1126.2864,865.1569,1126.9628,863.02,1133.85" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[1e2cd8affd707a9764ebb9ed2d269038]
+link Car to PositionVector--><g id="link_Car_PositionVector"><path codeLine="208" d="M542.28,619.55 C552.08,619.55 561.88,619.55 571.67,619.55 " fill="none" id="Car-to-PositionVector" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="576.8,619.55,567.8,615.55,571.8,619.55,567.8,623.55,576.8,619.55" style="stroke:#181818;stroke-width:1.0;"/></g><!--MD5=[b6a0646b97c85a59a79ea1ec0f886e59]
+link Track to PositionVector--><g id="link_Track_PositionVector"><path codeLine="209" d="M743.26,379.72 C738.92,422.41 734.25,468.38 730.18,508.48 " fill="none" id="Track-to-PositionVector" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="729.63,513.85,734.5106,505.2955,730.1303,508.8751,726.5507,504.4949,729.63,513.85" style="stroke:#181818;stroke-width:1.0;"/></g><rect fill="#DDDDDD" height="22.4766" id="_legend" rx="7.5" ry="7.5" style="stroke:#000000;stroke-width:1.0;" width="108" x="8" y="1372.05"/><text fill="#000000" font-family="sans-serif" font-size="9" lengthAdjust="spacing" textLength="93" x="17" y="1386.404">Version 2026-02-09</text><!--MD5=[67dac99257950d574234bf98504003cc]
+@startuml
+skinparam ClassAttributeIconSize 0
+skinparam groupInheritance 1
+
+legend bottom left
+<size:9> Version 2026-02-09</size>
+end legend
+
+class Racetrack {
+  - UI : UserInterface
+  - config : Config
+  - game : Game
+- gameActive : Boolean
+- userInterface : UserInterface
+- -
++ main(String[] args): void
+# selectTrack(): Track
+# selectStrategyForCar(): MoveStrategy
+# processTurn(): void
+# quitGame(): void
+  }
+
+class Config {
+   + trackDirectory : File
+   + moveDirectory : File
+   + followerDirectory : File
+}
+
+package "Game"{
+
+class Car {
+  - id : char {final}
+  - position : PositionVector 
+  - velocity : PositionVector 
+  - crashed : boolean
+  - moveStrategy : MoveStrategy
+  - - -
+  + Car(id : char, position : PositionVector)
+  + getId(): char
+  + getPosition(): PositionVector
+  + getVelocity(): PositionVector
+  + accelerate(direction : Direction)
+  + move()
+  + nextPosition() : PositionVector
+  + crash(position : PositionVector)
+  + isCrashed() : boolean
+  + updatePosition(position: PositionVector)
+  + crash(crashPosition: PositionVector)
+  + setMoveStrategy(MoveStrategy movestrategy)
+  + getMove(): Optoinal<Direction>
+}
+
+
+
+
+class Track {
+  + {static} TrackSpecification.MAX_CARS : int
+  + {static} TrackSpecification.CRASH_INDICATOR : char
+  + height : int {readonly}
+  + width : int {readonly}
+  + trackFile : File
+  - grid : SpaceType[][] 
+  - cars : List<Car>
+  - - -
+  + Track (trackFile : File)
+  + getHeight: int
+  + getWidth: int
+  + getCarCount() : int
+  + getCar(carIndex : int) : Car
+  + getSpaceTypeAtPosition(position : PositionVector) : SpaceType
+  + getCharRepresentationAtPosition(row : int, col : int) : char
+  + toString() : String
+}
+
+
+enum SpaceType <<enumeration>> {
+  WALL '#'
+  TRACK ' '
+  FINISH_LEFT '<'
+  FINISH_RIGHT '>'
+  FINISH_UP '^'
+  FINISH_DOWN 'v'
+  - - -
+  + spaceChar : char {readonly}
+  - - -
+  + {static} ofChar(spaceChar : char) : SpaceType
+}
+
+
+class Game {
+  + {static}GameSpecification.NO_WINNER : int
+  - track : Track
+  - currentCarIndex : int {readonly}
+  - winner : int {readonly}
+  - - -
+  + Game(track : Track)
+  + getCarCount() : int
+  + getCurrentCarIndex() : int
+  + getCarId(carIndex : int) : char
+  + getCarPosition(carIndex : int) : PositionVector
+  + getCarVelocity(carIndex : int) : PositionVector
+  + setCarMoveStrategy(carIndex : int, moveStrategy : MoveStrategy)
+  + nextCarMove(carIndex : int) : Optional<Direction>
+  + getWinner(): int
+  + doCarTurn(accelleration : Direction)
+  + switchToNextActiveCar()
+  + calculatePath(startPosition , endPosition) : List<PositionVector>
+}
+
+class PositionVector {
+  + x : int {readonly}
+  + y : int {readonly}
+  - - -
+  + PositionVector(x : int, y : int)
+  + PositionVector(other : PositionVector)
+  + add(vector : PositionVector)
+  + subtract(vector : PositionVector)
+  + abs() : PositionVector
+  + signum() : PositionVector
+  + scalarProduct() : int
+  + {static} ofString(positionString : String)
+}
+
+enum Direction <<enumeration>> {
+  DOWN_LEFT (-1,1)
+  DOWN (0,1)
+  DOWN_RIGHT (1,1)
+  LEFT (-1,0)
+  NONE (0,0)
+  RIGHT (1,0)
+  UP_LEFT (-1,-1)
+  UP (0,-1)
+  UP_RIGHT (1,-1)
+  - - -
+  + vector : PositionVector {readonly}
+  - - -
+  +{static}ofVector(vector : PositionVector) : Direction
+}
+
+Direction -left> PositionVector
+  
+  }
+
+package "strategy" {
+    interface MoveStrategy {
+      + nextMove() : Optional<Direction>
+    }
+
+    enum StrategyType <<enumeration>> {
+      DO_NOT_MOVE
+      USER
+      MOVE_LIST
+      PATH_FOLLOWER
+      PATH_FINDER
+    }
+
+    StrategyType <-* MoveStrategy
+
+    class DoNotMoveStrategy implements MoveStrategy {
+      + nextMove() : Optional<Direction>
+    }
+
+    class MoveListStrategy implements MoveStrategy {
+      + nextMove() : Optional<Direction>
+    }
+
+    class UserMoveStrategy implements MoveStrategy {
+      - userInterface: UserInterface
+      - -
+      + nextMove() : Optional<Direction>
+    }
+
+}
+
+package "UI" {
+  interface UserInterface {
+    + getUserInput(options: Arraylist<String>, message : String, optionMessage): int
+    + displayTrack(): void
+    + disposeUserInterface: void
+    }
+  
+  class ConsoleUI implements UserInterface {
+    
+    }
+  }
+
+'GameSpecification ()- - Game
+'TrackSpecification ()- - Track
+'CarSpecification ()- - Car
+
+'hidden relations for better placement of Config and Game
+'(remove when linking to other classes)
+
+"strategy" .[hidden]up. Config
+
+Racetrack o-> Game
+Racetrack o-> UserInterface
+Game o-> Track
+Racetrack o-> Config
+Game ..> Car
+Game ..> PositionVector
+MoveStrategy .up.> Direction : create
+Track *- SpaceType
+Track *- Car
+Car o-down> MoveStrategy
+
+UserMoveStrategy o-> UserInterface
+
+Car -> PositionVector
+Track - -> PositionVector
+@enduml
+
+@startuml
+skinparam ClassAttributeIconSize 0
+skinparam groupInheritance 1
+
+legend bottom left
+<size:9> Version 2026-02-09</size>
+end legend
+
+class Racetrack {
+  - UI : UserInterface
+  - config : Config
+  - game : Game
+- gameActive : Boolean
+- userInterface : UserInterface
+- -
++ main(String[] args): void
+# selectTrack(): Track
+# selectStrategyForCar(): MoveStrategy
+# processTurn(): void
+# quitGame(): void
+  }
+
+class Config {
+   + trackDirectory : File
+   + moveDirectory : File
+   + followerDirectory : File
+}
+
+package "Game"{
+
+class Car {
+  - id : char {final}
+  - position : PositionVector 
+  - velocity : PositionVector 
+  - crashed : boolean
+  - moveStrategy : MoveStrategy
+  - - -
+  + Car(id : char, position : PositionVector)
+  + getId(): char
+  + getPosition(): PositionVector
+  + getVelocity(): PositionVector
+  + accelerate(direction : Direction)
+  + move()
+  + nextPosition() : PositionVector
+  + crash(position : PositionVector)
+  + isCrashed() : boolean
+  + updatePosition(position: PositionVector)
+  + crash(crashPosition: PositionVector)
+  + setMoveStrategy(MoveStrategy movestrategy)
+  + getMove(): Optoinal<Direction>
+}
+
+
+
+
+class Track {
+  + {static} TrackSpecification.MAX_CARS : int
+  + {static} TrackSpecification.CRASH_INDICATOR : char
+  + height : int {readonly}
+  + width : int {readonly}
+  + trackFile : File
+  - grid : SpaceType[][] 
+  - cars : List<Car>
+  - - -
+  + Track (trackFile : File)
+  + getHeight: int
+  + getWidth: int
+  + getCarCount() : int
+  + getCar(carIndex : int) : Car
+  + getSpaceTypeAtPosition(position : PositionVector) : SpaceType
+  + getCharRepresentationAtPosition(row : int, col : int) : char
+  + toString() : String
+}
+
+
+enum SpaceType <<enumeration>> {
+  WALL '#'
+  TRACK ' '
+  FINISH_LEFT '<'
+  FINISH_RIGHT '>'
+  FINISH_UP '^'
+  FINISH_DOWN 'v'
+  - - -
+  + spaceChar : char {readonly}
+  - - -
+  + {static} ofChar(spaceChar : char) : SpaceType
+}
+
+
+class Game {
+  + {static}GameSpecification.NO_WINNER : int
+  - track : Track
+  - currentCarIndex : int {readonly}
+  - winner : int {readonly}
+  - - -
+  + Game(track : Track)
+  + getCarCount() : int
+  + getCurrentCarIndex() : int
+  + getCarId(carIndex : int) : char
+  + getCarPosition(carIndex : int) : PositionVector
+  + getCarVelocity(carIndex : int) : PositionVector
+  + setCarMoveStrategy(carIndex : int, moveStrategy : MoveStrategy)
+  + nextCarMove(carIndex : int) : Optional<Direction>
+  + getWinner(): int
+  + doCarTurn(accelleration : Direction)
+  + switchToNextActiveCar()
+  + calculatePath(startPosition , endPosition) : List<PositionVector>
+}
+
+class PositionVector {
+  + x : int {readonly}
+  + y : int {readonly}
+  - - -
+  + PositionVector(x : int, y : int)
+  + PositionVector(other : PositionVector)
+  + add(vector : PositionVector)
+  + subtract(vector : PositionVector)
+  + abs() : PositionVector
+  + signum() : PositionVector
+  + scalarProduct() : int
+  + {static} ofString(positionString : String)
+}
+
+enum Direction <<enumeration>> {
+  DOWN_LEFT (-1,1)
+  DOWN (0,1)
+  DOWN_RIGHT (1,1)
+  LEFT (-1,0)
+  NONE (0,0)
+  RIGHT (1,0)
+  UP_LEFT (-1,-1)
+  UP (0,-1)
+  UP_RIGHT (1,-1)
+  - - -
+  + vector : PositionVector {readonly}
+  - - -
+  +{static}ofVector(vector : PositionVector) : Direction
+}
+
+Direction -left> PositionVector
+  
+  }
+
+package "strategy" {
+    interface MoveStrategy {
+      + nextMove() : Optional<Direction>
+    }
+
+    enum StrategyType <<enumeration>> {
+      DO_NOT_MOVE
+      USER
+      MOVE_LIST
+      PATH_FOLLOWER
+      PATH_FINDER
+    }
+
+    StrategyType <-* MoveStrategy
+
+    class DoNotMoveStrategy implements MoveStrategy {
+      + nextMove() : Optional<Direction>
+    }
+
+    class MoveListStrategy implements MoveStrategy {
+      + nextMove() : Optional<Direction>
+    }
+
+    class UserMoveStrategy implements MoveStrategy {
+      - userInterface: UserInterface
+      - -
+      + nextMove() : Optional<Direction>
+    }
+
+}
+
+package "UI" {
+  interface UserInterface {
+    + getUserInput(options: Arraylist<String>, message : String, optionMessage): int
+    + displayTrack(): void
+    + disposeUserInterface: void
+    }
+  
+  class ConsoleUI implements UserInterface {
+    
+    }
+  }
+
+
+
+"strategy" .[hidden]up. Config
+
+Racetrack o-> Game
+Racetrack o-> UserInterface
+Game o-> Track
+Racetrack o-> Config
+Game ..> Car
+Game ..> PositionVector
+MoveStrategy .up.> Direction : create
+Track *- SpaceType
+Track *- Car
+Car o-down> MoveStrategy
+
+UserMoveStrategy o-> UserInterface
+
+Car -> PositionVector
+Track - -> PositionVector
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 17:01:30 UTC 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

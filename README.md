@@ -1,4 +1,4 @@
-# Racetrack Laufen Lassen
+# How to Run / Test Racetrack
 
 Racetrack kann mit folgender Befehl laufen gelassen:
 **./gradlew run**
@@ -151,3 +151,6 @@ Ungültige Äquivalenzklasse: leere / Null Objekt
 
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
+### Was bewusst nicht dargestellt wird
+- Private Methoden
+- Selbst erstellte Exceptions
