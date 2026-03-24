@@ -147,7 +147,7 @@ Ungültige Äquivalenzklasse: leere / Null Objekt
    2. Ausgewählte moveFile existiert und beinhaltet mehrere gültige "Directions" -> `nextMove()` verarbeiten diesen in der richtigen Reihenfolge.
    3. Ausgew'hlte moveFile existiert ist aber leer -> `nextMove()` gibt ein `Optional.emty()` Objekt zurück.
    4. moveFile beinhaltet ungültige "Direction" Objekt -> `nextMove()` wirft eine IllegalArgumentException.
-   5. Ausgewählte moveFile kann nicht eingelesen weden -> `nextMove()` wirft eine NullPointerExcetion.
+   5. Ausgewählte moveFile kann nicht eingelesen weden -> Konstuktor wirft eine UncheckedIOException.
 
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
