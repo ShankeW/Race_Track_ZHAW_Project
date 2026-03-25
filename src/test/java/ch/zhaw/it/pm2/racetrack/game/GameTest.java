@@ -227,6 +227,7 @@ class GameTest {
         game.switchToNextActiveCar();
 
         assertEquals(0, game.getCurrentCarIndex());
+        assertEquals(GameSpecification.NO_WINNER, game.getWinner());
     }
 
     /**

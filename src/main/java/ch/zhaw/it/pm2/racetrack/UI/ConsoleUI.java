@@ -1,40 +1,44 @@
 package ch.zhaw.it.pm2.racetrack.UI;
-import org.beryx.textio.*;
-import org.beryx.textio.swing.SwingTextTerminal;
+
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
+import org.beryx.textio.TextTerminal;
 
 import java.util.ArrayList;
+
 /**
  * UI which uses a console display to show outputs to and get inputs from the user.
  */
-public class ConsoleUI implements UserInterface{
+public class ConsoleUI implements UserInterface {
 
-    TextIO textIO;
-    TextTerminal<?> terminal;
+    private final TextIO textIO;
+    private final TextTerminal<?> terminal;
 
     /**
-     * Creates a new ConsoleUI Object.
+     * Creates a new ConsoleUI object.
      */
-    public ConsoleUI(){
+    public ConsoleUI() {
         this.textIO = TextIoFactory.getTextIO();
         this.terminal = textIO.getTextTerminal();
     }
 
     @Override
     public int getUserInput(ArrayList<String> options) {
-        return getUserInput(options,"Select one of the following options:");
+        return getUserInput(options, "Select one of the following options:");
     }
 
     @Override
     public int getUserInput(ArrayList<String> options, String message) {
-        return getUserInput(options,message, "Selection: ");
+        return getUserInput(options, message, "Selection: ");
     }
 
     /**
-     * Returns the index for the chosen selection for the given String Arraylist.
-     * @param options The Options that will be displayed to the user for selection
-     * @param message A message the will be displayed to the user before selection.
+     * Returns the index of the chosen selection for the given list of options.
+     *
+     * @param options The options that will be displayed to the user for selection
+     * @param message A message that will be displayed to the user before selection.
      *                Will display "Select one of the following options:" by default.
-     * @param selectionMessage An extra message that will display.
+     * @param selectionMessage An additional prompt that will be displayed.
      *                Will display "Selection: " by default.
      */
     @Override
@@ -47,23 +51,24 @@ public class ConsoleUI implements UserInterface{
     }
 
     /**
-     * Prints the given message onto the Screen
+     * Prints the given message to the screen.
+     *
      * @param message The message stored as a String
      */
     @Override
     public void displayMessage(String message) {
-        //Needs check for proper display
         terminal.println(message);
     }
 
     /**
-     * Prints the given message onto the Screen, then waits for the user to Type something as confirmation
+     * Prints the given message to the screen, then waits for a confirmation input from the user.
+     *
      * @param message The message stored as a String
      */
     @Override
-    public void waitForConfirmation(String message){
+    public void waitForConfirmation(String message) {
         terminal.println(message);
-        textIO.newStringInputReader().read("Enter Any Character to Exit");
+        textIO.newStringInputReader().read("Type any Character to exit");
     }
 
     @Override

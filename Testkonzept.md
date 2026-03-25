@@ -44,7 +44,8 @@ Geplant bzw. bereits vorhanden sind vor allem Unit-Tests für:
 - Randfälle der Spiellogik
 - Regelverhalten bei Kollision, Zielüberquerung und Fahrzeugwechsel
 
-Bereits im Repository vorhanden sind automatisierte Tests für `Track` und `PositionVector`. Weitere Tests werden parallel zur Implementierung der noch offenen Spiellogik ergänzt.
+Bereits im Repository vorhanden sind automatisierte Tests für `Track`, `PositionVector`, `Car`, `Game` sowie die
+vorhandenen Move-Strategien. Weitere Tests werden bei Änderungen an der Spiellogik ergänzt.
 
 ### 3.2 Manuelle Tests
 

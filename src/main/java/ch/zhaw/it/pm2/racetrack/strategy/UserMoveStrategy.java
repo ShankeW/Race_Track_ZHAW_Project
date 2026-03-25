@@ -4,6 +4,7 @@ import ch.zhaw.it.pm2.racetrack.UI.UserInterface;
 import ch.zhaw.it.pm2.racetrack.game.Direction;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -11,31 +12,31 @@ import java.util.Optional;
  */
 public class UserMoveStrategy implements MoveStrategy {
 
-    UserInterface UI;
+    private final UserInterface ui;
 
     /**
      * Movestrategy that gets the next move from the user through a User Interface.
+     *
      * @param ui the user interface that gets input from the user
      */
-
-    public UserMoveStrategy(UserInterface ui){
-        this.UI = ui;
+    public UserMoveStrategy(UserInterface ui) {
+        this.ui = Objects.requireNonNull(ui, "ui must not be null");
     }
 
     /**
      * {@inheritDoc}
      * Asks the user for the direction vector.
      *
-     * @return next direction, {Optional#empty()} if the user terminates the game.
+     * @return the next direction selected by the user
      */
     @Override
     public Optional<Direction> nextMove() {
         Direction[] directions = Direction.values();
         ArrayList<String> directionNames = new ArrayList<>();
-        for (Direction type : directions){
+        for (Direction type : directions) {
             directionNames.add(type.toString());
         }
-        Direction chosenDirection = directions[UI.getUserInput(directionNames)];
+        Direction chosenDirection = directions[ui.getUserInput(directionNames)];
         return Optional.of(chosenDirection);
     }
 }

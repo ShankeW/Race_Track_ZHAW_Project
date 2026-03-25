@@ -1,38 +1,45 @@
-# Projektbeschreibung
+# Racetrack
 
-Das Racetrack-Projekt ist eine Simulation eines Rennspiels auf einem Raster (Grid). 
-Mehrere Fahrzeuge bewegen sich rundenbasiert über eine Strecke, wobei Geschwindigkeit 
-und Richtung durch Beschleunigungsvektoren beeinflusst werden.
+## Projektbeschreibung
 
-Das Ziel des Spiels ist es, als erstes Fahrzeug die Ziellinie korrekt zu überqueren 
-oder als letztes verbleibendes Fahrzeug nicht auszuscheiden.
+Das Racetrack-Projekt ist eine Simulation eines Rennspiels auf einem Raster. Mehrere Fahrzeuge bewegen sich
+rundenbasiert über eine Strecke, wobei Geschwindigkeit und Richtung durch Beschleunigungsvektoren beeinflusst werden.
 
-Die Spiellogik basiert auf physikalisch vereinfachten Bewegungsregeln, bei denen 
-die aktuelle Geschwindigkeit eines Fahrzeugs in jeder Runde durch eine gewählte 
-Beschleunigung verändert wird.
+Ziel des Spiels ist es, als erstes Fahrzeug die Ziellinie korrekt zu überqueren oder als letztes verbleibendes
+Fahrzeug nicht auszuscheiden.
 
-Das Projekt dient dazu, objektorientierte Konzepte wie Klassenstruktur, 
-Verantwortlichkeitstrennung (Single Responsibility Principle) sowie Strategiemuster 
-(z.B. MoveStrategy) praktisch anzuwenden.
+Die Spiellogik basiert auf physikalisch vereinfachten Bewegungsregeln, bei denen die aktuelle Geschwindigkeit eines
+Fahrzeugs in jeder Runde durch eine gewählte Beschleunigung verändert wird.
 
-## How to Run / Test Racetrack
+Das Projekt dient dazu, objektorientierte Konzepte wie Klassenstruktur, klare Verantwortlichkeiten
+(Single Responsibility Principle) und das Strategiemuster (`MoveStrategy`) praktisch anzuwenden.
+
+## Projekt starten und testen
 
 Racetrack kann mit folgendem Befehl gestartet werden:
-**./gradlew run**
 
-Racetrack-Tests können mit folgendem Befehl ausgeführt werden:
-**./gradlew test**
+```bash
+./gradlew run
+```
 
-## Branching Modell
-Das Branching Modell, das wir für unser Projekt verwenden, ist das [Github Flow Modell](https://docs.github.com/en/get-started/using-github/github-flow)
+Die automatisierten Tests können mit folgendem Befehl ausgeführt werden:
 
-Möchte man eine Änderung am Projekt durchführen, muss man die folgenden Schritte befolgen:
-1. Eine neue Branch erstellen.
-2. Die gewünschte Changes erstellen und committen.
-3. Eine Pull request für diese Branch erstellen.
-4. Eine Review für das Pull request sammeln.
-5. Das Pull Request Mergen.
-6. Das Branch am Schluss löschen
+```bash
+./gradlew test
+```
+
+## Branching-Modell
+
+Für das Projekt verwenden wir das [GitHub-Flow-Modell](https://docs.github.com/en/get-started/using-github/github-flow).
+
+Änderungen am Projekt erfolgen in den folgenden Schritten:
+
+1. Einen neuen Branch erstellen.
+2. Die gewünschten Änderungen umsetzen und committen.
+3. Einen Pull Request für den Branch erstellen.
+4. Eine Review für den Pull Request einholen.
+5. Den Pull Request mergen.
+6. Den Branch am Schluss löschen.
 
 
 # Testkonzept Racetrack
@@ -81,7 +88,8 @@ Geplant bzw. bereits vorhanden sind vor allem Unit-Tests für:
 - Randfälle der Spiellogik
 - Regelverhalten bei Kollision, Zielüberquerung und Fahrzeugwechsel
 
-Bereits im Repository vorhanden sind automatisierte Tests für `Track` und `PositionVector`. Weitere Tests werden parallel zur Implementierung der noch offenen Spiellogik ergänzt.
+Bereits im Repository vorhanden sind automatisierte Tests für `Track`, `PositionVector`, `Car`, `Game` sowie die
+vorhandenen Move-Strategien. Weitere Tests werden bei Änderungen an der Spiellogik ergänzt.
 
 ### 3.2 Manuelle Tests
 
@@ -132,15 +140,15 @@ Das Racetrack-Projekt wird primär mit automatisierten Unit-Tests getestet. Der 
 
 ## Car
 ### id, position copying, zero baseline
-   1. Construction invariants: configured `char` id is preserved, initial position is copied, velocity starts at  zero and is copied.
+   1. Construction invariants: configured `char` id is preserved, initial position is copied, velocity starts at zero and is copied.
 ### accelerate(Direction acceleration)
    2. Predictive movement: `nextPosition()` reflects current velocity without mutating position.
    3. Acceleration handling: valid accelerations accumulate deltas, null accelerations are rejected.
 ### move()
-   4. Movement execution: `move()` applies velocity to position and keeps velocity, `updatePosition()` jumps   directly to given coordinates.
+   4. Movement execution: `move()` applies velocity to position and keeps velocity, `updatePosition()` jumps directly to given coordinates.
 ### isCrashed()
    5. Crash lifecycle: `crash()` flags the car and freezes position, further movement or updates after a crash leave position unchanged while velocity stays at last value.
-   6: Crash state reporting: freshly constructed car reports `isCrashed() == false`.
+   6. Crash state reporting: freshly constructed car reports `isCrashed() == false`.
 ### getMove()
    7. Strategy integration: absent strategy yields `Optional.empty()`, configured strategy delegates its move.
 
@@ -165,11 +173,11 @@ Das Racetrack-Projekt wird primär mit automatisierten Unit-Tests getestet. Der 
 
 ## MoveListStrategy
 ### nextMove()
-   1. Ausgewählte moveFile existiert und beinhaltet gültige "Directions" -> `nextMove()` verarbeite und gibt die erste "Direction" zurück.
-   2. Ausgewählte moveFile existiert und beinhaltet mehrere gültige "Directions" -> `nextMove()` verarbeiten diesen in der richtigen Reihenfolge.
-   3. Ausgew'hlte moveFile existiert ist aber leer -> `nextMove()` gibt ein `Optional.emty()` Objekt zurück.
-   4. moveFile beinhaltet ungültige "Direction" Objekt -> `nextMove()` wirft eine IllegalArgumentException.
-   5. Ausgewählte moveFile kann nicht eingelesen werden -> `nextMove()` wirft eine NullPointerExcetion.
+   1. Ausgewählte Move-Datei existiert und beinhaltet gültige `Direction`-Werte -> `nextMove()` verarbeitet und gibt den ersten Zug zurück.
+   2. Ausgewählte Move-Datei existiert und beinhaltet mehrere gültige `Direction`-Werte -> `nextMove()` verarbeitet diese in der richtigen Reihenfolge.
+   3. Ausgewählte Move-Datei existiert, ist aber leer -> `nextMove()` gibt `Optional.empty()` zurück.
+   4. Die Move-Datei beinhaltet einen ungültigen `Direction`-Wert -> `nextMove()` wirft eine `IllegalArgumentException`.
+   5. Die ausgewählte Move-Datei kann nicht eingelesen werden -> der Konstruktor wirft eine `UncheckedIOException`.
 
 ## Abstraktionsebene
 
@@ -185,7 +193,7 @@ Durch diese Aufteilung werden Verantwortlichkeiten klar getrennt, was den Code b
 
 Diese Struktur folgt dem Prinzip der klaren Verantwortlichkeit (Single Responsibility Principle).
 
-## Known Limitations
+## Bekannte Einschränkungen
 
 - Es gibt keine grafische Benutzeroberfläche (GUI), das Spiel läuft nur über die Konsole.
 - Fehlerhafte oder ungültige Eingabedateien (z.B. Track-Dateien) werden nicht vollständig abgefangen.
@@ -196,7 +204,7 @@ Diese Struktur folgt dem Prinzip der klaren Verantwortlichkeit (Single Responsib
 
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
-## Klassendiagramm Änderungen
+## Änderungen am Klassendiagramm
 ### MoveListStrategy()
 - Ein neues Attribut `private final List<String> moveList;` wird hinzugefügt.
 - Der Konstruktor verwendet nun die Klasse `UserInterface.java`.
