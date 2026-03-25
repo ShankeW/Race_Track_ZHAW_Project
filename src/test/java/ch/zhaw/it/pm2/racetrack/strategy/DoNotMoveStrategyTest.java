@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DoNotMoveStrategyTest {
 
     @Test
-    @Disabled("Enable once DoNotMoveStrategy is implemented; this change intentionally does not touch point 1.")
     void nextMoveReturnsNoneDirectionTest() {
         DoNotMoveStrategy strategy = new DoNotMoveStrategy();
 

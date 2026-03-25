@@ -18,6 +18,7 @@ import java.io.UncheckedIOException;
  */
 public class MoveListStrategy implements MoveStrategy {
     private final List<String> moveList;
+    private UserInterface UI;
 
     /**
      * Instantiate the MoveListStrategy by reading the txt file containing all predefined moves.
@@ -27,11 +28,12 @@ public class MoveListStrategy implements MoveStrategy {
      * @param moveFiles The list of available Movelist files.
      */
     public MoveListStrategy(UserInterface ui, File[] moveFiles){
+        this.UI = ui;
         ArrayList<String> moveFileNames = new ArrayList<>();
         for (File currMoveFile : moveFiles) {
             moveFileNames.add(currMoveFile.getName());
         }
-        int userInput = ui.getUserInput(moveFileNames);
+        int userInput = UI.getUserInput(moveFileNames);
         if (userInput < 0 || userInput >= moveFiles.length) {
             throw new IllegalArgumentException("Invalid move file selection.");
         }
