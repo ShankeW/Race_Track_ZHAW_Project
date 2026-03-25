@@ -12,7 +12,7 @@ class DoNotMoveStrategyTest {
 
     @Test
     @Disabled("Enable once DoNotMoveStrategy is implemented; this change intentionally does not touch point 1.")
-    void nextMoveReturnsNoneDirection() {
+    void nextMoveReturnsNoneDirectionTest() {
         DoNotMoveStrategy strategy = new DoNotMoveStrategy();
 
         assertEquals(Optional.of(Direction.NONE), strategy.nextMove());

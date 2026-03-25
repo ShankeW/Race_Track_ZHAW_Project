@@ -119,10 +119,10 @@ class GameTest {
         game.doCarTurn(Direction.RIGHT);
         game.doCarTurn(Direction.NONE);
 
-        assertEquals(new PositionVector(3, 1), game.getCarPosition(0));
+        assertEquals(new PositionVector(2, 1), game.getCarPosition(0));
         assertEquals(new PositionVector(3, 1), game.getCarPosition(1));
         assertEquals(1, game.getWinner());
-        assertEquals(String.join(System.lineSeparator(), "#######", "#  b  #", "#######"), game.toString());
+        assertEquals(String.join(System.lineSeparator(), "#######", "# Xb  #", "#######"), game.toString());
     }
 
     @Test
