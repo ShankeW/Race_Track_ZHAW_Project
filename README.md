@@ -1,3 +1,20 @@
+## Projektbeschreibung
+
+Das Racetrack-Projekt ist eine Simulation eines Rennspiels auf einem Raster (Grid). 
+Mehrere Fahrzeuge bewegen sich rundenbasiert über eine Strecke, wobei Geschwindigkeit 
+und Richtung durch Beschleunigungsvektoren beeinflusst werden.
+
+Das Ziel des Spiels ist es, als erstes Fahrzeug die Ziellinie korrekt zu überqueren 
+oder als letztes verbleibendes Fahrzeug nicht auszuscheiden.
+
+Die Spiellogik basiert auf physikalisch vereinfachten Bewegungsregeln, bei denen 
+die aktuelle Geschwindigkeit eines Fahrzeugs in jeder Runde durch eine gewählte 
+Beschleunigung verändert wird.
+
+Das Projekt dient dazu, objektorientierte Konzepte wie Klassenstruktur, 
+Verantwortlichkeitstrennung (Single Responsibility Principle) sowie Strategiemuster 
+(z.B. MoveStrategy) praktisch anzuwenden.
+
 # How to Run / Test Racetrack
 
 Racetrack kann mit folgendem Befehl gestartet werden:
