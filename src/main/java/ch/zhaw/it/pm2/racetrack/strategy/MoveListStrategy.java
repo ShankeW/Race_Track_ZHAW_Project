@@ -22,6 +22,8 @@ public class MoveListStrategy implements MoveStrategy {
     /**
      * Instantiate the MoveListStrategy by reading the txt file containing all predefined moves.
      * User can choose via userinterface UI which move file to use.
+     * @param ui UI that requests a chosen Movelist file from the user.
+     * @param moveFiles The list of available Movelist files.
      */
     public MoveListStrategy(UserInterface ui, File[] moveFiles){
         if (moveFiles == null || moveFiles.length == 0) {
@@ -53,7 +55,6 @@ public class MoveListStrategy implements MoveStrategy {
      */
     @Override
     public Optional<Direction> nextMove() {
-        // TODO: implementation
         if (!moveList.isEmpty()){
             Direction currDirection = Direction.valueOf(moveList.getFirst().toUpperCase());
             moveList.removeFirst();

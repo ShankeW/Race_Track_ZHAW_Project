@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Main Class that runs and controls the entire gameplay loop.
+ */
 public class RaceTrack {
     UserInterface UI;
     Config config;
@@ -25,6 +28,7 @@ public class RaceTrack {
     /**
      * Runs the Racetrack Game.
      * Requires Picking a Track and Picking the move strategies for the cars present on the track.
+     * @param args Arguments
      */
     public static void main(String[] args) {
         RaceTrack racetrack = new RaceTrack();
@@ -51,7 +55,8 @@ public class RaceTrack {
     }
 
     /**
-     * Selects a Track from the Track Directory using the chosen UI
+     * Selects a Track from the Track Directory using the chosen UI.
+     * @return returns a track selected by the user.
      */
     public Track selectTrack(){
         File[] tracks = config.getTrackDirectory().listFiles();
@@ -91,6 +96,8 @@ public class RaceTrack {
     /**
      * Selects a Strategy from the List of StrategyType Enums in MoveStrategy
      * If the Chosen MoveStrategy does not exist, defaults to Do Not Move Strategy
+     * @param carID the Char ID for the given Car
+     * @return the chosen movestrategy by the user.
      */
     public MoveStrategy selectStrategyForCar(char carID){
         MoveStrategy.StrategyType[] strategyTypes= MoveStrategy.StrategyType.values();
@@ -134,7 +141,9 @@ public class RaceTrack {
             gameActive = false;
         }
     }
-
+    /**
+     * Shuts down the game and UI
+     */
     public void quitGame(){
         UI.disposeUserInterface();
     }

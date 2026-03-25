@@ -61,8 +61,17 @@ import java.util.Set;
  * (including car positions and status)</p>
  */
 public class Track implements TrackSpecification {
+    /**
+     * The height of the racetrack.
+     */
     public final int height;
+    /**
+     * The width of the racetrack.
+     */
     public final int width;
+    /**
+     * The file the racetrack comes from.
+     */
     public final File trackFile;
     private final SpaceType[][] grid;
     private final List<Car> cars;
