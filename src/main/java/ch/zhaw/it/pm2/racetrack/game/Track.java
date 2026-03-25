@@ -16,7 +16,7 @@ import java.util.Set;
  * This class represents the racetrack board.
  *
  * <p>The racetrack board consists of a rectangular grid of 'width' columns and 'height' rows.
- * The zero point of he grid is at the top left. The x-axis points to the right and the y-axis points downwards.</p>
+ * The zero point of the grid is at the top left. The x-axis points to the right and the y-axis points downwards.</p>
  * <p>Positions on the track grid are specified using {@link PositionVector} objects. These are vectors containing an
  * x/y coordinate pair, pointing from the zero-point (top-left) to the addressed space in the grid.</p>
  *
@@ -26,9 +26,9 @@ import java.util.Set;
  *  <li>WALL : road boundary or off track space</li>
  *  <li>TRACK: road or open track space</li>
  *  <li>FINISH_LEFT, FINISH_RIGHT, FINISH_UP, FINISH_DOWN :  finish line spaces which have to be crossed
- *      in the indicated direction to winn the race.</li>
+ *      in the indicated direction to win the race.</li>
  * </ul>
- * <p>Beside the board the track contains the list of cars, with their current state (position, velocity,...)</p>
+ * <p>Besides the board, the track contains the list of cars with their current state (position, velocity, ...).</p>
  *
  * <p>At initialization the track grid data is read from the given track file. The track data must be a
  * rectangular block of text. Empty lines at the start are ignored. Processing stops at the first empty line
@@ -39,7 +39,7 @@ import java.util.Set;
  *   <li>TRACK: ' '</li>
  *   <li>FINISH_LEFT : '&lt;'</li>
  *   <li>FINISH_RIGHT: '&gt;'</li>
- *   <li>FINISH_UP   : '^;'</li>
+ *   <li>FINISH_UP   : '^'</li>
  *   <li>FINISH_DOWN: 'v'</li>
  *   <li>Any other character indicates the starting position of a car.<br>
  *       The character acts as the id for the car and must be unique.<br>
@@ -57,7 +57,7 @@ import java.util.Set;
  *   <li>the file contains more than {@link TrackSpecification#MAX_CARS} cars</li>
  * </ul>
  *
- * <p>The Tracks {@link #toString()} method returns a String representing the current state of the race
+ * <p>The track's {@link #toString()} method returns a String representing the current state of the race
  * (including car positions and status)</p>
  */
 public class Track implements TrackSpecification {
@@ -118,7 +118,6 @@ public class Track implements TrackSpecification {
                 }
 
                 this.grid[row][col] = SpaceType.TRACK;
-                // TODO: Depends on Car storing the passed start position correctly.
                 this.cars.add(new Car(trackChar, new PositionVector(col, row)));
             }
         }
@@ -203,7 +202,6 @@ public class Track implements TrackSpecification {
         PositionVector position = new PositionVector(col, row);
         boolean crashedCarAtPosition = false;
 
-        // TODO: Works once Car#getPosition() and Car#isCrashed() are implemented.
         for (Car car : this.cars) {
             if (!position.equals(car.getPosition())) {
                 continue;

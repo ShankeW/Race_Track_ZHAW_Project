@@ -195,20 +195,17 @@ public class Game implements GameSpecification {
 
     private void crashCurrentCarAndResolveWinner(Car currentCar, PositionVector crashPosition) {
         currentCar.crash(crashPosition);
-        if (crashedCarCount() != (track.getCarCount() - 1)) {
+        int activeCarsRemaining = track.getCarCount() - crashedCarCount();
+        if (activeCarsRemaining != 1) {
             return;
         }
 
         for (int i = 0; i < track.getCarCount(); i++) {
-            if (!track.getCar(i).isCrashed()){
+            if (!track.getCar(i).isCrashed()) {
                 winner = i;
                 return;
             }
         }
-
-        // Case if all cars are crashed.
-        // Use -2 to distinguish from NO_WINNER, so that the main loop can be terminated.
-        if (crashedCarCount() >= track.getCarCount()) winner = -2;
     }
 
     private boolean isOccupiedByAnotherCar(PositionVector position, Car currentCar) {
