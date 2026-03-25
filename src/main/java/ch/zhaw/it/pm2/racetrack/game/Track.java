@@ -155,6 +155,9 @@ public class Track implements TrackSpecification {
      */
     @Override
     public Car getCar(int carIndex) {
+        if (carIndex < 0 || carIndex >= this.cars.size()) {
+            throw new IllegalArgumentException("carIndex out of bounds");
+        }
         return this.cars.get(carIndex);
     }
 
