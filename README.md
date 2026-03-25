@@ -149,6 +149,20 @@ Ungültige Äquivalenzklasse: leere / Null Objekt
    4. moveFile beinhaltet ungültige "Direction" Objekt -> `nextMove()` wirft eine IllegalArgumentException.
    5. Ausgewählte moveFile kann nicht eingelesen werden -> `nextMove()` wirft eine NullPointerExcetion.
 
+## Abstraktionsebene
+
+Die Abstraktion im Racetrack-Projekt wurde so gewählt, dass jede Klasse eine klar definierte Aufgabe übernimmt.
+
+- Die Klasse `RaceTrack` übernimmt die Steuerung des Programms sowie die Interaktion mit der Benutzeroberfläche.
+- Die Klasse `Game` enthält die zentrale Spiellogik, wie das Ausführen von Zügen und das Bestimmen eines Gewinners.
+- Die Klasse `Track` ist verantwortlich für das Einlesen und Verwalten der Streckendaten.
+- Die Klasse `Car` speichert den Zustand eines Fahrzeugs, wie Position, Geschwindigkeit und Unfallstatus.
+- Die verschiedenen `MoveStrategy`-Implementierungen bestimmen das Verhalten der Fahrzeuge.
+
+Durch diese Aufteilung werden Verantwortlichkeiten klar getrennt, was den Code besser wartbar, verständlicher und erweiterbar macht.
+
+Diese Struktur folgt dem Prinzip der klaren Verantwortlichkeit (Single Responsibility Principle).
+
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
 ### Was bewusst nicht dargestellt wird
