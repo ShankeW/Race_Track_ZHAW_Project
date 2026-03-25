@@ -195,6 +195,10 @@ public class Game implements GameSpecification {
                 return;
             }
         }
+
+        // Case if all cars are crashed.
+        // Use -2 to distinguish from NO_WINNER, so that the main loop can be terminated.
+        if (crashedCarCount() >= track.getCarCount()) winner = -2;
     }
 
     private boolean isOccupiedByAnotherCar(PositionVector position, Car currentCar) {

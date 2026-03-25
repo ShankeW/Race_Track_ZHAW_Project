@@ -11,29 +11,38 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 
 /**
  * Determines the next move based on a file containing a list of directions.
  */
 public class MoveListStrategy implements MoveStrategy {
-    List<String> moveList;
+    private final List<String> moveList;
 
     /**
      * Instantiate the MoveListStrategy by reading the txt file containing all predefined moves.
-     * User can chose via userinterface UI which move file to use.
+     * User can choose via userinterface UI which move file to use.
      */
     public MoveListStrategy(UserInterface ui, File[] moveFiles){
+        if (moveFiles == null || moveFiles.length == 0) {
+            throw new IllegalArgumentException("No move files were provided.");
+        }
+
         ArrayList<String> moveFileNames = new ArrayList<>();
         for (File currMoveFile : moveFiles){
             moveFileNames.add(currMoveFile.getName());
         }
         int userInput = ui.getUserInput(moveFileNames);
 
+        if (userInput < 0 || userInput >= moveFiles.length) {
+            throw new IllegalArgumentException("Selected move file index is out of bounds: " + userInput);
+        }
+
         try{
             Path path = Paths.get(moveFiles[userInput].getPath());
             moveList = Files.readAllLines(path);
         } catch (IOException e){
-            System.out.println("File not found");
+            throw new UncheckedIOException("Could not read move list file: " + moveFiles[userInput].getPath(), e);
         }
     }
 
@@ -46,8 +55,8 @@ public class MoveListStrategy implements MoveStrategy {
     public Optional<Direction> nextMove() {
         // TODO: implementation
         if (!moveList.isEmpty()){
-            Direction currDirection = Direction.valueOf(moveList.get(0).toUpperCase());
-            moveList.remove(0);
+            Direction currDirection = Direction.valueOf(moveList.getFirst().toUpperCase());
+            moveList.removeFirst();
             return Optional.of(currDirection);
         } else {
             return Optional.empty();
