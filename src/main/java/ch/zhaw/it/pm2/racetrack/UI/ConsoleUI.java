@@ -3,12 +3,17 @@ import org.beryx.textio.*;
 import org.beryx.textio.swing.SwingTextTerminal;
 
 import java.util.ArrayList;
-
+/**
+ * UI which uses a console display to show outputs to and get inputs from the user.
+ */
 public class ConsoleUI implements UserInterface{
 
     TextIO textIO;
     TextTerminal<?> terminal;
 
+    /**
+     * Creates a new ConsoleUI Object.
+     */
     public ConsoleUI(){
         this.terminal = new SwingTextTerminal();
         this.textIO = new TextIO(this.terminal);

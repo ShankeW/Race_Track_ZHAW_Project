@@ -14,16 +14,20 @@ public class UserMoveStrategy implements MoveStrategy {
     UserInterface UI;
 
     /**
-     * {@inheritDoc}
-     * Asks the user for the direction vector.
-     *
-     * @return next direction, {Optional#empty()} if the user terminates the game.
+     * Movestrategy that gets the next move from the user through a User Interface.
+     * @param ui the user interface that gets input from the user
      */
 
     public UserMoveStrategy(UserInterface ui){
         this.UI = ui;
     }
 
+    /**
+     * {@inheritDoc}
+     * Asks the user for the direction vector.
+     *
+     * @return next direction, {Optional#empty()} if the user terminates the game.
+     */
     @Override
     public Optional<Direction> nextMove() {
         Direction[] directions = Direction.values();

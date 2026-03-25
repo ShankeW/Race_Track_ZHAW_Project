@@ -9,6 +9,12 @@ import java.util.Optional;
  */
 public class DoNotMoveStrategy implements MoveStrategy {
     /**
+     * Creates a new DoNotMoveStrategy, which always returns {@link Direction#NONE}
+     */
+    public DoNotMoveStrategy(){
+
+    }
+    /**
      * {@inheritDoc}
      *
      * @return always {@link Direction#NONE}
