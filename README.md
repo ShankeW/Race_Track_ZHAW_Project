@@ -163,6 +163,7 @@ Durch diese Aufteilung werden Verantwortlichkeiten klar getrennt, was den Code b
 
 Diese Struktur folgt dem Prinzip der klaren Verantwortlichkeit (Single Responsibility Principle).
 
+
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
 ### Was bewusst nicht dargestellt wird
