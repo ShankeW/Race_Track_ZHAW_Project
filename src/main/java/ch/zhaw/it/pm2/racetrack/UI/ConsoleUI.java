@@ -68,7 +68,7 @@ public class ConsoleUI implements UserInterface {
     @Override
     public void waitForConfirmation(String message) {
         terminal.println(message);
-        textIO.newStringInputReader().read("Press Enter to exit");
+        textIO.newStringInputReader().read("Type any Character to exit");
     }
 
     @Override
