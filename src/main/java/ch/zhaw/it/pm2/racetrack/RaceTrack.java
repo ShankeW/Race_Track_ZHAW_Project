@@ -129,12 +129,8 @@ public class RaceTrack {
         UI.displayMessage("Current Car: " + game.getCarId(game.getCurrentCarIndex()));
         Optional<Direction> direction = game.nextCarMove(game.getCurrentCarIndex());
 
-        if (direction.isEmpty()) {
-            gameActive = false;
-            return;
-        }
+        Direction parsedDirection = direction.orElse(Direction.NONE);
 
-        Direction parsedDirection = direction.get();
         game.doCarTurn(parsedDirection);
         game.switchToNextActiveCar();
         if (game.getWinner() != GameSpecification.NO_WINNER){
