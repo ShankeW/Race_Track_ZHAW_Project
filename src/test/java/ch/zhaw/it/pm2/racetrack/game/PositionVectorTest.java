@@ -1,4 +1,4 @@
-package ch.zhaw.it.pm2.racetrack;
+package ch.zhaw.it.pm2.racetrack.game;
 
 import ch.zhaw.it.pm2.racetrack.game.PositionVector;
 import org.junit.jupiter.api.Test;
@@ -15,14 +15,14 @@ class PositionVectorTest {
     private static final int Y = 5;
 
     @Test
-    void testEquals() {
+    void equalsTest() {
         PositionVector a = new PositionVector(X, Y);
         PositionVector b = new PositionVector(X, Y);
         assertEquals(a, b);
     }
 
     @Test
-    void testEqualsWithHashMap() {
+    void equalsWithHashMapTest() {
         Map<PositionVector, Integer> map = new HashMap<>();
         PositionVector a = new PositionVector(X, Y);
         map.put(a, 1);

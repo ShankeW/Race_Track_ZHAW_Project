@@ -12,15 +12,31 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CarTest {
 
+    /*
+     * Equivalence classes covered by existing tests:
+     * 1: Construction invariants: configured `char` id is preserved, initial position is copied, velocity starts at zero and is copied.
+     * 2: Predictive movement: `nextPosition()` reflects current velocity without mutating position.
+     * 3: Acceleration handling: valid accelerations accumulate deltas, null accelerations are rejected.
+     * 4: Movement execution: `move()` applies velocity to position and keeps velocity, `updatePosition()` jumps directly to given coordinates.
+     * 5: Crash lifecycle: `crash()` flags the car and freezes position, further movement or updates after a crash leave position unchanged while velocity stays at last value.
+     * 6: Crash state reporting: freshly constructed car reports `isCrashed() == false`.
+     * 7: Strategy integration: absent strategy yields `Optional.empty()`, configured strategy delegates its move.
+     */
+
+    /**
+     * Tests based on the equivalence class 1: ensures that the Car constructor correctly sets the id, initializes velocity to zero, and returns copies of position and velocity to prevent external mutation.
+     */
+    // Equivalence class: Construction invariants - id is set, position is copied, velocity starts at zero and is copied.
     @Test
-    void getIdReturnsConfiguredId() {
+    void getIdReturnsConfiguredIdTest() {
         Car testCar = new Car('a', new PositionVector(0, 0));
 
         assertEquals('a', testCar.getId());
+        assertEquals(new PositionVector(0, 0), testCar.getVelocity());
     }
 
     @Test
-    void getPositionReturnsCurrentPositionAsCopy() {
+    void getPositionReturnsCurrentPositionAsCopyTest() {
         Car testCar = new Car('a', new PositionVector(2, 3));
 
         PositionVector firstRead = testCar.getPosition();
@@ -32,7 +48,7 @@ class CarTest {
     }
 
     @Test
-    void getVelocityStartsAtZeroAndReturnsCopy() {
+    void getVelocityStartsAtZeroAndReturnsCopyTest() {
         Car testCar = new Car('a', new PositionVector(0, 0));
 
         PositionVector firstRead = testCar.getVelocity();
@@ -43,8 +59,12 @@ class CarTest {
         assertNotSame(firstRead, secondRead);
     }
 
+    /**
+     * Tests based on equivalenceclasses 2 -3
+     */
+    // Equivalence class: Predictive movement - `nextPosition()` reflects current velocity without mutating position.
     @Test
-    void nextPositionUsesCurrentVelocityWithoutMovingCar() {
+    void nextPositionUsesCurrentVelocityWithoutMovingCarTest() {
         Car testCar = new Car('a', new PositionVector(1, 1));
         testCar.accelerate(Direction.DOWN_RIGHT);
 
@@ -53,7 +73,7 @@ class CarTest {
     }
 
     @Test
-    void accelerateUpdatesVelocity() {
+    void accelerateUpdatesVelocityTest() {
         Car testCar = new Car('a', new PositionVector(0, 0));
 
         testCar.accelerate(Direction.RIGHT);
@@ -63,14 +83,18 @@ class CarTest {
     }
 
     @Test
-    void accelerateRejectsNull() {
+    void accelerateRejectsNullTest() {
         Car testCar = new Car('a', new PositionVector(0, 0));
 
         assertThrows(IllegalArgumentException.class, () -> testCar.accelerate(null));
     }
 
+    /**
+     * Tests based on equivalenceclass 4
+     */
+    // Movement execution - movement APIs apply velocity or override position deterministically.
     @Test
-    void moveAppliesVelocityToPosition() {
+    void moveAppliesVelocityToPositionTest() {
         Car testCar = new Car('a', new PositionVector(2, 2));
         testCar.accelerate(Direction.UP_LEFT);
         testCar.accelerate(Direction.LEFT);
@@ -82,7 +106,7 @@ class CarTest {
     }
 
     @Test
-    void updatePositionMovesCarDirectly() {
+    void updatePositionMovesCarDirectlyTest() {
         Car testCar = new Car('a', new PositionVector(0, 0));
 
         testCar.updatePosition(new PositionVector(4, 5));
@@ -90,8 +114,12 @@ class CarTest {
         assertEquals(new PositionVector(4, 5), testCar.getPosition());
     }
 
+    /**
+     * Tests based on equivalence class 5 - crash lifecycle and crash state reporting
+     */
+    // Equivalence class: Crash lifecycle - crash flag freezes position regardless of later inputs.
     @Test
-    void crashMarksCarAsCrashedAndStoresCrashPosition() {
+    void crashMarksCarAsCrashedAndStoresCrashPositionTest() {
         Car testCar = new Car('a', new PositionVector(0, 0));
 
         testCar.crash(new PositionVector(3, 1));
@@ -101,7 +129,7 @@ class CarTest {
     }
 
     @Test
-    void crashedCarNoLongerMoves() {
+    void crashedCarNoLongerMovesTest() {
         Car testCar = new Car('a', new PositionVector(1, 1));
         testCar.accelerate(Direction.RIGHT);
         testCar.crash(new PositionVector(2, 1));
@@ -114,26 +142,32 @@ class CarTest {
         assertEquals(new PositionVector(2, 1), testCar.getPosition());
         assertEquals(new PositionVector(1, 0), testCar.getVelocity());
     }
-
+    // Equivalence class: Crash state reporting - freshly constructed cars report non-crashed status.
     @Test
-    void getMoveReturnsEmptyWhenNoStrategyIsSet() {
+    void isCrashedIsFalseForFreshCarTest() {
+        Car testCar = new Car('a', new PositionVector(0, 0));
+
+        assertFalse(testCar.isCrashed());
+    }
+
+    /**
+     * Test based on equivalence class 6 - strategy integration
+     */
+    // Equivalence class: Strategy integration - strategy presence controls Optional move outcomes.
+    @Test
+    void getMoveReturnsEmptyWhenNoStrategyIsSetTest() {
         Car testCar = new Car('a', new PositionVector(0, 0));
 
         assertTrue(testCar.getMove().isEmpty());
     }
 
     @Test
-    void setMoveStrategyMakesGetMoveReturnStrategyMove() {
+    void setMoveStrategyMakesGetMoveReturnStrategyMoveTest() {
         Car testCar = new Car('a', new PositionVector(0, 0));
         testCar.setMoveStrategy(() -> Optional.of(Direction.UP));
 
         assertEquals(Optional.of(Direction.UP), testCar.getMove());
     }
 
-    @Test
-    void isCrashedIsFalseForFreshCar() {
-        Car testCar = new Car('a', new PositionVector(0, 0));
 
-        assertFalse(testCar.isCrashed());
-    }
 }

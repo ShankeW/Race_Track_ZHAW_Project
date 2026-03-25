@@ -19,7 +19,7 @@ class TrackTest {
     Path tempDir;
 
     @Test
-    void constructorParsesTrackBlockAndExposesTrackMetadata() throws Exception {
+    void constructorParsesTrackBlockAndExposesTrackMetadataTest() throws Exception {
         Track track = createTrack(
             "",
             "",
@@ -39,7 +39,7 @@ class TrackTest {
     }
 
     @Test
-    void constructorRejectsTracksWithInconsistentRowLength() {
+    void constructorRejectsTracksWithInconsistentRowLengthTest() {
         assertThrows(InvalidFileFormatException.class, () -> createTrack(
             "#####",
             "#a #",
@@ -48,7 +48,7 @@ class TrackTest {
     }
 
     @Test
-    void constructorRejectsTracksWithoutCars() {
+    void constructorRejectsTracksWithoutCarsTest() {
         assertThrows(InvalidFileFormatException.class, () -> createTrack(
             "#####",
             "# > #",
@@ -57,7 +57,7 @@ class TrackTest {
     }
 
     @Test
-    void constructorRejectsDuplicateCarIds() {
+    void constructorRejectsDuplicateCarIdsTest() {
         assertThrows(InvalidFileFormatException.class, () -> createTrack(
             "####",
             "#aa#",
@@ -66,7 +66,7 @@ class TrackTest {
     }
 
     @Test
-    void constructorRejectsMoreCarsThanAllowed() {
+    void constructorRejectsMoreCarsThanAllowedTest() {
         assertThrows(InvalidFileFormatException.class, () -> createTrack(
             "############",
             "#abcdefghij#",
@@ -75,7 +75,7 @@ class TrackTest {
     }
 
     @Test
-    void getSpaceTypeAtPositionReturnsWallOutsideGrid() throws Exception {
+    void getSpaceTypeAtPositionReturnsWallOutsideGridTest() throws Exception {
         Track track = createTrack(
             "#####",
             "#a >#",
@@ -87,7 +87,7 @@ class TrackTest {
     }
 
     @Test
-    void getCharRepresentationAndToStringOverlayCarsOntoGrid() throws Exception {
+    void getCharRepresentationAndToStringOverlayCarsOntoGridTest() throws Exception {
         Track track = createTrack(
             "###",
             "#a#",

@@ -1,5 +1,6 @@
-package ch.zhaw.it.pm2.racetrack;
+package ch.zhaw.it.pm2.racetrack.game;
 
+import ch.zhaw.it.pm2.racetrack.InvalidFileFormatException;
 import ch.zhaw.it.pm2.racetrack.game.Direction;
 import ch.zhaw.it.pm2.racetrack.game.Game;
 import ch.zhaw.it.pm2.racetrack.game.PositionVector;
@@ -17,33 +18,33 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/*
+ * Equivalence classes for Game:
+ *  1: calculatePath with diagonal movement -> includes start and end, with diagonal intermediates.
+ *  2: calculatePath with axis-aligned movement -> all intermediate points stay on that axis.
+ *  3: doCarTurn on own start field -> no self-collision at start position.
+ *  4: doCarTurn into occupied track field -> current car crashes, last remaining car becomes winner.
+ *  5: doCarTurn crosses finish in correct direction -> winner is set and car stops at finish field.
+ *  6: doCarTurn crosses finish in wrong direction -> no winner, car remains at previous path step.
+ *  7: doCarTurn after winner already exists -> turn is ignored.
+ *  8: doCarTurn for already crashed current car -> turn is ignored.
+ *  9: switchToNextActiveCar with crashed cars -> skips crashed cars and wraps around.
+ *  10: switchToNextActiveCar when all cars crashed -> current index remains unchanged.
+ *  11: nextCarMove without strategy -> Optional.empty().
+ *  12: nextCarMove with strategy -> returns strategy-provided move.
+ */
+
 class GameTest {
 
     @TempDir
     Path tempDir;
-
-    /*
-     * Equivalence classes for Game:
-     * EC-GAME-1: calculatePath with diagonal movement -> includes start and end, with diagonal intermediates.
-     * EC-GAME-2: calculatePath with axis-aligned movement -> all intermediate points stay on that axis.
-     * EC-GAME-3: doCarTurn on own start field -> no self-collision at start position.
-     * EC-GAME-4: doCarTurn into occupied track field -> current car crashes, last remaining car becomes winner.
-     * EC-GAME-5: doCarTurn crosses finish in correct direction -> winner is set and car stops at finish field.
-     * EC-GAME-6: doCarTurn crosses finish in wrong direction -> no winner, car remains at previous path step.
-     * EC-GAME-7: doCarTurn after winner already exists -> turn is ignored.
-     * EC-GAME-8: doCarTurn for already crashed current car -> turn is ignored.
-     * EC-GAME-9: switchToNextActiveCar with crashed cars -> skips crashed cars and wraps around.
-     * EC-GAME-10: switchToNextActiveCar when all cars crashed -> current index remains unchanged.
-     * EC-GAME-11: nextCarMove without strategy -> Optional.empty().
-     * EC-GAME-12: nextCarMove with strategy -> returns strategy-provided move.
-     */
 
     /**
      * Tests for calculatePath() based on the equivalence classes 1 and 2.
      * @throws Exception
      */
     @Test
-    void testCalculatePathDiagonalMovementIfContainsAllInterveningVectors() throws Exception {
+    void calculatePathDiagonalMovementIfContainsAllInterveningVectorsTest() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -63,7 +64,7 @@ class GameTest {
     }
 
     @Test
-    void testCalculatePathAxisAlignedMovementIfContainsAllInterveningVectors() throws Exception {
+    void calculatePathAxisAlignedMovementIfContainsAllInterveningVectorsTest() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -93,7 +94,7 @@ class GameTest {
      * Tests for doCarTurn() based on the equivalence classes 3 - 8.
      */
     @Test
-    void testDoCarTurnDoesNotTreatTheOwnStartFieldAsCollision() throws Exception {
+    void doCarTurnDoesNotTreatTheOwnStartFieldAsCollisionTest() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -108,7 +109,7 @@ class GameTest {
     }
 
     @Test
-    void testDoCarTurnCrashesIntoOccupiedTrackFieldAndAwardsLastRemainingCar() throws Exception {
+    void doCarTurnCrashesIntoOccupiedTrackFieldAndAwardsLastRemainingCarTest() throws Exception {
         Game game = createGame(
             "#######",
             "#a b  #",
@@ -118,14 +119,14 @@ class GameTest {
         game.doCarTurn(Direction.RIGHT);
         game.doCarTurn(Direction.NONE);
 
-        assertEquals(new PositionVector(3, 1), game.getCarPosition(0));
+        assertEquals(new PositionVector(2, 1), game.getCarPosition(0));
         assertEquals(new PositionVector(3, 1), game.getCarPosition(1));
         assertEquals(1, game.getWinner());
-        assertEquals(String.join(System.lineSeparator(), "#######", "#  b  #", "#######"), game.toString());
+        assertEquals(String.join(System.lineSeparator(), "#######", "# Xb  #", "#######"), game.toString());
     }
 
     @Test
-    void testDoCarTurnAwardsWinnerWhenCrossingFinishLineCorrectly() throws Exception {
+    void doCarTurnAwardsWinnerWhenCrossingFinishLineCorrectlyTest() throws Exception {
         Game game = createGame(
             "#####",
             "#a> #",
@@ -139,7 +140,7 @@ class GameTest {
     }
 
     @Test
-    void testDoCarTurnDoesNotAwardWinnerWhenCrossingFinishLineWrongDirection() throws Exception {
+    void doCarTurnDoesNotAwardWinnerWhenCrossingFinishLineWrongDirectionTest() throws Exception {
         Game game = createGame(
             "######",
             "# >a #",
@@ -153,7 +154,7 @@ class GameTest {
     }
 
     @Test
-    void testDoCarTurnReturnsImmediatelyWhenWinnerAlreadyExists() throws Exception {
+    void doCarTurnReturnsImmediatelyWhenWinnerAlreadyExistsTest() throws Exception {
         Game game = createGame(
             "######",
             "#a>b #",
@@ -173,7 +174,7 @@ class GameTest {
     }
 
     @Test
-    void testDoCarTurnReturnsImmediatelyWhenCurrentCarAlreadyCrashed() throws Exception {
+    void doCarTurnReturnsImmediatelyWhenCurrentCarAlreadyCrashedTest() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -196,7 +197,7 @@ class GameTest {
      * @throws Exception
      */
     @Test
-    void testSwitchToNextActiveCarSkipsCrashedCarsAndWrapsAround() throws Exception {
+    void switchToNextActiveCarSkipsCrashedCarsAndWrapsAroundTest() throws Exception {
         Game game = createGame(
             "#######",
             "#a b  #",
@@ -215,7 +216,7 @@ class GameTest {
     }
 
     @Test
-    void testSwitchToNextActiveCarDoesNothingWhenAllCarsAreCrashed() throws Exception {
+    void switchToNextActiveCarDoesNothingWhenAllCarsAreCrashedTest() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -232,7 +233,7 @@ class GameTest {
      * Tests for nextCarMove() based on the equivalence classes 11 and 12.
      */
     @Test
-    void testNextCarMoveReturnsEmptyIfNoStrategyIsSet() throws Exception {
+    void nextCarMoveReturnsEmptyIfNoStrategyIsSetTest() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
@@ -243,7 +244,7 @@ class GameTest {
     }
 
     @Test
-    void nextCarMoveReturnsMoveProvidedByStrategy() throws Exception {
+    void nextCarMoveReturnsMoveProvidedByStrategyTest() throws Exception {
         Game game = createGame(
             "#####",
             "#a  #",
