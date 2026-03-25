@@ -22,19 +22,19 @@ public class MoveListStrategy implements MoveStrategy {
     /**
      * Instantiate the MoveListStrategy by reading the txt file containing all predefined moves.
      * User can choose via userinterface UI which move file to use.
-     * @param ui UI that requests a chosen Movelist file from the user.
+     *
+     * @param ui        UI that requests a chosen Movelist file from the user.
      * @param moveFiles The list of available Movelist files.
      */
     public MoveListStrategy(UserInterface ui, File[] moveFiles){
-        if (moveFiles == null || moveFiles.length == 0) {
-            throw new IllegalArgumentException("No move files were provided.");
-        }
-
         ArrayList<String> moveFileNames = new ArrayList<>();
-        for (File currMoveFile : moveFiles){
+        for (File currMoveFile : moveFiles) {
             moveFileNames.add(currMoveFile.getName());
         }
         int userInput = ui.getUserInput(moveFileNames);
+        if (userInput < 0 || userInput >= moveFiles.length) {
+            throw new IllegalArgumentException("Invalid move file selection.");
+        }
 
         if (userInput < 0 || userInput >= moveFiles.length) {
             throw new IllegalArgumentException("Selected move file index is out of bounds: " + userInput);
@@ -55,12 +55,15 @@ public class MoveListStrategy implements MoveStrategy {
      */
     @Override
     public Optional<Direction> nextMove() {
-        if (!moveList.isEmpty()){
-            Direction currDirection = Direction.valueOf(moveList.getFirst().toUpperCase());
-            moveList.removeFirst();
-            return Optional.of(currDirection);
-        } else {
+        if (moveList.isEmpty()) {
             return Optional.empty();
+        }
+        try {
+            Direction currDirection = Direction.valueOf(moveList.get(0).toUpperCase());
+            moveList.remove(0);
+            return Optional.of(currDirection);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid direction in move file.", e);
         }
     }
 }
