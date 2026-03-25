@@ -1,16 +1,16 @@
 # How to Run / Test Racetrack
 
-Racetrack kann mit folgender Befehl laufen gelassen:
+Racetrack kann mit folgendem Befehl gestartet werden:
 **./gradlew run**
 
-Racetrack Tests können mit folgender Befehl laufen gelassen:
+Racetrack-Tests können mit folgendem Befehl ausgeführt werden:
 **./gradlew test**
 
-## Branching Model
-Das Branching Model welche wir für unsere Projekt verwenden sei das [Github Flow Modell](https://docs.github.com/en/get-started/using-github/github-flow)
+## Branching Modell
+Das Branching Modell, das wir für unser Projekt verwenden, ist das [Github Flow Modell](https://docs.github.com/en/get-started/using-github/github-flow)
 
-Möchte man eine Verändering beim Projekt durchführen muss man folgende Steps folgen:
-1. Eine Neue Branch erstellen.
+Möchte man eine Änderung am Projekt durchführen, muss man die folgenden Schritte befolgen:
+1. Eine neue Branch erstellen.
 2. Die gewünschte Changes erstellen und committen.
 3. Eine Pull request für diese Branch erstellen.
 4. Eine Review für das Pull request sammeln.
@@ -116,9 +116,9 @@ Das Racetrack-Projekt wird primär mit automatisierten Unit-Tests getestet. Der 
 
 ## Car
 ### move()
-Diese Methode enthält keine Parameter, deshalb sind alle Inputs teil der gültigen Äquivalenzklassen.
+Diese Methode enthält keine Parameter, deshalb sind alle Eingaben Teil der gültigen Äquivalenzklassen sind. 
 ### accelerate(Direction acceleration)
-Diese Methode enthälte eine Enum als Parameter
+Diese Methode enthält ein Enum als Parameter
 Gültige Äquivalenzklasse: Direction Objekt
 Ungültige Äquivalenzklasse: leere / Null Objekt
 
@@ -147,7 +147,7 @@ Ungültige Äquivalenzklasse: leere / Null Objekt
    2. Ausgewählte moveFile existiert und beinhaltet mehrere gültige "Directions" -> `nextMove()` verarbeiten diesen in der richtigen Reihenfolge.
    3. Ausgew'hlte moveFile existiert ist aber leer -> `nextMove()` gibt ein `Optional.emty()` Objekt zurück.
    4. moveFile beinhaltet ungültige "Direction" Objekt -> `nextMove()` wirft eine IllegalArgumentException.
-   5. Ausgewählte moveFile kann nicht eingelesen weden -> `nextMove()` wirft eine NullPointerExcetion.
+   5. Ausgewählte moveFile kann nicht eingelesen werden -> `nextMove()` wirft eine NullPointerExcetion.
 
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
