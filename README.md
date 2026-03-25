@@ -115,12 +115,18 @@ Das Racetrack-Projekt wird primär mit automatisierten Unit-Tests getestet. Der 
 # Äquivalenzklassen
 
 ## Car
-### move()
-Diese Methode enthält keine Parameter, deshalb sind alle Eingaben Teil der gültigen Äquivalenzklassen sind. 
+### id, position copying, zero baseline
+   1. Construction invariants: configured `char` id is preserved, initial position is copied, velocity starts at  zero and is copied.
 ### accelerate(Direction acceleration)
-Diese Methode enthält ein Enum als Parameter
-Gültige Äquivalenzklasse: Direction Objekt
-Ungültige Äquivalenzklasse: leere / Null Objekt
+   2. Predictive movement: `nextPosition()` reflects current velocity without mutating position.
+   3. Acceleration handling: valid accelerations accumulate deltas, null accelerations are rejected.
+### move()
+   4. Movement execution: `move()` applies velocity to position and keeps velocity, `updatePosition()` jumps   directly to given coordinates.
+### isCrashed()
+   5. Crash lifecycle: `crash()` flags the car and freezes position, further movement or updates after a crash leave position unchanged while velocity stays at last value.
+   6: Crash state reporting: freshly constructed car reports `isCrashed() == false`.
+### getMove()
+   7. Strategy integration: absent strategy yields `Optional.empty()`, configured strategy delegates its move.
 
 ## Game
 ### calculatePath(PositionVector startPosition, PositionVector endPosition)
@@ -166,6 +172,10 @@ Diese Struktur folgt dem Prinzip der klaren Verantwortlichkeit (Single Responsib
 
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
+## Klassendiagramm Änderungen
+### MoveListStrategy()
+- Ein neues Attribut `private final List<String> moveList;` wird hinzugefügt.
+- Der Konstruktor verwendet nun die Klasse `UserInterface.java`.
 ### Was bewusst nicht dargestellt wird
 - Private Methoden
 - Selbst erstellte Exceptions

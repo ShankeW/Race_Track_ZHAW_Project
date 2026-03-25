@@ -33,7 +33,7 @@ public class MoveListStrategyTest {
     Path tempDir; // JUnit will create and clean up a temporary directory for test files
 
     @Test
-    void testChallengeCarA() {
+    void challengeCarAtest() {
         File[] moveFiles = {
             new File("moves/challenge-car-a.txt"),
             new File("moves/challenge-car-b.txt")
@@ -47,7 +47,7 @@ public class MoveListStrategyTest {
     }
 
     @Test
-    void testChallengeCarB() {
+    void challengeCarBtest() {
         File[] moveFiles = {
             new File("moves/challenge-car-a.txt"),
             new File("moves/challenge-car-b.txt")
@@ -61,7 +61,7 @@ public class MoveListStrategyTest {
     }
 
     @Test
-    void testIfNextMoveConsumesTheFirstDirection() throws IOException{
+    void ifNextMoveConsumesTheFirstDirectionTest() throws IOException{
         File moveFile = createMoveFile("DOWN_RIGHT");
         MoveListStrategy strategy = new MoveListStrategy(new FixedIndexUserInterface(0), new File[]{moveFile});
 
@@ -70,7 +70,7 @@ public class MoveListStrategyTest {
     }
 
     @Test
-    void testIfNextMoveConsumesDirectionsInOrder() throws IOException {
+    void ifNextMoveConsumesDirectionsInOrderTest() throws IOException {
         File moveFile = createMoveFile("left", "up_right", "none");
         MoveListStrategy strategy = new MoveListStrategy(new FixedIndexUserInterface(0), new File[]{moveFile});
 
@@ -81,7 +81,7 @@ public class MoveListStrategyTest {
     }
 
     @Test
-    void testIfNextMoveReturnsEmptyForEmptyMoveFile() throws IOException {
+    void ifNextMoveReturnsEmptyForEmptyMoveFileTest() throws IOException {
         File moveFile = createMoveFile();
         MoveListStrategy strategy = new MoveListStrategy(new FixedIndexUserInterface(0), new File[]{moveFile});
 
@@ -89,7 +89,7 @@ public class MoveListStrategyTest {
     }
 
     @Test
-    void testIfExceptionIsThrownForInvalidDirectionObject() throws IOException {
+    void ifExceptionIsThrownForInvalidDirectionObjectTest() throws IOException {
         File moveFile = createMoveFile("invalid-direction");
         MoveListStrategy strategy = new MoveListStrategy(new FixedIndexUserInterface(0), new File[]{moveFile});
 
@@ -97,7 +97,7 @@ public class MoveListStrategyTest {
     }
 
     @Test
-    void testIfExceptionIsThrownWhenMoveFileCouldNotBeRead() {
+    void ifExceptionIsThrownWhenMoveFileCouldNotBeReadTest() {
         File missingMoveFile = new File(tempDir.toFile(), "does-not-exist.txt");
         assertThrows(UncheckedIOException.class,
             () -> new MoveListStrategy(new FixedIndexUserInterface(0), new File[]{missingMoveFile}));
