@@ -40,7 +40,12 @@ public class RaceTrack {
             racetrack.processTurn();
         }
         racetrack.UI.displayMessage(racetrack.game.toString());
-        racetrack.UI.waitForConfirmation("Winner is: " + racetrack.game.getCarId(racetrack.game.getWinner()));
+        if (racetrack.game.getWinner() <= -1){
+            racetrack.UI.waitForConfirmation("Game ends with no Winner");
+        } else {
+            racetrack.UI.waitForConfirmation("Winner is: " + racetrack.game.getCarId(racetrack.game.getWinner()));
+        }
+
         racetrack.quitGame();
     }
 
@@ -129,8 +134,12 @@ public class RaceTrack {
         UI.displayMessage("Current Car: " + game.getCarId(game.getCurrentCarIndex()));
         Optional<Direction> direction = game.nextCarMove(game.getCurrentCarIndex());
 
-        Direction parsedDirection = direction.orElse(Direction.NONE);
+        if (direction.isEmpty()) {
+            gameActive = false;
+            return;
+        }
 
+        Direction parsedDirection = direction.get();
         game.doCarTurn(parsedDirection);
         game.switchToNextActiveCar();
         if (game.getWinner() != GameSpecification.NO_WINNER){
