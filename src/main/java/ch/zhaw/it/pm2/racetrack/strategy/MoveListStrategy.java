@@ -21,21 +21,25 @@ public class MoveListStrategy implements MoveStrategy {
     /**
      * Instantiate the MoveListStrategy by reading the txt file containing all predefined moves.
      * User can choose via userinterface UI which move file to use.
-     * @param ui UI that requests a chosen Movelist file from the user.
+     *
+     * @param ui        UI that requests a chosen Movelist file from the user.
      * @param moveFiles The list of available Movelist files.
      */
-    public MoveListStrategy(UserInterface ui, File[] moveFiles){
+    public MoveListStrategy(UserInterface ui, File[] moveFiles) {
         ArrayList<String> moveFileNames = new ArrayList<>();
-        for (File currMoveFile : moveFiles){
+        for (File currMoveFile : moveFiles) {
             moveFileNames.add(currMoveFile.getName());
         }
         int userInput = ui.getUserInput(moveFileNames);
+        if (userInput < 0 || userInput >= moveFiles.length) {
+            throw new IllegalArgumentException("Invalid move file selection.");
+        }
 
-        try{
+        try {
             Path path = Paths.get(moveFiles[userInput].getPath());
             moveList = Files.readAllLines(path);
-        } catch (IOException e){
-            System.out.println("File not found");
+        } catch (IOException e) {
+            throw new IllegalArgumentException("Move file could not be read.", e);
         }
     }
 
@@ -46,12 +50,16 @@ public class MoveListStrategy implements MoveStrategy {
      */
     @Override
     public Optional<Direction> nextMove() {
-        if (!moveList.isEmpty()){
+        if (moveList.isEmpty()) {
+            return Optional.empty();
+        }
+
+        try {
             Direction currDirection = Direction.valueOf(moveList.get(0).toUpperCase());
             moveList.remove(0);
             return Optional.of(currDirection);
-        } else {
-            return Optional.empty();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid direction in move file.", e);
         }
     }
 }
