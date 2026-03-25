@@ -15,8 +15,8 @@ public class ConsoleUI implements UserInterface{
      * Creates a new ConsoleUI Object.
      */
     public ConsoleUI(){
-        this.terminal = new SwingTextTerminal();
-        this.textIO = new TextIO(this.terminal);
+        this.textIO = TextIoFactory.getTextIO();
+        this.terminal = textIO.getTextTerminal();
     }
 
     @Override
@@ -62,7 +62,8 @@ public class ConsoleUI implements UserInterface{
      */
     @Override
     public void waitForConfirmation(String message){
-        textIO.newStringInputReader().read(message);
+        terminal.println(message);
+        textIO.newStringInputReader().read("Enter Any Character to Exit");
     }
 
     @Override

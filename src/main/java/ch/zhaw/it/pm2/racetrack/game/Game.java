@@ -158,12 +158,12 @@ public class Game implements GameSpecification {
         for (PositionVector step : carPath){
             switch (track.getSpaceTypeAtPosition(step)){
                 case WALL -> {
-                    crashCurrentCarAndResolveWinner(currentCar, step);
+                    crashCurrentCarAndResolveWinner(currentCar, previousStep);
                     return;
                 }
                 case TRACK -> {
                     if (!step.equals(startPosition) && isOccupiedByAnotherCar(step, currentCar)) {
-                        crashCurrentCarAndResolveWinner(currentCar, step);
+                        crashCurrentCarAndResolveWinner(currentCar, previousStep);
                         return;
                     }
                 }
@@ -195,6 +195,10 @@ public class Game implements GameSpecification {
                 return;
             }
         }
+
+        // Case if all cars are crashed.
+        // Use -2 to distinguish from NO_WINNER, so that the main loop can be terminated.
+        if (crashedCarCount() >= track.getCarCount()) winner = -2;
     }
 
     private boolean isOccupiedByAnotherCar(PositionVector position, Car currentCar) {
@@ -224,10 +228,10 @@ public class Game implements GameSpecification {
         //Y goes from up to down.
         switch (finishDirection){
             case FINISH_UP -> {
-                return startPosition.getY() < endPosition.getY();
+                return startPosition.getY() > endPosition.getY();
             }
             case FINISH_DOWN -> {
-                return startPosition.getY() > endPosition.getY();
+                return startPosition.getY() < endPosition.getY();
             }
             case FINISH_RIGHT -> {
                 return startPosition.getX() < endPosition.getX();

@@ -73,10 +73,10 @@ public class RaceTrack {
     }
 
     /**
-     * Creats and delivers the actuall MoveStrategy object for a car. DO_NOT_MOVE strategy object
+     * Creates and delivers the actual MoveStrategy object for a car. DO_NOT_MOVE strategy object
      * is created and returned by default.
      * @param strategyType the desired MoveStrategy Enum Type.
-     * @return the actuall MoveStrategy object needed.
+     * @return the actual MoveStrategy object needed.
      */
     public MoveStrategy selectMoveStrategy(MoveStrategy.StrategyType strategyType){
         File[] moveStrategies = config.getMoveDirectory().listFiles();
@@ -105,6 +105,10 @@ public class RaceTrack {
         for (MoveStrategy.StrategyType type : strategyTypes){
             typeNames.add(type.toString());
         }
+        // excluding optional move strategies: PATH_FOLLOWER and PATH_FINDER
+        typeNames.removeLast();
+        typeNames.removeLast();
+
         String message = "Select Move Strategy for: " + carID;
         MoveStrategy.StrategyType chosenType = strategyTypes[UI.getUserInput(typeNames,message,"Move Strategies:")];
 
@@ -123,9 +127,14 @@ public class RaceTrack {
     public void processTurn(){
         UI.displayMessage(game.toString());
         UI.displayMessage("Current Car: " + game.getCarId(game.getCurrentCarIndex()));
-        Optional< Direction > direction = game.nextCarMove(game.getCurrentCarIndex());
-        Direction parsedDirection;
-        parsedDirection = direction.orElse(Direction.NONE);
+        Optional<Direction> direction = game.nextCarMove(game.getCurrentCarIndex());
+
+        if (direction.isEmpty()) {
+            gameActive = false;
+            return;
+        }
+
+        Direction parsedDirection = direction.get();
         game.doCarTurn(parsedDirection);
         game.switchToNextActiveCar();
         if (game.getWinner() != GameSpecification.NO_WINNER){

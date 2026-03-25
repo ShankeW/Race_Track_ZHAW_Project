@@ -1,22 +1,38 @@
+## Projektbeschreibung
+
+Das Racetrack-Projekt ist eine Simulation eines Rennspiels auf einem Raster (Grid). 
+Mehrere Fahrzeuge bewegen sich rundenbasiert über eine Strecke, wobei Geschwindigkeit 
+und Richtung durch Beschleunigungsvektoren beeinflusst werden.
+
+Das Ziel des Spiels ist es, als erstes Fahrzeug die Ziellinie korrekt zu überqueren 
+oder als letztes verbleibendes Fahrzeug nicht auszuscheiden.
+
+Die Spiellogik basiert auf physikalisch vereinfachten Bewegungsregeln, bei denen 
+die aktuelle Geschwindigkeit eines Fahrzeugs in jeder Runde durch eine gewählte 
+Beschleunigung verändert wird.
+
+Das Projekt dient dazu, objektorientierte Konzepte wie Klassenstruktur, 
+Verantwortlichkeitstrennung (Single Responsibility Principle) sowie Strategiemuster 
+(z.B. MoveStrategy) praktisch anzuwenden.
+
 # How to Run / Test Racetrack
 
-Racetrack kann mit folgender Befehl laufen gelassen:
+Racetrack kann mit folgendem Befehl gestartet werden:
 **./gradlew run**
 
-Racetrack Tests können mit folgender Befehl laufen gelassen:
+Racetrack-Tests können mit folgendem Befehl ausgeführt werden:
 **./gradlew test**
 
-## Branching Model
-Das Branching Model welche wir für unsere Projekt verwenden sei das [Github Flow Modell](https://docs.github.com/en/get-started/using-github/github-flow)
+## Branching Modell
+Das Branching Modell, das wir für unser Projekt verwenden, ist das [Github Flow Modell](https://docs.github.com/en/get-started/using-github/github-flow)
 
-Möchte man eine Verändering beim Projekt durchführen muss man folgende Steps folgen:
-1. Eine Neue Branch erstellen.
+Möchte man eine Änderung am Projekt durchführen, muss man die folgenden Schritte befolgen:
+1. Eine neue Branch erstellen.
 2. Die gewünschte Changes erstellen und committen.
 3. Eine Pull request für diese Branch erstellen.
 4. Eine Review für das Pull request sammeln.
 5. Das Pull Request Mergen.
 6. Das Branch am Schluss löschen
-
 
 
 # Testkonzept Racetrack
@@ -116,9 +132,9 @@ Das Racetrack-Projekt wird primär mit automatisierten Unit-Tests getestet. Der 
 
 ## Car
 ### move()
-Diese Methode enthält keine Parameter, deshalb sind alle Inputs teil der gültigen Äquivalenzklassen.
+Diese Methode enthält keine Parameter, deshalb sind alle Eingaben Teil der gültigen Äquivalenzklassen sind. 
 ### accelerate(Direction acceleration)
-Diese Methode enthälte eine Enum als Parameter
+Diese Methode enthält ein Enum als Parameter
 Gültige Äquivalenzklasse: Direction Objekt
 Ungültige Äquivalenzklasse: leere / Null Objekt
 
@@ -147,7 +163,30 @@ Ungültige Äquivalenzklasse: leere / Null Objekt
    2. Ausgewählte moveFile existiert und beinhaltet mehrere gültige "Directions" -> `nextMove()` verarbeiten diesen in der richtigen Reihenfolge.
    3. Ausgew'hlte moveFile existiert ist aber leer -> `nextMove()` gibt ein `Optional.emty()` Objekt zurück.
    4. moveFile beinhaltet ungültige "Direction" Objekt -> `nextMove()` wirft eine IllegalArgumentException.
-   5. Ausgewählte moveFile kann nicht eingelesen weden -> `nextMove()` wirft eine NullPointerExcetion.
+   5. Ausgewählte moveFile kann nicht eingelesen werden -> `nextMove()` wirft eine NullPointerExcetion.
+
+## Abstraktionsebene
+
+Die Abstraktion im Racetrack-Projekt wurde so gewählt, dass jede Klasse eine klar definierte Aufgabe übernimmt.
+
+- Die Klasse `RaceTrack` übernimmt die Steuerung des Programms sowie die Interaktion mit der Benutzeroberfläche.
+- Die Klasse `Game` enthält die zentrale Spiellogik, wie das Ausführen von Zügen und das Bestimmen eines Gewinners.
+- Die Klasse `Track` ist verantwortlich für das Einlesen und Verwalten der Streckendaten.
+- Die Klasse `Car` speichert den Zustand eines Fahrzeugs, wie Position, Geschwindigkeit und Unfallstatus.
+- Die verschiedenen `MoveStrategy`-Implementierungen bestimmen das Verhalten der Fahrzeuge.
+
+Durch diese Aufteilung werden Verantwortlichkeiten klar getrennt, was den Code besser wartbar, verständlicher und erweiterbar macht.
+
+Diese Struktur folgt dem Prinzip der klaren Verantwortlichkeit (Single Responsibility Principle).
+
+## Known Limitations
+
+- Es gibt keine grafische Benutzeroberfläche (GUI), das Spiel läuft nur über die Konsole.
+- Fehlerhafte oder ungültige Eingabedateien (z.B. Track-Dateien) werden nicht vollständig abgefangen.
+- Die Kollisionslogik basiert auf einer vereinfachten Linienprüfung und kann in seltenen Fällen ungenau sein.
+- Es existiert keine Speicherung oder Wiederaufnahme von Spielständen.
+- Die implementierten MoveStrategien sind nicht optimiert und garantieren keine bestmöglichen Spielzüge.
+- Das Projekt ist für Lernzwecke entwickelt und nicht für produktiven Einsatz gedacht.
 
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
