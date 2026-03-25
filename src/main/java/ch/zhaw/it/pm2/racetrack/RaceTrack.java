@@ -40,7 +40,7 @@ public class RaceTrack {
             racetrack.processTurn();
         }
         racetrack.UI.displayMessage(racetrack.game.toString());
-        if (racetrack.game.getWinner() == -1){
+        if (racetrack.game.getWinner() <= -1){
             racetrack.UI.waitForConfirmation("Game ends with no Winner");
         } else {
             racetrack.UI.waitForConfirmation("Winner is: " + racetrack.game.getCarId(racetrack.game.getWinner()));
