@@ -35,7 +35,6 @@ Möchte man eine Änderung am Projekt durchführen, muss man die folgenden Schri
 6. Das Branch am Schluss löschen
 
 
-
 # Testkonzept Racetrack
 
 ## 1. Ziel
@@ -180,6 +179,14 @@ Durch diese Aufteilung werden Verantwortlichkeiten klar getrennt, was den Code b
 
 Diese Struktur folgt dem Prinzip der klaren Verantwortlichkeit (Single Responsibility Principle).
 
+## Known Limitations
+
+- Es gibt keine grafische Benutzeroberfläche (GUI), das Spiel läuft nur über die Konsole.
+- Fehlerhafte oder ungültige Eingabedateien (z.B. Track-Dateien) werden nicht vollständig abgefangen.
+- Die Kollisionslogik basiert auf einer vereinfachten Linienprüfung und kann in seltenen Fällen ungenau sein.
+- Es existiert keine Speicherung oder Wiederaufnahme von Spielständen.
+- Die implementierten MoveStrategien sind nicht optimiert und garantieren keine bestmöglichen Spielzüge.
+- Das Projekt ist für Lernzwecke entwickelt und nicht für produktiven Einsatz gedacht.
 
 # Klassendiagramm
 [Klassendiagramm](Klassendiagramm.png)
