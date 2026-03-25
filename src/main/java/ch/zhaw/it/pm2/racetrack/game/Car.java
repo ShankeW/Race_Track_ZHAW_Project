@@ -118,6 +118,9 @@ public class Car implements CarSpecification {
      * @param position The Position the Car will move to.
      */
     public void updatePosition(PositionVector position){
+        if (position == null) {
+            throw new IllegalArgumentException("Position must not be null");
+        }
         if (crashed) {
             return;
         }
@@ -156,9 +159,11 @@ public class Car implements CarSpecification {
      * @param moveStrategy Chosen move strategy
      */
     public void setMoveStrategy(MoveStrategy moveStrategy){
+        if (moveStrategy == null) {
+            throw new IllegalArgumentException("MoveStrategy must not be null");
+        }
         this.moveStrategy = moveStrategy;
     }
-
     /**
      * Gets the Next Movement Direction for this Car.
      *
