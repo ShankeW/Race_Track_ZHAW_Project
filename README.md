@@ -1,4 +1,4 @@
-## Projektbeschreibung
+# Projektbeschreibung
 
 Das Racetrack-Projekt ist eine Simulation eines Rennspiels auf einem Raster (Grid). 
 Mehrere Fahrzeuge bewegen sich rundenbasiert über eine Strecke, wobei Geschwindigkeit 
@@ -15,7 +15,7 @@ Das Projekt dient dazu, objektorientierte Konzepte wie Klassenstruktur,
 Verantwortlichkeitstrennung (Single Responsibility Principle) sowie Strategiemuster 
 (z.B. MoveStrategy) praktisch anzuwenden.
 
-# How to Run / Test Racetrack
+## How to Run / Test Racetrack
 
 Racetrack kann mit folgendem Befehl gestartet werden:
 **./gradlew run**
