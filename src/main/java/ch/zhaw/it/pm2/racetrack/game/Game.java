@@ -24,6 +24,9 @@ public class Game implements GameSpecification {
      * @param track the track to be used for this game
      */
     public Game(final Track track) {
+        if (track == null) {
+            throw new IllegalArgumentException("Track must not be null.");
+        }
         this.track = track;
     }
 
@@ -92,6 +95,9 @@ public class Game implements GameSpecification {
      */
     @Override
     public void setCarMoveStrategy(int carIndex, MoveStrategy moveStrategy) {
+        if (moveStrategy == null) {
+            throw new IllegalArgumentException("Move strategy must not be null.");
+        }
         Car car = track.getCar(carIndex);
         car.setMoveStrategy(moveStrategy);
     }
@@ -147,6 +153,10 @@ public class Game implements GameSpecification {
      */
     @Override
     public void doCarTurn(Direction acceleration) {
+        if (acceleration == null) {
+            throw new IllegalArgumentException("Acceleration must not be null.");
+        }
+
         Car currentCar = track.getCar(currentCarIndex);
         PositionVector startPosition = currentCar.getPosition();
         if (winner != NO_WINNER || currentCar.isCrashed()){
@@ -288,6 +298,10 @@ public class Game implements GameSpecification {
      */
     @Override
     public List<PositionVector> calculatePath(PositionVector startPosition, PositionVector endPosition) {
+        if (startPosition == null || endPosition == null) {
+            throw new IllegalArgumentException("Start and end position must not be null.");
+        }
+
         List<PositionVector> path = new ArrayList<>();
 
         // Use Bresenham's algorithm to determine positions.
