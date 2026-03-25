@@ -7,6 +7,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * 
  * Equivalence class for invalid inputs:
  *  4: Move file contains an invalid direction object -> nextMove throws IllegalArgumentException.
- *  5: Selected move file cannot be read (I/O error) -> nextMove throws NullPointerException.
+ *  5: Selected move file cannot be read (I/O error) -> constructor throws UncheckedIOException.
  */
 public class MoveListStrategyTest {
     @TempDir
@@ -98,9 +99,8 @@ public class MoveListStrategyTest {
     @Test
     void testIfExceptionIsThrownWhenMoveFileCouldNotBeRead() {
         File missingMoveFile = new File(tempDir.toFile(), "does-not-exist.txt");
-        MoveListStrategy strategy = new MoveListStrategy(new FixedIndexUserInterface(0), new File[]{missingMoveFile});
-
-        assertThrows(NullPointerException.class, strategy::nextMove);
+        assertThrows(UncheckedIOException.class,
+            () -> new MoveListStrategy(new FixedIndexUserInterface(0), new File[]{missingMoveFile}));
     }
 
 

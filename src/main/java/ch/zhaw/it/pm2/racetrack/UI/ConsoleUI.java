@@ -62,6 +62,7 @@ public class ConsoleUI implements UserInterface{
      */
     @Override
     public void waitForConfirmation(String message){
+        terminal.println(message);
         textIO.newStringInputReader().read(message);
     }
 
