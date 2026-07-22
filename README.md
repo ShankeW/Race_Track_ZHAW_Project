@@ -1,3 +1,9 @@
+# Team & Contributions
+This was a team project developed for the Software-Project Module at **ZHAW (Zurich University of Applied Sciences)**.
+## **My primary contributions:** 
+ - Implemented the class `MoveListStrategy` (Let user choose a strategy for racing).
+ - Creating tests for classes `Game` and `MoveListStrategy` and the corresponding equivalence classes.
+
 # Racetrack
 
 ## Projektbeschreibung
